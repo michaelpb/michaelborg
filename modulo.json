@@ -1,0 +1,6 @@
+{
+    "testLog": true,
+    "testLogPath": "modulo.testlog.json",
+    "output": "docs",
+    "input": "src"
+}
