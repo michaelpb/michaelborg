@@ -9,13 +9,11 @@
     --leftoffset: -80px;
 }
 
+
 body {
     background-color: #e5e5f7;
-    background-size: 100px 100px;
+    background-size: 80px 80px;
     background-image: 
-        /*
-        radial-gradient(var(--accent1) 3%, transparent 3%),
-        radial-gradient(farthest-corner at 10px 117px, var(--accent1) 2%, transparent 2%),*/
         repeating-linear-gradient(0deg, var(--accent1), var(--accent1), 1px, #e5e5f7 1px, #e5e5f7);
     overflow-x: hidden;
 }
@@ -73,42 +71,25 @@ body {
 }
 
 .Page > h2 {
+    font-weight: 800;
     text-transform: uppercase;
-    box-shadow: -30px -1px 0 0 var(--accent1);
+    box-shadow: -30px -2px 0 0 var(--accent1);
     margin-top: 70px;
     margin-left: var(--leftoffset);
     width: 100vw;
     z-index: 3;
     font-size: 60px;
-    font-weight: lighter;
-    color: black;
-    text-shadow:
-        2px -2px #111
-        ,1px -1px #222
-        ,-1px 1px #333
-        ,-2px 2px #444
-        ,-3px 3px #555
-        /*,600px 0px var(--bg2)
-        ,300px 0px var(--bg2)*/
-        /*,-400px -24px var(--accent2)
-        ,900px -24px var(--accent3)*/
-        ,-400px -24px var(--accent1)
-        ,900px -24px var(--accent1)
-    ;
-    /*
-    font-weight: 800;
+    letter-spacing: 10px;
+    color: ;
     color: black;
     text-shadow:
         -1px 1px #000
         ,1px -1px #000
-        ,2px -2px #000
-        ,-2px 2px #000
+        ,2px -2px var(--bg2)
+        ,-2px 2px var(--bg2)
         ,-6px 0 var(--accent3)
         ,6px 0 var(--accent2)
     ;
-    */
-        /*,2px -2px var(--bg2)
-        ,-2px 2px var(--bg2)*/
     /*
     text-shadow:
         -2px 0 var(--accent3),
@@ -180,3 +161,30 @@ body {
     }
 }
 
+/*
+  Originally based on Josh's Custom CSS Reset tutorial:
+    https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+body {
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+input, button, textarea, select {
+  font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}

@@ -1,0 +1,147 @@
+/* Base website styles */
+:root {
+    --page-width: 800px;
+    --bg1: #ffffff;
+    --bg2: #e5e5f7;
+    --accent1: #f2cd54;
+    --accent2: #91d370;
+    --accent3: #bca0ff;
+    --leftoffset: -80px;
+}
+
+
+body {
+    background-color: #e5e5f7;
+    background-size: 80px 80px;
+    background-image: 
+        repeating-linear-gradient(0deg, var(--accent1), var(--accent1), 1px, #e5e5f7 1px, #e5e5f7);
+}
+
+.Page-wrapper {
+    z-index: 1;
+    margin: auto;
+    width: var(--page-width);
+    font-family: serif;
+    box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    min-height: 100vh;
+    background: white;
+}
+
+.Page {
+    display: flex;
+    flex-direction: column;
+}
+
+.Page > h1 {
+    margin-left: -70px;
+    font-weight: 200;
+    z-index: 3;
+    font-size: 50px;
+    margin-bottom: -22px;
+    text-shadow:
+        1px 0px #ffffff,
+        0px 1px #ffffff,
+        1px 1px #ffffff,
+        -1px -1px #ffffff;
+}
+
+.Page > h2 {
+    font-weight: 800;
+    text-transform: uppercase;
+    box-shadow: -30px -2px 0 0 var(--accent1);
+    margin-top: 70px;
+    margin-left: var(--leftoffset);
+    width: calc(200% + (var(--leftoffset) * 2));
+    z-index: 3;
+    font-size: 60px;
+    letter-spacing: 10px;
+    color: var(--bg2);
+    color: black;
+    text-shadow:
+        -1px 1px #000
+        ,1px -1px #000
+        ,2px -2px #111
+        ,-2px 2px #111
+
+
+        ,-6px 0 var(--accent3)
+        ,6px 0 var(--accent2)
+    ;
+    /*
+    text-shadow:
+        -2px 0 var(--accent3),
+        2px 0 var(--accent2);
+    */
+}
+
+.Page > blockquote {
+    height: 6px;
+}
+
+.Page > blockquote::before,
+.Page > blockquote::after {
+    float: left;
+    height: 10em;
+    width: 15em;
+    shape-outside: circle();
+}
+
+
+.Page > hr {
+    height: 6px;
+    background-color: #91d370;
+    background-image: linear-gradient(319deg, var(--accent2) 0%, var(--accent3) 37%, var(--accent1) 100%);
+    border: 1px solid black;
+    margin-bottom: 20px;
+    z-index: 2;
+}
+
+.Page > section {
+    display: flex;
+    flex-direction: row;
+}
+
+.Page > section > aside {
+    border: 1px solid var(--accent3);
+    margin-left: 20px;
+    padding: 20px;
+}
+
+
+@media (max-width: 800px) {
+    .Page-wrapper {
+        width: 100vw;
+    }
+    .Page > section {
+        flex-direction: column;
+    }
+}
+
+/*
+  Originally based on Josh's Custom CSS Reset tutorial:
+    https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+body {
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+input, button, textarea, select {
+  font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}

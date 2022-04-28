@@ -32,7 +32,7 @@
     -----------------------------------------
 
     PROJECTS
-        WEB      GAME    AUDIO     LOCAL
+        WEB      GAME    AUDIO     MORE (incl. "many OLD")
 
     -----------------------------------------
 
