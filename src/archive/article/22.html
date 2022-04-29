@@ -1,0 +1,43 @@
+
+    <script src="https://modulojs.org/js/Modulo.js"></script>
+    <Modulo>
+        <Library namespace="x" src="/components/core.html"></Library>
+    </Modulo>
+    <script>Modulo.defineAll()</script>
+<x-Page archivedid="22"pagetitle="My pre-post-mortem of rescuing my scope creeped-out puzzle game">
+
+<article class="content post tag-game-dev tag-self-management">
+<h1 class="title">My pre-post-mortem of rescuing my scope creeped-out puzzle game</h1>
+<section class="post-content">
+<p>It's been nearly 6 months now that I <a href="../about/index.html">jumped head-first into game development</a>, I've had a fantastic time so far.</p>
+<p>During these 6 months, in addition to <a href="https://codingbootcamp.berkeley.edu/">teaching a program on web development</a>, I've been working primarily two game concepts: One ambitious 3D game that is still top-secret <sup id="fnref:1"><a href="../p/12b0a44e-b576-4eed-bd27-2a4e6124d960/index.html#fn:1" rel="footnote">1</a></sup>, and another, <a href="../sawdust/index.html">Sawdust</a>, that is a a short-and-sweet 2D game that I wanted to complete in a short amount of time. Sawdust was intended as a trial-run for my future games, and an opportunity to learn and make mistakes. In this last regard, it's been wildly successful: I've made a lot of mistakes, and am learning a lot.</p>
+<h2 id="launchingoffintospace">Launching off into space...</h2>
+<p><img src="../content/images/2016/10/opening_spin_smaller.gif" alt="Space, the final frontier of scope creep" /></p>
+<p>I probably should have noticed something was going wrong when my simple puzzle game blasted off in a rocket-ship to outer-space. I had written a grand story set in deep-space involving colony ships, sentient AI's, and a zen-like questioning of life and existence. I was knee-deep in equipping the soundtrack with timpanis, brass sections, and soaring sawtooth synths. I had the fundamentals mechanics written (designed with customizable controller support via a custom-launcher), and the foundational levels and initial cutscenes written, and a smattering of "juicy" effects.</p>
+<blockquote>
+<iframe width="200" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/286869431&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+</blockquote>
+<p>And then I realized I had a problem. After 5 months of part-time effort, I was maybe 30-50% done with this game, and I really didn't even like it that much. I had set out to write simple Tetris-inspired puzzle game involving relaxingly fitting wooden blocks, which I hoped to turn around in a few months so I could jump into developing more intriguing titles. I soon realized that to make it a respectable desktop title that I could be proud of and would want to buy myself had someone else made it (my base criteria), it would require a polished story mode. I had a few plot elements floating around, so I collected those and shoe-horned them in. Then to flesh out a good 50 or so single-player levels, I needed to introduce new mechanics at a good rate. This meant more tickets, and more time, and so on. I realized this could take all year to finish, and worse yet I was simply not inspired. The final straw was learning Steam's upcoming policy changes: <a href="https://www.rockpapershotgun.com/2017/02/10/valve-to-abolish-steam-greenlight-open-up-with-steam-direct/">their replacing the (admittedly broken) Greenlight process with a $5,000 registration fee</a> rendered the main focus of Sawdust, intended as a learning experience in publishing computer games, completely obsolete. I had to take drastic measures to wrap it up soon, before it all became a total waste!</p>
+<h2 id="andcrashingbackdowntoearth">...and crashing back down to earth</h2>
+<p>The old rule is to estimate the time of a project, then double it. A necessary corollary is to figure out the scope of a project, then chop it in half... and again, and again, repeatedly hacking it to a stump.</p>
+<p>That's what I did. I cut it in half. I completely dropped the story aspects, I cut a lot of the more complicated gameplay features, I cut time-consuming animated backdrops and transitions, I cut desktop and controller support. Instead, I decided to focus entirely on Android and iOS. Mobile games have lower expectations. I had to have lower expectations too: I'll make my masterpiece one day, this just won't be it!</p>
+<p>It was a psychological battle to convince myself to hack off months worth of effort and release a far simpler and less appealing game, but it was a battle that I won. (Technically, I also lost it, since it was a battle with myself, but maybe this is why I should have my analogy license revoked.) If I hadn't won it, I think I would still be hacking away at an ever-growing project, or more likely, just giving up entirely and focusing my efforts on another game, rendering all the time I had spent on it over the last 6 months a waste.</p>
+<blockquote>
+<p><img src="http://imgs.xkcd.com/comics/estimating_time.png" alt="Obligitory xkcd" title="" /></p>
+</blockquote>
+<h2 id="wastingnothing">Wasting nothing</h2>
+<p>In the end, not much effort was wasted:</p>
+<ol>
+<li><p>Some of the code I created is in the form of <a href="../godot-packages/index.html">re-usable free software packages</a>. This means that I (along with anyone else) can benefit from my tangents in the future. If I learned one thing, it's that modular design is great for games, too: while it's a bit more effort, it results in less waste in the long run!</p></li>
+<li><p>All the code I put into the "campaign mode" can be released as a sequel. I realized if it was released as mobile, it could be released in parts. "Sawdust 1" can consist of just the "arcade" mode (the basic mode that was most complete), and "Sawdust 2" can consist of the series of story-related puzzles that is half-done, and most ambitious in scope. Realistically, I realize I may never get around to Sawdust 2, but if Sawdust 1 goes better than I expect, then it's always an option, and then I'll have twice as many games under my belt!<sup id="fnref:2"><a href="../p/12b0a44e-b576-4eed-bd27-2a4e6124d960/index.html#fn:2" rel="footnote">2</a></sup></p></li>
+<li><p>This was a learning project. I started it with the intention of learning game dev, but more importantly game dev <em>product management</em>. I wanted to build my intuition for just how hard it is to complete a video game.</p></li>
+</ol>
+<p>I made these decisions a few weeks ago. Writing this post now, I think it's safe to say that this "pre-post-mortem" prevented this project from being postponed indefinitely. So, if you are at the 50% mark of your own project, and realize the remaining 50% is lot more than 50% and you are dangerously losing interest... consider doing a pre-post-mortem like I did, and chop, chop away!</p>
+<hr />
+<div class="footnotes"><ol><li class="footnote" id="fn:1"><p>Maybe because I haven't really figured it out myself... <a href="../p/12b0a44e-b576-4eed-bd27-2a4e6124d960/index.html#fnref:1" title="return to article">↩</a></p></li>
+<li class="footnote" id="fn:2"><p>Success in game development is measured in shovelfuls, right? <a href="../p/12b0a44e-b576-4eed-bd27-2a4e6124d960/index.html#fnref:2" title="return to article">↩</a></p></li></ol></div>
+</section>
+</article>
+</div>
+
+</x-Page>

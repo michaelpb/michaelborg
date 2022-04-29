@@ -1,0 +1,194 @@
+[
+  {
+    "id": -1,
+    "path": "archive/article/-1.html",
+    "title": "My Godot packages",
+    "length": 728
+  },
+  {
+    "id": 5,
+    "path": "archive/article/5.html",
+    "title": "Game development on Linux: Using Linux at every step of the process",
+    "length": 1365
+  },
+  {
+    "id": 6,
+    "path": "archive/article/6.html",
+    "title": "Game dev with Godot: Unit testing your scripts",
+    "length": 728
+  },
+  {
+    "id": 7,
+    "path": "archive/article/7.html",
+    "title": "Solo Game Dev Kanban Magic: I used to struggle with self-management, but my most recent technique seems to be working really well",
+    "length": 1787
+  },
+  {
+    "id": 11,
+    "path": "archive/article/11.html",
+    "title": "Getting started with music production on Linux: Three ways to get set up with pro-audio free software",
+    "length": 1309
+  },
+  {
+    "id": 12,
+    "path": "archive/article/12.html",
+    "title": "Linux pro-audio: Trouble-shooting JACK on Ubuntu 16.04 (KXStudio repos)",
+    "length": 550
+  },
+  {
+    "id": 13,
+    "path": "archive/article/13.html",
+    "title": "Snippet: NIUM&#x27;s 3D effect, in Godot",
+    "length": 246
+  },
+  {
+    "id": 14,
+    "path": "archive/article/14.html",
+    "title": "Game dev with Godot: I wrote a Godot package to crossfade between playlists and make adaptive music",
+    "length": 460
+  },
+  {
+    "id": 15,
+    "path": "archive/article/15.html",
+    "title": "Snippet: Godot Resource Queue",
+    "length": 84
+  },
+  {
+    "id": 16,
+    "path": "archive/article/16.html",
+    "title": "Simple puzzle game graphics with Inkscape bevels",
+    "length": 293
+  },
+  {
+    "id": 17,
+    "path": "archive/article/17.html",
+    "title": "Godot Pannable Camera: A re-usable camera helper for Godot",
+    "length": 475
+  },
+  {
+    "id": 20,
+    "path": "archive/article/20.html",
+    "title": "Wow, I&#x27;ve made quite a few free Godot packages by now",
+    "length": 172
+  },
+  {
+    "id": 21,
+    "path": "archive/article/21.html",
+    "title": "Godot Gestures: Pinch, twist, and drag gesture detection for mobile games",
+    "length": 417
+  },
+  {
+    "id": 22,
+    "path": "archive/article/22.html",
+    "title": "My pre-post-mortem of rescuing my scope creeped-out puzzle game",
+    "length": 1014
+  },
+  {
+    "id": 24,
+    "path": "archive/article/24.html",
+    "title": "Ludum Dare 38",
+    "length": 62
+  },
+  {
+    "id": 25,
+    "path": "archive/article/25.html",
+    "title": "The Blocklings",
+    "length": 100
+  },
+  {
+    "id": 26,
+    "path": "archive/article/26.html",
+    "title": "Sawdust",
+    "length": 200
+  },
+  {
+    "id": 27,
+    "path": "archive/article/27.html",
+    "title": "Releasing Sawdust: Mini-post-mortem",
+    "length": 381
+  },
+  {
+    "id": 28,
+    "path": "archive/article/28.html",
+    "title": "Porting a legacy browser graphics JS script (JSC3D) to Node.js with node-canvas and VM",
+    "length": 802
+  },
+  {
+    "id": 29,
+    "path": "archive/article/29.html",
+    "title": "Bash profile trick: Open last used directory when starting a new terminal emulator",
+    "length": 204
+  },
+  {
+    "id": 30,
+    "path": "archive/article/30.html",
+    "title": "The Right Way\u2122 to do global npm install without sudo",
+    "length": 406
+  },
+  {
+    "id": 33,
+    "path": "archive/article/33.html",
+    "title": "Web Developer to Game Developer: Understanding game dev as a web dev using Godot",
+    "length": 1226
+  },
+  {
+    "id": 34,
+    "path": "archive/article/34.html",
+    "title": "Snippet: Draining all pending coroutines with Python 3&#x27;s async features",
+    "length": 102
+  },
+  {
+    "id": 35,
+    "path": "archive/article/35.html",
+    "title": "JavaScript syntax cheat-sheet for total newbies",
+    "length": 705
+  },
+  {
+    "id": 36,
+    "path": "archive/article/36.html",
+    "title": "Snippet: Implement an ability cooldown (in the Godot game engine)",
+    "length": 105
+  },
+  {
+    "id": 37,
+    "path": "archive/article/37.html",
+    "title": "Introducing: Whiteboard",
+    "length": 369
+  },
+  {
+    "id": 38,
+    "path": "archive/article/38.html",
+    "title": "react-jsc3d: Porting a legacy 3D rendering JavaScript library to a reusable React.js component on NPM",
+    "length": 810
+  },
+  {
+    "id": 39,
+    "path": "archive/article/39.html",
+    "title": "Ardour 5.7 Review - Free software DAW",
+    "length": 1580
+  },
+  {
+    "id": 41,
+    "path": "archive/article/41.html",
+    "title": "How to quickly install Mattermost on Digital Ocean",
+    "length": 551
+  },
+  {
+    "id": 42,
+    "path": "archive/article/42.html",
+    "title": "Installing Ubuntu 17.10 Linux on Acer Aspire 1",
+    "length": 731
+  },
+  {
+    "id": 43,
+    "path": "archive/article/43.html",
+    "title": "Ubuntu 18.04 on Acer Aspire 1 - A114-31-C4HH and A114-31-C5GM",
+    "length": 1242
+  },
+  {
+    "id": 45,
+    "path": "archive/article/45.html",
+    "title": "Upgrading Mattermost using docker-compose",
+    "length": 642
+  }
+]

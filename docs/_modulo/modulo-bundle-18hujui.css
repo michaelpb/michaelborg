@@ -1,3 +1,30 @@
+/*
+  Originally based on Josh's Custom CSS Reset tutorial:
+    https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+body {
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+input, button, textarea, select {
+  font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
 /* Base website styles */
 :root {
     --page-width: 800px;
@@ -114,17 +141,6 @@ body {
         -2px 0 var(--accent3),
         2px 0 var(--accent2);
     */
-}
-
-.Page > h2.Page-articleTitle {
-    width: 100%;
-    text-transform: none;
-    font-weight: bold;
-    text-shadow: -700px -24px var(--accent1) ,900px -24px var(--accent1) ;
-}
-
-.Page > h2.Page-articleTitle > span {
-    background: white;
 }
 
 .Page > blockquote {

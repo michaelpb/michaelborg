@@ -1,0 +1,109 @@
+/*
+:root {
+    --page-width: 800px;
+    --bg1: #ffffff;
+    --bg2: #e5e5f7;
+    --accent1: #f2cd54;
+    --accent2: #91d370;
+    --accent3: #bca0ff;
+    --leftoffset: -80px;
+}
+*/
+
+a {
+    background: white;
+    color: black;
+}
+
+a.active {
+    background: var(--accent1);
+}
+li {
+    font-size: 1.3rem;
+    line-height: 2.0rem;
+}
+
+nav {
+    border: 1px solid black;
+    padding-top: 20px;
+}
+
+ul {
+    margin-left: -30px;
+}
+
+
+.visible-toggle {
+    display: none;
+}
+
+.visible-toggle-overlay {
+    opacity: 0.5;
+    position: relative;
+    top: -20px;
+    height: 20px;
+    background: repeating-linear-gradient(
+        -55deg,
+        transparent,
+        transparent 10px,
+        var(--accent1) 10px,
+        var(--accent1) 20px
+    );
+}
+
+ul {
+    height: 400px;
+    overflow: hidden;
+}
+
+ul.active {
+    height: auto;
+}
+
+.visibility-controls > label,
+.comment-controls > button {
+    margin-left: 20px;
+    font-size: 20px;
+    border: 3px var(--accent3) solid;
+    padding: 20px;
+}
+
+.comment-controls > button {
+    float: right;
+    margin-top: -20px;
+    background: transparent;
+    margin-right: 20px;
+}
+
+.visibility-controls > label:hover,
+.comment-controls > button:hover {
+    background: var(--accent3);
+    cursor: pointer;
+}
+
+.visibility-controls > label > input {
+    display: none;
+}
+
+@media (min-width: 1330px) {
+    nav {
+        position: absolute;
+        left: calc(2vw);
+        top: 100px;
+        z-index: 10;
+        width: calc(100px + 10vw);
+    }
+    ul {
+        height: auto;
+    }
+
+    .visibility-controls {
+        display: none;
+    }
+    .visible-toggle-overlay {
+        display: none;
+    }
+}
+
+
+

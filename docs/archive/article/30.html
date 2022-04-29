@@ -1,0 +1,31 @@
+<!DOCTYPE HTML><html><head>
+    <link rel="stylesheet" href="/_modulo/modulo-bundle-0.css"></head><body>
+    <script>Modulo.defineAll()</script>
+<x-pagearchive_did="30"pagetitle="the right="" way™="" to="" do="" global="" npm="" install="" without="" sudo"="">
+
+<h1>The Right Way™ to do global npm install without sudo</h1>
+
+<article class="content post tag-node tag-javascript tag-tutorial tag-web-dev tag-bash">
+<h1 class="title">The Right Way™ to do global npm install without sudo</h1>
+<section class="post-content">
+<p>I'm writing this post since there were a lot of guides online on how to set up NPM so you can do <code>npm install -g</code> (that is, a global NPM install) on macOS or Linux without superuser privileges, but all those guides recommended a rather strange directory structure, such as a very strange looking <code>~/.npm</code> directory loose in your home folder. This is a bad idea for a several reasons.</p>
+<p>In this article I intend to show the very simple steps to set it to a much better location of <code>~/.local</code>. This follows conventions and plays nice with many different applications, on both Linux-based systems, and macOS. <sup id="fnref:1"><a href="index.html#fn:1" rel="footnote">1</a></sup></p>
+<p>When <code>npm</code> tries to install to globally, it tries to install it's packages to the sensible location of <code>/usr/local/</code>. When you aren't a super user, this gives the warning <code>checkPermissions Missing write access to /usr/local/lib</code> and error <code>Error: EACCES: permission denied, access '/usr/local/lib'</code> and fails. Other package installers (such as Python's <code>pip</code>) already ship, at least on Ubuntu, with a concept of a user-specific local directory of <code>~/.local/</code> to replace the global <code>/usr/local/</code> to avoid such warnings.</p>
+<p>Thus, let's just reuse this existing convention.</p>
+<h4 id="step1configurenpm">Step 1: Configure NPM</h4>
+<pre><code>npm config set prefix ~/.local  
+</code></pre>
+<p>Now NPM will install your global executables to <code>~/.local/bin</code>, and the libraries to <code>~/.local/lib/node_modules/</code></p>
+<h4 id="step2addtlocalbintoyourpath">Step 2: Add <code>~/.local/bin</code> to your path</h4>
+<p>If you haven't already, open up the conf file of your favorite shell (such as <code>~/.bashrc</code> for Bash), and add in:</p>
+<pre><code>PATH=~/.local/bin/:$PATH  
+</code></pre>
+<p>That's it. You're done.</p>
+<p>Now, for why we are doing it this way instead of the incredibly common suggestions online of <code>~/.npm</code>. The most obvious is convention: other applications use <code>~/.local</code> also. However, <code>~/.npm</code> is particularly a terrible choice. Whatever you do, <strong>DON'T USE ~/.npm/</strong> as your user installation directory. Why is <code>~/.npm</code> such a bad choice? <code>~/.npm</code> is the default npm cache directory! Thus, if you clear the cache, you'd wipe your modules too. You can check to see what your cache directory is with <code>npm config ls -l | grep cache</code>.</p>
+<p>Now can anyone tell me why this isn't the default, and why there's so much misinformation about this online?</p>
+<div class="footnotes"><ol><li class="footnote" id="fn:1"><p>Relevant reading: <a href="https://www.python.org/dev/peps/pep-0370/">PEP 370</a>: it's about Python, but useful nonetheless <a href="index.html#fnref:1" title="return to article">↩</a></p></li></ol></div>
+</section>
+</article>
+
+
+</x-pagearchive_did="30"pagetitle="the><script src="/_modulo/modulo-bundle-x84fd47.js"></script></body></html>

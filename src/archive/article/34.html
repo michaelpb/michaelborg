@@ -1,0 +1,19 @@
+
+    <script src="https://modulojs.org/js/Modulo.js"></script>
+    <Modulo>
+        <Library namespace="x" src="/components/core.html"></Library>
+    </Modulo>
+    <script>Modulo.defineAll()</script>
+<x-Page archivedid="34"pagetitle="Snippet: Draining all pending coroutines with Python 3&#x27;s async features">
+
+<article class="content post tag-web-dev tag-snippet tag-python tag-async">
+<h1 class="title">Snippet: Draining all pending coroutines with Python 3&#x27;s async features</h1>
+<section class="post-content">
+<p>When writing tasks for asynchronous functions in Python 3 I realized I needed a way to run through all tasks that were queued up with <code>asyncio.ensure_future</code> and similar functions. I wrote an async function to do this. The result is a little hacky, as it needs to catch certain errors that are thrown in Python 3.5.x and Python 3.6.x when you attempt to await a task that is currently the current task.</p>
+<script src="https://gist.github.com/michaelpb/6438e127fdf882da756f80efe2d8d27e.js"></script>
+<p>Released into public domain fwiw.</p>
+</section>
+</article>
+</div>
+
+</x-Page>

@@ -1,0 +1,58 @@
+
+    <script src="https://modulojs.org/js/Modulo.js"></script>
+    <Modulo>
+        <Library namespace="x" src="/components/core.html"></Library>
+    </Modulo>
+    <script>Modulo.defineAll()</script>
+<x-Page archivedid="41"pagetitle="How to quickly install Mattermost on Digital Ocean">
+
+<article class="content post tag-web-dev tag-tutorial tag-docker">
+<h1 class="title">How to quickly install Mattermost on Digital Ocean</h1>
+<section class="post-content">
+<p><a href="https://about.mattermost.com/">Mattermost is a popular free software Slack alternative</a>. Slack can get really expensive really quickly for organizations of any sufficient size, so you either bare with the extremely limited free plan (which holds your data "hostage"), or you switch over to a free alternative like Mattermost. With this, instead of forking over cash for Slack, you can run your own for as cheaply as $5 a month.</p>
+<p>Digital Ocean is my preferred hosting service. It's similar to Amazon's AWS, but has a much cleaner and simpler interface, and easy to understand pricing scheme ($5 a month). If you haven't signed up yet, you can via <a href="https://m.do.co/c/46be31e3f9b5">my affiliate link which will give us both $10 of credit</a>.</p>
+<p>Installation of Mattermost is pretty easy on Digital Ocean, as I found out. I in turn used <a href="https://docs.mattermost.com/install/prod-docker.html#production-docker-setup-on-ubuntu">these</a> <a href="https://docs.mattermost.com/install/smtp-email-setup.html">two</a> guides using their Docker Compose setup. Let's get started!</p>
+<h3 id="1createnewdockerdropletondigitalocean">1. Create new Docker droplet on Digital Ocean</h3>
+<p>Create a new droplet using the Docker one-click app. Be sure to add your public key.</p>
+<p><img src="../content/images/2017/12/Selection_006.png" alt="" /></p>
+<h3 id="2installmattermostandbringupserver">2. Install Mattermost and bring up server</h3>
+<ul>
+<li>First download the Mattermost's Dockerfiles. In this example, I've pinned the version to 5.6. SSH into your new droplet and run the following commands: </li>
+</ul>
+<pre><code>git clone https://github.com/mattermost/mattermost-docker.git  
+cd mattermost-docker  
+git checkout 5.6  
+</code></pre>
+<ul>
+<li><p><strong>Optional:</strong> At this point, you may wish to switch to "Team Edition" - the truly free software version - as opposed to "Enterprise Edition", which has a few features installed (but disabled) unless you purchase a support contract from the corporation that develops Mattermost. To change to "team edition", open up the <code>docker-compose.yml</code> (consider running the command <code>nano docker-compose.yml</code>), and uncomment the line that says <code>args:</code> and <code>- edition: team</code>. There should be a comment above these lines saying something similar to "uncomment the following lines to enable team edition". To my knowledge, there is no downside to keeping it set to <em>Enterprise Edition</em>, even if you do not ever purchase a contract.</p></li>
+<li><p>Then build the images. This will take a while:</p></li>
+</ul>
+<pre><code>docker-compose build  
+</code></pre>
+<ul>
+<li>Finally, start the server in daemon mode</li>
+</ul>
+<pre><code>docker-compose up -d  
+</code></pre>
+<ul>
+<li>If you decided to use an older version (e.g. 4.x) you are done. Otherwise, you may have to run the following command to create relevant volume directories, and change permissions:</li>
+</ul>
+<pre><code>mkdir -pv ./volumes/app/mattermost/{data,logs,config}  
+chown -R 2000:2000 ./volumes/app/mattermost/  
+</code></pre>
+<h3 id="3configuringsitesettings">3. Configuring site settings</h3>
+<p>Now visit the IP address. You should see a nice Mattermost interface. Create a team, add your domain name, configure what you want.</p>
+<p><img src="../content/images/2017/12/Selection_008.png" style="width: 200px; float: left;" /></p>
+<p><img src="../content/images/2017/12/Selection_009.png" alt="" /></p>
+<h3 id="email">Email</h3>
+<p>You'll also want to setup email. <a href="https://docs.mattermost.com/install/smtp-email-setup.html">That's a bit more complicated</a>, but generally you'll need to register for a 3rd party email service and then put in credentials here.</p>
+<p>Until then, you can just use "invitation links" to invite teammates to your channel. Email is not absolutely necessary for use, although it is very handy for notifications.</p>
+<h3 id="ssl">SSL</h3>
+<p>You can also set up <code>https</code> support here.</p>
+<hr />
+<p>2018 Edit: <em>Thanks to Kevin for pointing this out some issues with the original version.</em> Source docs: <a href="https://docs.mattermost.com/install/prod-docker.html">https://docs.mattermost.com/install/prod-docker.html</a></p>
+</section>
+</article>
+</div>
+
+</x-Page>

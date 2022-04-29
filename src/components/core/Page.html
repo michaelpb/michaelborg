@@ -6,6 +6,20 @@
 </head>
 <body>
     <main class="Page-wrapper">
+        <div class="Page">
+            {% if props.archivedid %}
+                <h1>michaelb.org/archive#{{ props.archivedid }}</h1>
+                <h2 class="Page-articleTitle"><span>{{ props.pagetitle }}</span></h2>
+            {% endif %}
+        </div>
         <slot class="Page"></slot>
+        <div class="Page">
+            {% if props.archivedid %}
+                <x-ArchiveSidebar
+                    qid:={{ props.archivedid }}
+                    title="{{ props.pagetitle }}"
+                ></x-ArchiveSidebar>
+            {% endif %}
+        </div>
     </main>
 </body>

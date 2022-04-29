@@ -3,7 +3,38 @@
 <Component name="Page" mode="vanish-into-document">
     <Props
         pagetitle
+        archivedid
     ></Props>
     <Template src="./core/Page.html"></Template>
+</Component>
+
+
+<Component name="ArchiveSidebar">
+    <Props
+        qid
+        title
+    ></Props>
+    <Template src="./core/ArchiveSidebar.html"></Template>
+    <!-- NOTE: For some reason, absolute ones broke here! -->
+    <StaticData src="../archive/article/dir_listing.json"></StaticData>
+    <State
+        showall:=false
+        showcomments:=false
+    ></State>
+    <Script>
+        function showComments() {
+            state.showcomments = true;
+            var disqus_shortname = 'michaelb'; // required: replace example with your forum shortname
+            var disqus_identifier = String(props.qid);
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        }
+    </Script>
+
+    <Style src="./core/ArchiveSidebar.css"></Style>
 </Component>
 

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML><html><head>
+    <link rel="stylesheet" href="/_modulo/modulo-bundle-0.css"></head><body>
+    <script>Modulo.defineAll()</script>
+<x-pagearchive_did="33"pagetitle="web developer="" to="" game="" developer:="" understanding="" dev="" as="" a="" web="" using="" godot"="">
+
+<h1>Web Developer to Game Developer: Understanding game dev as a web dev using Godot</h1>
+
+<article class="content post tag-godot tag-game-dev tag-tutorial tag-game tag-web-dev">
+<h1 class="title">Web Developer to Game Developer: Understanding game dev as a web dev using Godot</h1>
+<section class="post-content">
+<p>Already a front-end (or back-end) web developer, and curious about writing your own video games? Maybe want to try a new hobby in indie game dev for PC or console, or publish some mobile games? I made the transition, and so can you!</p>
+<p>I hope this 10 minute read will give you an overview of what to expect as you journey into this new (but somewhat familiar) world of game development.</p>
+<blockquote>
+<h4 id="whynothtml5">Why not HTML5?</h4>
+<p>There are a lot of pretty cool HTML5 based game engines in JS that you can get hacking at right away. These are really cool, but I feel you'll quickly run up against limits if you are doing anything beyond a very basic and very web-focused game. Full game engine environments not only tend to be a lot faster, but can target mobile, desktop, and even console <em>natively</em> with much lower overhead. The only disadvantages, of course, is it's more tools to learn, but game dev is already sufficiently different to erase most advantages you might gain by coding in JavaScript.</p>
+<h4 id="whynotunity3d">Why not Unity3D?</h4>
+<p>You might be confused why I wouldn't recommend Unity3D. To be honest, perhaps Unity3D <em>is</em> the right game engine for your next project -- it is much more popular than Godot, and has a large asset library and although it lacks in the 2D department, it does sport a more sophisticated 3D engine. However, if you are used to web development, you probably prioritize the same things I do in tooling: light-weight, modular, and open source -- none of which describe Unity3D. Godot fits the bill nicely: it weighs in at only 16.6 MB zipped, only adds a few MB to builds, has a familiar DOM-like node hierarchy, and has a headless CLI making Continous Delivery a cinch. There's also the fact that Unity3D is expensive: the "pro license", at the time of writing this article, was $125 per month, yikes!</p>
+</blockquote>
+<h1 id="godot">Godot</h1>
+<p><a href="https://godotengine.org/download">Godot Engine, download for macOS, GNU/Linux, and Windows.</a></p>
+<p>If you've read any other articles on this site, it might not surprise you that I recommend using free and open source software. As a web developer, this probably seems like a natural choice, as almost all the tools that power the web, from the Linux servers to frameworks like Rails or Django, are FLOSS. The advantages of this: Open APIs, community of helpful people, and lightweight and customizable dev environments.</p>
+<p>While game development has not yet caught the free software bug like web dev has, this is quickly changing as <a href="../getting-started-with-linux-game-development/index.html">more and more FOSS game dev tools are popping up</a>. Out of them, I'd personally advocate using Godot, for the following reasons:</p>
+<ol>
+<li>It's an actively developed, free open source project with a friendly community </li>
+<li>It's all-inclusive: Tooling in game development is pretty awful to begin with compared to web dev, Godot has the potential to fix that </li>
+<li>It lets you develop on and for all platforms, including deploying to the web<sup id="fnref:1"><a href="index.html#fn:1" rel="footnote">1</a></sup> </li>
+<li>It has first-class 2D and 3D<sup id="fnref:1"><a href="index.html#fn:1" rel="footnote">1</a></sup> support </li>
+<li>It's incredibly lightweight and flexible compared to every other engine of comparable features out there </li>
+<li>It's language and structure is easy for web developers to pick up</li>
+</ol>
+<p>With that in mind, I'll try to explain the key concepts of Godot in a way that web developers should find easy to understand.</p>
+<h1 id="thedomofgodotgodotsscenestructure">The DOM of Godot: Godot's scene structure</h1>
+<p>Everything in your Godot game exists in a hierarchy with some methods familiar to any front-end programmer (<code>get_parent()</code>, just like JavaScript's <code>parent()</code>, and <code>node.get_node('MyNode')</code> is somewhat similar to <code>node.querySelector('MyNode')</code>).</p>
+<blockquote>
+<p><img src="../content/images/2017/09/Selection_001.png" alt="DOM of Godot" title=""></p>
+</blockquote>
+<ul>
+<li>Your <code>Node2D</code> or <code>Spatial</code> are more or less "blank" elements -- kind of like your divs or spans</li>
+<li>If you are coding a 2D game, most things are absolutely positioned to the top-left corner of the screen, with the exception of GUI elements, which can be anchored to screen edges</li>
+<li>If you are coding a 3D game, everything is absolutely positioned from a 3D origin <code>(0, 0, 0)</code>.</li>
+<li>Every scene can have both 2D and 3D elements: By default, the 2D elements float above the 3D elements, enabling you to make a 3D game but make your GUI in "true" 2D</li>
+</ul>
+<h2 id="thedevtoolsofgodot">The "Dev Tools" of Godot</h2>
+<p>Godot's GUI offers a node hierarchy inspector much like dev tools. Ensure you run your game with <em>Remote debug</em> and <em>Sync scene changes</em> enabled (Click on the little "Broadcast" icon near the play button). With this on, when you make changes while the game is running, you'll see them reflected immediately in the game. You can utilize this just as you would Dev Tools: get the bulk of the work done ahead of time, then make final tweaks and adjustments to polish up your scene. This even works when running on mobile!</p>
+<p>Godot also affords some powerful inspection and profiling tools. You can profile code, memory usage, and also inspect the live scene tree ("DOM"). </p>
+<p><img src="../content/images/2017/09/Selection_002.png" alt="Profiling Godot games"></p>
+<h2 id="componentization">Componentization</h2>
+<p>You can save scenes in separate files -- this is similar to componentizing with web frameworks like React or Polymer. These can be re-used just like a regular node.</p>
+<p>Scenes saved in separate files can expose typed properties (much like React propTypes) using the <code>export</code> syntax, for example for an integer between 0 and 90, <code>export var(int, 0, 90) angle</code>. This not only exposes the property to outer code and enables getters and setters, but also exposes it in the GUI so you can do live tweaking of it (see above).</p>
+<p>Extension is also possible, although I'd generally advocate using composition vs extension as much as possible with Godot, since sometimes extension can lead to some finicky situations.</p>
+<ul>
+<li><a href="http://docs.godotengine.org/en/latest/reference/gdscript.html#exports">Click here for more information on exporting properties</a></li>
+</ul>
+<h1 id="keepingthingsneat">Keeping things neat</h1>
+<h2 id="externaleditorswithgodot">External editors with Godot</h2>
+<p>If you have a strong preference for text editors, like I do, then you should be happy to learn that Godot is generally agnostic when it comes to editing. In fact, you don't need to use the Godot IDE at all, since even the scene files are plain-text and easily editable, in an ini-ish format.</p>
+<ul>
+<li><a href="https://github.com/beefsack/GDScript-sublime">GDScript syntax highlighting for Sublime Text</a> </li>
+<li><a href="https://github.com/quabug/vim-gdscript">GDScript syntax highlighting for Vim</a></li>
+</ul>
+<h2 id="repositorystructure">Repository structure</h2>
+<p>As with web development, you'll want to put all your code in a git or mercurial repo. You likely will want to setup Large File Store in git so it won't churn quite so much on huge binary assets.</p>
+<p>I've seen a few different repo structures for game code, but this is the one I use:</p>
+<pre><code>game/  
+    - engine.ini
+    - scripts/
+        - Hero.gd
+    - scenes/
+        - Hero.tscn
+    - images/
+        - hero_sprite_sheet.png
+    - etc
+msrc/  
+    - Media source file
+    - xcfs, psds, etc
+notes/  
+    - Design documents, TODOs
+</code></pre>
+<hr>
+<div class="footnotes"><ol><li class="footnote" id="fn:1"><p>While Godot 2's web and 3D support are passable, Godot 3, with a release just around the corner, will <a href="https://godotengine.org/article/godots-new-renderer-progress-report-3">offer spectacular improvements to 3D</a>, and <a href="https://godotengine.org/article/mozilla-awards-godot-engine-part-moss-mission-partners-program">partner with Mozilla to deliver first class web export support</a>, surpassing all other options. <a href="index.html#fnref:1" title="return to article">↩</a></p></li></ol></div>
+</section>
+</article>
+
+
+</x-pagearchive_did="33"pagetitle="web><script src="/_modulo/modulo-bundle-x84fd47.js"></script></body></html>

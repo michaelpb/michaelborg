@@ -1,0 +1,97 @@
+<!DOCTYPE HTML><html><head>
+    <link rel="stylesheet" href="/_modulo/modulo-bundle-0.css"></head><body>
+    <script>Modulo.defineAll()</script>
+<x-pagearchive_did="28"pagetitle="porting a="" legacy="" browser="" graphics="" js="" script="" (jsc3d)="" to="" node.js="" with="" node-canvas="" and="" vm"="">
+
+<h1>Porting a legacy browser graphics JS script (JSC3D) to Node.js with node-canvas and VM</h1>
+
+<article class="content post tag-3d tag-web-dev tag-javascript tag-node">
+<h1 class="title">Porting a legacy browser graphics JS script (JSC3D) to Node.js with node-canvas and VM</h1>
+<section class="post-content">
+<p>In this post I will describe my my process to port JSC3D, an unmaintained 3D library that uses the browser's <code>&lt;canvas&gt;</code> 2D context, to run entirely in node.js. This allows a quite fast, easy-to-use CLI-based 3D model renderer. It looks quite good, <em>without</em> the need for GPU, making it easy to run on the server to generate previews of STL and OBJ files. Also importantly, unlike many other 3D renderers, this one can produce the same results in the browser.</p>
+<p>Hopefully this article will be useful to others considering porting graphical browser scripts to node.js!</p>
+<blockquote>
+<p>Running the command below produces the render to the right.</p>
+<p><code>
+jsc3d examples/example.stl examples/example.png
+</code></p>
+<p><strong>Try it out for yourself:</strong></p>
+<p><a href="https://npmjs.org/package/jsc3d"><img src="https://nodei.co/npm/jsc3d.png" alt="NPM" title=""></a></p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/michaelpb/node-jsc3d/master/examples/example.png" alt="Example render"></p>
+<h2 id="step1creatingasandboxthatsimulatesabrowserenvironment">Step 1: Creating a sandbox that simulates a browser environment</h2>
+<p>I had a couple options at this point: I could dive into editing JSC3D to remove these references and change them to node.js referneces, or I could punt on that and just focus on getting a proof-of-concept running without modification by creating a sandbox environment for the script that simulates a browser. I went with the latter, using <a href="https://nodejs.org/api/vm.html">node's awesome built-in VM module</a>. This was probably a good choice for JSC3D since everything came together pretty quickly, and I was soon able to get successful 3D renders.</p>
+<h3 id="howtousevmtosandboxabrowserscript">How to use VM to sandbox a browser script</h3>
+<p>The simplest code to wrap a legacy browser script is like this:</p>
+<pre><code class="language-javascript">const sandbox = {};  
+const context = new vm.createContext(sandbox);  
+const scriptLoader = new vm.Script(fs.readFileSync('./assets/browserScript.js'));  
+scriptLoader.runInContext(context);  
+module.exports = sandbox.JSC3D; // or whatever is exported  
+</code></pre>
+<p>An empty sandbox context is not enough, however, if it expects functionality from <code>document</code> and <code>window</code> objects.</p>
+<h3 id="trialanderrormockingofwindowanddocument">Trial-and-error mocking of window and document</h3>
+<p>I first took a look at the <a href="https://github.com/michaelpb/node-jsc3d/blob/master/assets/jsc3d.js">JSC3D source</a>, and Ctrl+F'd (<code>/</code>'d to be precise, 'cause <code>vim</code>) for the usual suspects: <code>window</code> and <code>document</code>. I was checking if it expected <em>too much</em> functionality from these, in which case I might be better off using a heavier weight solution like PhantomJS which will run it in a true browser. However, to my delight it only expected these objects to be populated with a few functions, and those were only used really for some debugging and interactive features that I did not need.</p>
+<p>It was easy to stub out all that was necessary:</p>
+<pre><code class="language-javascript">const sandbox = {  
+    window: {
+        pageXOffset: 0,
+        pageYOffset: 0,
+        navigator: {userAgent: 'Chrome 0'} // look like chrome
+    },
+    document: {
+        addEventListener: () =&gt; {},
+        body: {
+            appendChild: () =&gt; {},
+            createElement: () =&gt; ({style: {}}),
+            scrollLeft: 0,
+            scrollTop: 0,
+        },
+    },
+};
+</code></pre>
+<h2 id="step2mockingoutxmlhttprequest">Step 2: Mocking out XMLHttpRequest</h2>
+<p>JSC3D uses <code>XMLHttpRequest</code> to request data from URLs. Since I was porting to node.js, I wanted it instead to read data from the local filesystem. This too turned out to be pretty easy to mock:</p>
+<pre><code class="language-javascript">class XMLHttpRequest {  
+    open(method, urlPath) {
+        this.path = urlPath;
+    }
+    setRequestHeader() {}
+    overrideMimeType() {}
+    abort() {}
+    send() {
+        fs.readFile(this.path, (error, data) =&gt; {
+            if (error) throw error;
+            this.status = 200;
+            this.readyState = 4;
+            this.responseText = data.toString();
+            this.onreadystatechange(); // call callback
+        });
+    }
+}
+</code></pre>
+<h2 id="step3usingnodecanvastosimulaterendering">Step 3: Using node-canvas to simulate rendering</h2>
+<p>Finally, I need JSC3D to render to <a href="https://www.npmjs.com/package/canvas">node-canvas</a> instead of a real <code>&lt;canvas&gt;</code> tag, which is an in-memory canvas implementation that leverages C++ bindings to the <code>libcairo</code> 2D graphics system package. This was really easy... the only hiccup being I had to monkey-patch in a dummy addEventListener stub:</p>
+<pre><code class="language-javascript">let canvas = new Canvas(1170, 585);  
+canvas.addEventListener = () =&gt; {};  
+let viewer = new JSC3D.Viewer(canvas);  
+</code></pre>
+<p>At this point, everything worked, and it was successfully running renders on JSC3D.</p>
+<p>To improve performance, I stubbed out a couple other things:</p>
+<ol>
+<li>I stubbed out <code>setTimeout</code> with a dummy function that did nothing. This was because it was using <code>setTimeout</code> to create a re-rendering loop, which is unnecessary since I was synchronously rendering it after loading by manually calling <code>viewer.doUpdate()</code> </li>
+<li>Edit my mock XMLHttpRequest to add in "on load" events, so that scripts using <code>node-jsc3d</code> could be aware when the loading of the model from disk was complete.</li>
+</ol>
+<h2 id="futurestepsfornodejsc3d">Future steps for node-jsc3d</h2>
+<p>There's plenty of low-hanging fruit:</p>
+<ul>
+<li>Elminate <code>node-canvas</code> dependency (it's mostly just pixel manipulations that could be done to a <code>Buffer</code>)</li>
+<li>Rewrite to leverage node's Buffers</li>
+<li>Generally start diving into JSC3D to bring the script up to modern standards (unit tests, leveraging built-in node features, ES6 syntax), while writing it in a way that it still can be Babel compiled to support browsers.</li>
+</ul>
+<p><a href="https://github.com/michaelpb/node-jsc3d">And of course, pull requests are welcome!</a></p>
+</section>
+</article>
+
+
+</x-pagearchive_did="28"pagetitle="porting><script src="/_modulo/modulo-bundle-x84fd47.js"></script></body></html>

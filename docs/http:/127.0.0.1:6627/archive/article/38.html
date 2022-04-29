@@ -1,0 +1,95 @@
+<!DOCTYPE HTML><html><head>
+    <link rel="stylesheet" href="/_modulo/modulo-bundle-0.css"></head><body>
+    <script>Modulo.defineAll()</script>
+<x-pagearchive_did="38"pagetitle="react-jsc3d: porting="" a="" legacy="" 3d="" rendering="" javascript="" library="" to="" reusable="" react.js="" component="" on="" npm"="">
+
+<h1>react-jsc3d: Porting a legacy 3D rendering JavaScript library to a reusable React.js component on NPM</h1>
+
+<article class="content post tag-web-dev tag-tutorial tag-javascript tag-node tag-3d tag-react">
+<h1 class="title">react-jsc3d: Porting a legacy 3D rendering JavaScript library to a reusable React.js component on NPM</h1>
+<section class="post-content">
+<p>Thinking of porting a legacy JavaScript library to be a re-usable React component? In this post I describe the process <a href="https://www.npmjs.com/package/react-jsc3d">I used to release a React version of JSC3D</a>.</p>
+<p><img src="https://github.com/michaelpb/react-jsc3d/raw/master/demo/example_screenshot.jpg" alt="React JSC3D rendering"></p>
+<hr>
+<h2 id="rational">Rational</h2>
+<p>I needed a simple, fast 3D mesh ray-tracer in a React 16 project, and none of the few available seemed to work or fit the criteria. So, I decided to port the trusted old JSC3D library to react.</p>
+<h2 id="startingout">Starting out</h2>
+<p>I first made the mistake of using <code>create-react-app</code> to start a new component. <strong>Don't do this</strong>, as it doesn't set up your project to be easily exported as an NPM component.</p>
+<p>Instead, I suggest using <a href="https://github.com/insin/nwb/#react-components-and-libraries">nwb</a> which has a scaffolding script just for this. The command I ran:</p>
+<pre><code>nwb new react-component name-of-component  
+</code></pre>
+<h2 id="includingthelegacycode">Including the legacy code</h2>
+<p>First I grabbed the legacy script in an unminified format, however concatenated into a single file. To make it easier to debug in the future, I decided to attempt to get things working with as few modifications to the legacy script as possible. Later I may start digging into modernizing the original code and adding unit tests, but for now my main goal was just wrapping it, mostly untouched.</p>
+<p>I noticed everything about JSC3D was attached to a JSC3D object. So, to expose it in the Node module system, I added the following to the top:</p>
+<pre><code>/* eslint-disable */
+var JSC3D = JSC3D || {};  
+if (module) module.exports = JSC3D;  
+</code></pre>
+<p>The <code>/* eslint-disable */</code> disables linting for the file, since the legacy code doesn't follow linting standards at all. The rest simply exposes the JSC3D to whatever requires this as a module.</p>
+<h2 id="integratingwithreact">Integrating with React</h2>
+<h3 id="renderingdomelementwithreference">Rendering DOM element with reference</h3>
+<p>In order to mount the legacy code on the page, I needed React to render a <code>&lt;canvas&gt;</code> tag, and maintain a reference to it. I decided to wrap it with a <code>div</code> (to make styling easier) and attach a blank canvas element to <code>this.canvas</code>, as such:</p>
+<pre><code class="language-javascript">class Jsc3dViewer extends Component {  
+    render() {
+        return (
+            &lt;div className="Jsc3dViewer"&gt;
+                &lt;canvas                     ref={(canvas) =&gt; { this.canvas = canvas; }}&gt;
+                &lt;/canvas&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+</code></pre>
+<h3 id="mountinglegacycodewithcomponentdidmount">Mounting legacy code with <code>componentDidMount</code></h3>
+<p>Then I needed to do is initialize the legacy code when the component mounts. This was done by using the React life-cycle method <code>componentDidMount</code>:</p>
+<pre><code class="language-javascript">     componentDidMount() {
+         this.viewer = new jsc3d.Viewer(this.canvas);
+         this._setProps(this.props);
+         this.viewer.init();
+     }
+</code></pre>
+<p>The <code>_setProps</code> method I created uses the <code>jsc3d</code> API to update the <code>this.viewer</code> with the React component properties. <a href="https://github.com/michaelpb/react-jsc3d/blob/master/src/components/Jsc3dViewer.js#L57">You can see it here.</a></p>
+<h3 id="preventingreactfromupdating">Preventing React from updating</h3>
+<p>Using the <code>shouldComponentUpdate</code> life-cycle method, I ensure that the <code>this.viewer</code> stays updated if props change (e.g., if something using this component were to change the model color or something), and also ensure that React.js doesn't overwrite the DOM:</p>
+<pre><code class="language-javascript">    shouldComponentUpdate(nextProps, nextState) {
+        // Set new props
+        this._setProps(nextProps);
+
+        if (nextProps.sceneUrl !== this.props.sceneUrl) {
+            // Entirely new URL, should re-init
+            this.viewer.init();
+        }
+        return false; // always returns false to prevent
+    }
+</code></pre>
+<h3 id="testing">Testing</h3>
+<p>To test / develop the code I wrote, I used the built-in demo server (with <code>npm run start</code>) that comes with the <code>nwb</code> scaffolding. First I added the media (in this case, <code>stl</code> 3D mesh files) to <code>demo/public</code>, then I edited <code>demo/src/index.js</code> to use my new component:</p>
+<pre><code class="language-javascript">class Demo extends Component {  
+    render() {
+        return (
+            &lt;div className="wrapper"&gt;
+                &lt;h1&gt;react-jsc3d Demo&lt;/h1&gt;
+                &lt;Jsc3dViewer
+                    sceneUrl='test-media/trumpet.obj'
+                /&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+</code></pre>
+<h2 id="polishingdebugging">Polishing &amp; Debugging</h2>
+<h3 id="proptypes">Proptypes</h3>
+<p>Once I got things working, I needed to polish everything up. I started by adding <a href="https://www.npmjs.com/package/prop-types">PropTypes to my new component so that folks using this will get alerted if they try to pass in an incompatible type</a>. I also wrote a few simple functions to convert more sane / React-friendly data-types into the ones that JSC3D expected (e.g. <code>true</code> and <code>false</code> instead of the strings <code>"on"</code> and <code>"off"</code>). Finally, I wrote documentation in the <code>README.md</code> file so folks will know how to use it -- and wrote this article.</p>
+<p>Finally, I wrote some simple tests, set up automated testing with Travis, and released it on NPM!</p>
+<h2 id="debugging">Debugging</h2>
+<p>During testing, I noticed it didn't properly define a few variables before use. While browser JS implementations are lenient enough to handle this, this was causing issues when compiling, so I had to specify all of them at the top of the file, like this:</p>
+<pre><code>var maxY, minY, maxZ, minZ, maxZ, VBArray;  
+</code></pre>
+<hr>
+<p>For the final product, <a href="https://github.com/michaelpb/react-jsc3d/blob/master/src/components/Jsc3dViewer.js#L57">check out the code on GitHub</a>.</p>
+<p>That's it, hopefully this guide might save some time for folks looking to port legacy JS libraries into re-usable NPM packages.</p>
+</section>
+</article>
+
+
+</x-pagearchive_did="38"pagetitle="react-jsc3d:><script src="/_modulo/modulo-bundle-x84fd47.js"></script></body></html>

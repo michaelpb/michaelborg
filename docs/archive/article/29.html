@@ -1,0 +1,40 @@
+<!DOCTYPE HTML><html><head>
+    <title>Bash profile trick: Open last used directory when starting a new terminal emulator</title><meta charset="utf8"><link rel="stylesheet" href="/_modulo/modulo-bundle-1ngtlua.css"></head><body>
+    
+    
+    
+    
+
+
+    <main class="Page-wrapper">
+        <slot class="Page">
+
+<h1>Bash profile trick: Open last used directory when starting a new terminal emulator</h1>
+
+<article class="content post tag-snippet tag-web-dev tag-linux tag-bash">
+<h1 class="title">Bash profile trick: Open last used directory when starting a new terminal emulator</h1>
+<section class="post-content">
+<p>As I was configuring my new system (using <abbr title="e.g. configuration files like your bash profile settings or vimrc">dotfiles</abbr> configuration app I wrote for this purpose: <a href="https://github.com/michaelpb/stowage/">stowage</a>), I was exploring the current options for minimalist terminal emulators, and I realized a common pattern I wanted was for new terminals to pop up in the same working directory that I was using. Now, more feature-filled (and resource-hungry) terminal emulators often provide a <code>Ctrl+Shift+N</code> short-cut that will open a new window in the same working directory, but I wanted that feature to be universal.</p>
+<p>So, I realized I could do this with a little bash profile hackery!</p>
+<p>Here's the snippet I wrote in my bash profile:</p>
+<pre><code>LAST_PWD_PATH="~/.bash_last_pwd"
+
+function cd() {  
+    builtin cd "<a href="../cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="745034">[email&nbsp;protected]</a>"
+    echo `pwd` &gt; "$LAST_PWD_PATH"
+}
+
+if [ -f "$LAST_PWD_PATH" ]; then  
+    builtin cd `cat $LAST_PWD_PATH`
+fi  
+</code></pre>
+<p>This overrides the built-in <code>cd</code> command to remember the location that you are change to. Then, if such a file exists, attempts to start every new bash session by <code>cd</code>ing to that directory.</p>
+<p>Hope it's useful!</p>
+</section>
+</article>
+
+
+</slot>
+    </main>
+
+<script src="/_modulo/modulo-bundle-x84fd47.js"></script></body></html>

@@ -1,0 +1,41 @@
+
+    <script src="https://modulojs.org/js/Modulo.js"></script>
+    <Modulo>
+        <Library namespace="x" src="/components/core.html"></Library>
+    </Modulo>
+    <script>Modulo.defineAll()</script>
+<x-Page archivedid="17"pagetitle="Godot Pannable Camera: A re-usable camera helper for Godot">
+
+<article class="content post tag-godot tag-3d tag-game-dev">
+<h1 class="title">Godot Pannable Camera: A re-usable camera helper for Godot</h1>
+<section class="post-content">
+<p>I put together <a href="https://bitbucket.org/michaelb/godot-pannable-camera/src">a little camera script</a> that should be useful for RPGs, platformers, and RTS games in the <a href="https://godotengine.org/">free software Godot Game Engine</a>. It has a top-down (or angled) camera that has built in key-bindings for panning around using WASD keys.</p>
+<p>I wrote it to quickly prototype things like content editors or previewing terrain. It also has the ability to track another node, such as the player character in an RPG or action game.</p>
+<h2 id="examplebasiccapabilities">Example basic capabilities</h2>
+<p>As you can see, it permits panning around, adjusting distance, adjusting angle, and adjusting rotation, all with WASD keys:</p>
+<blockquote>
+<p><code>WASD</code> - Pans the camera around the x and z axis</p>
+<p><code>QE</code> - Rotates the camera (around the y axis)</p>
+<p><code>RF</code> - Changes the angle of the camera.</p>
+<p><code>+-</code> - Moves toward or away from ground / target</p>
+<p><code>[]</code> - Adjusts the depth of the projection</p>
+</blockquote>
+<p><img src="../content/images/2017/02/godot_pannable_camera_2.gif" alt="Example basic usage" /></p>
+<h2 id="trombonezoomlikeeffectwithcamerafov">"Trombone zoom"-like effect with camera FOV</h2>
+<p>A visual effect that fascinates me is varying between <a href="http://gamedev.stackexchange.com/questions/22277/difference-between-orthogonal-map-and-isometric-map">the "flat" orthogonal or isometric</a> projection, and a true 3D perspective. By tweaking camera distance and FOV, you can achieve something very close to orthogonal or isometric projections. I played around with a few formulas, and eventually managed to create a single attribute that can tweak the perspective in this way: <code>trombone_fov</code>. I'm not sure if the forumla I used is the "correct" formula (I ended up with <code>distance = cotan(fov_y) * desired_distance</code>), but the effect is really cool nonetheless, and a nice trick for either juice, or platformers that rely on visual trickery (a la <a href="https://en.wikipedia.org/wiki/Fez_(video_game)">Fez</a>).</p>
+<p>In this GIF, it starts at nearly orthogonal, and then "becomes 3D":</p>
+<blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Dolly_zoom">Dolly zoom</a> is a effect in film photography, where you move the camera while adjusting the zoom. I don't know a lot about film-making, but it seems very similar to what I'm doing here.</p>
+</blockquote>
+<p><img src="../content/images/2017/02/godot_pannable_camera.gif" alt="Example trombone effect" /></p>
+<p>It's also useful for contrasting visual styles, which is the main reason I added it as a feature. At an angle closer to the ground, you can see it go from orthogonal to a more "fish-eye" look:</p>
+<p><img src="../content/images/2017/02/godot_pannable_camera_3.gif" alt="Example trombone effect 2" /></p>
+<h2 id="usage">Usage</h2>
+<p><a href="https://bitbucket.org/michaelb/godot-pannable-camera/src">Get it from BitBucket</a>. It extends the <a href="http://docs.godotengine.org/en/stable/classes/class_camera.html">built-in Camera</a>, so you can use it like you would a normal camera. Beyond that, it exposes a few extra script vars that let you configure it, as explained in the README.</p>
+<h3 id="contributions">Contributions</h3>
+<p>Please fork and submit pull requests if you have anything cool to add! Especially to correct my dolly zoom formula. I for one plan on continuing to add to it, as a part of a cool TBA game I'm working on.</p>
+</section>
+</article>
+</div>
+
+</x-Page>

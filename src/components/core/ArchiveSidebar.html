@@ -1,0 +1,38 @@
+
+
+<nav>
+    <ul  {% if state.showall %}class="active"{% endif %}>
+        <li>#{{ props.qid }} -
+            <a class="active" href="#">{{ props.title }}</a>
+        </li>
+
+        <h2>More Archived articles</h2>
+        {% for info in staticdata|reversed %}
+            <li>#{{ info.id }} -
+                <a class="{% if info.id == props.qid %}active{% endif %}"
+                    href="/archive/article/{{ info.id }}.html">{{ info.title }}</a>
+            </li>
+        {% endfor %}
+
+    </ul>
+
+    {% if not state.showall %}
+        <div class="visibility-controls">
+            <div class="visible-toggle-overlay"></div>
+            <label>
+                <input [state.bind] name="showall" type="checkbox">
+                Read more from the archive...
+            </label>
+        </div>
+    {% endif %}
+</nav>
+
+{% if not state.showcomments %}
+    <div class="comment-controls">
+        <button @click:=script.showComments>
+            Read Comment Section (Disqus)
+        </button>
+    </div>
+{% endif %}
+
+<div id="disqus_thread"></div>
