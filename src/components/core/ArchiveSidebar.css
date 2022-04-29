@@ -32,6 +32,29 @@ ul {
     margin-left: -30px;
 }
 
+ul > h2 {
+    font-size: 25px;
+    margin-top: 50px;
+    /*
+    float: left;
+    shape-outside: circle();
+    height: auto;
+    width: 125px;
+    */
+}
+ul > h2 {
+    text-align: right;
+    background: black;
+    color: white;
+    height: 28px;
+}
+
+ul > p > span  {
+    font-size: 16px;
+    background: white;
+    font-style: italic;
+}
+
 
 .visible-toggle {
     display: none;

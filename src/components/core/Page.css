@@ -144,7 +144,8 @@ body {
 }
 
 
-.Page > hr:first-of-type {
+.Page > hr:first-of-type,
+.Page .rainbow-square {
     height: 10px;
     background-color: #91d370;
     border: none;
@@ -165,6 +166,10 @@ body {
         ,0px 0px 0 80px var(--bg2)
         ,0px 0px 0 82px var(--accent1)
         ;
+}
+
+.Page .rainbow-square {
+    height: auto;
 }
 
 .Page > section {

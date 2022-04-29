@@ -3,19 +3,28 @@
     <meta charset="utf8" />
     <link rel="stylesheet" href="/components/core/Page.css">
     <link rel="stylesheet" href="/components/core/Page-reset.css">
+    <link rel="stylesheet" href="/components/core/Page-article.css">
 </head>
 <body>
     <main class="Page-wrapper">
         <div class="Page">
             {% if props.archivedid %}
-                <h1>michaelb.org/archive#{{ props.archivedid }}</h1>
+                <h1>michaelb.org #{{ props.archivedid }}</h1>
+                <hr />
+                <img src="/static/img/misc_images/logo_2.png" />
+                <a href="">Articles</a>
                 <h2 class="Page-articleTitle"><span>{{ props.pagetitle }}</span></h2>
             {% endif %}
         </div>
-        <slot class="Page"></slot>
+        <slot class="Page
+            {% if props.archivedid %}
+                Page-article
+            {% endif %}
+        "></slot>
         <div class="Page">
             {% if props.archivedid %}
                 <x-ArchiveSidebar
+                    style="margin-top: 100px"
                     qid:={{ props.archivedid }}
                     title="{{ props.pagetitle }}"
                 ></x-ArchiveSidebar>

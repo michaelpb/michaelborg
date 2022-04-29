@@ -2,11 +2,27 @@
 
 <nav>
     <ul  {% if state.showall %}class="active"{% endif %}>
-        <li>#{{ props.qid }} -
-            <a class="active" href="#">{{ props.title }}</a>
-        </li>
+        <p>
+            #{{ props.qid }} -
+            <a class="active" href="#">{{ props.title }}</a> <br />
+            <span>This article is from a previous blog, actively published
+            between 2016-2019:</span>
+        </p>
 
-        <h2>More Archived articles</h2>
+
+        <h2>Popular</h2>
+
+        {# TODO refactor the loop into a snippet #}
+        {% for info in staticdata|reversed %}
+            {% if info.id == 5 %}
+                <li>#{{ info.id }} -
+                    <a class="{% if info.id == props.qid %}active{% endif %}"
+                        href="/archive/article/{{ info.id }}.html">{{ info.title }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        <h2>All archived articles</h2>
         {% for info in staticdata|reversed %}
             <li>#{{ info.id }} -
                 <a class="{% if info.id == props.qid %}active{% endif %}"
@@ -35,4 +51,6 @@
     </div>
 {% endif %}
 
-<div id="disqus_thread"></div>
+<div class="rainbow-square" style="margin-top: 80px; padding: 10px">
+    <div id="disqus_thread"></div>
+</div>
