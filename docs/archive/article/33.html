@@ -1,0 +1,380 @@
+<!DOCTYPE HTML><html><head>
+    <title>Web Developer to Game Developer: Understanding game dev as a web dev using Godot</title><meta charset="utf8"><link rel="stylesheet" href="/_modulo/modulo-bundle-1bc03jf.css"></head><body>
+    
+    
+    
+    
+    
+
+
+    <main class="Page-wrapper">
+        <div class="Page Page-relative">
+            
+            
+                <h1>michaelb.org #33</h1>
+                <hr>
+            
+            <img src="/static/img/misc_images/logo_2.png">
+            
+                <h2 class="Page-articleTitle"><span>Web Developer to Game Developer: Understanding game dev as a web dev using Godot</span></h2>
+
+                <nav class="Page-bcNav">
+                    <ul>
+                        <li><a href="/">HOME</a></li>
+                        
+                        
+                        <li><a href="#">WEB DEVELOPER TO GAME DEVELOPER: UNDERSTANDING GAME DEV AS A WEB DEV USING GODOT</a></li>
+                    </ul>
+                </nav>
+
+            
+        </div>
+        <slot class="Page
+            
+                Page-article
+            
+        ">
+
+<article class="content post tag-godot tag-game-dev tag-tutorial tag-game tag-web-dev">
+<h1 class="title">Web Developer to Game Developer: Understanding game dev as a web dev using Godot</h1>
+<section class="post-content">
+<p>Already a front-end (or back-end) web developer, and curious about writing your own video games? Maybe want to try a new hobby in indie game dev for PC or console, or publish some mobile games? I made the transition, and so can you!</p>
+<p>I hope this 10 minute read will give you an overview of what to expect as you journey into this new (but somewhat familiar) world of game development.</p>
+<blockquote>
+<h4 id="whynothtml5">Why not HTML5?</h4>
+<p>There are a lot of pretty cool HTML5 based game engines in JS that you can get hacking at right away. These are really cool, but I feel you'll quickly run up against limits if you are doing anything beyond a very basic and very web-focused game. Full game engine environments not only tend to be a lot faster, but can target mobile, desktop, and even console <em>natively</em> with much lower overhead. The only disadvantages, of course, is it's more tools to learn, but game dev is already sufficiently different to erase most advantages you might gain by coding in JavaScript.</p>
+<h4 id="whynotunity3d">Why not Unity3D?</h4>
+<p>You might be confused why I wouldn't recommend Unity3D. To be honest, perhaps Unity3D <em>is</em> the right game engine for your next project -- it is much more popular than Godot, and has a large asset library and although it lacks in the 2D department, it does sport a more sophisticated 3D engine. However, if you are used to web development, you probably prioritize the same things I do in tooling: light-weight, modular, and open source -- none of which describe Unity3D. Godot fits the bill nicely: it weighs in at only 16.6 MB zipped, only adds a few MB to builds, has a familiar DOM-like node hierarchy, and has a headless CLI making Continous Delivery a cinch. There's also the fact that Unity3D is expensive: the "pro license", at the time of writing this article, was $125 per month, yikes!</p>
+</blockquote>
+<h1 id="godot">Godot</h1>
+<p><a href="https://godotengine.org/download">Godot Engine, download for macOS, GNU/Linux, and Windows.</a></p>
+<p>If you've read any other articles on this site, it might not surprise you that I recommend using free and open source software. As a web developer, this probably seems like a natural choice, as almost all the tools that power the web, from the Linux servers to frameworks like Rails or Django, are FLOSS. The advantages of this: Open APIs, community of helpful people, and lightweight and customizable dev environments.</p>
+<p>While game development has not yet caught the free software bug like web dev has, this is quickly changing as more and more FOSS game dev tools are popping up. Out of them, I'd personally advocate using Godot, for the following reasons:</p>
+<ol>
+<li>It's an actively developed, free open source project with a friendly community </li>
+<li>It's all-inclusive: Tooling in game development is pretty awful to begin with compared to web dev, Godot has the potential to fix that </li>
+<li>It lets you develop on and for all platforms, including deploying to the web<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> </li>
+<li>It has first-class 2D and 3D<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> support </li>
+<li>It's incredibly lightweight and flexible compared to every other engine of comparable features out there </li>
+<li>It's language and structure is easy for web developers to pick up</li>
+</ol>
+<p>With that in mind, I'll try to explain the key concepts of Godot in a way that web developers should find easy to understand.</p>
+<h1 id="thedomofgodotgodotsscenestructure">The DOM of Godot: Godot's scene structure</h1>
+<p>Everything in your Godot game exists in a hierarchy with some methods familiar to any front-end programmer (<code>get_parent()</code>, just like JavaScript's <code>parent()</code>, and <code>node.get_node('MyNode')</code> is somewhat similar to <code>node.querySelector('MyNode')</code>).</p>
+<blockquote>
+<p><img src="../content/images/2017/09/Selection_001.png" alt="DOM of Godot" title=""></p>
+</blockquote>
+<ul>
+<li>Your <code>Node2D</code> or <code>Spatial</code> are more or less "blank" elements -- kind of like your divs or spans</li>
+<li>If you are coding a 2D game, most things are absolutely positioned to the top-left corner of the screen, with the exception of GUI elements, which can be anchored to screen edges</li>
+<li>If you are coding a 3D game, everything is absolutely positioned from a 3D origin <code>(0, 0, 0)</code>.</li>
+<li>Every scene can have both 2D and 3D elements: By default, the 2D elements float above the 3D elements, enabling you to make a 3D game but make your GUI in "true" 2D</li>
+</ul>
+<h2 id="thedevtoolsofgodot">The "Dev Tools" of Godot</h2>
+<p>Godot's GUI offers a node hierarchy inspector much like dev tools. Ensure you run your game with <em>Remote debug</em> and <em>Sync scene changes</em> enabled (Click on the little "Broadcast" icon near the play button). With this on, when you make changes while the game is running, you'll see them reflected immediately in the game. You can utilize this just as you would Dev Tools: get the bulk of the work done ahead of time, then make final tweaks and adjustments to polish up your scene. This even works when running on mobile!</p>
+<p>Godot also affords some powerful inspection and profiling tools. You can profile code, memory usage, and also inspect the live scene tree ("DOM"). </p>
+<p><img src="../content/images/2017/09/Selection_002.png" alt="Profiling Godot games"></p>
+<h2 id="componentization">Componentization</h2>
+<p>You can save scenes in separate files -- this is similar to componentizing with web frameworks like React or Polymer. These can be re-used just like a regular node.</p>
+<p>Scenes saved in separate files can expose typed properties (much like React propTypes) using the <code>export</code> syntax, for example for an integer between 0 and 90, <code>export var(int, 0, 90) angle</code>. This not only exposes the property to outer code and enables getters and setters, but also exposes it in the GUI so you can do live tweaking of it (see above).</p>
+<p>Extension is also possible, although I'd generally advocate using composition vs extension as much as possible with Godot, since sometimes extension can lead to some finicky situations.</p>
+<ul>
+<li><a href="http://docs.godotengine.org/en/latest/reference/gdscript.html#exports">Click here for more information on exporting properties</a></li>
+</ul>
+<h1 id="keepingthingsneat">Keeping things neat</h1>
+<h2 id="externaleditorswithgodot">External editors with Godot</h2>
+<p>If you have a strong preference for text editors, like I do, then you should be happy to learn that Godot is generally agnostic when it comes to editing. In fact, you don't need to use the Godot IDE at all, since even the scene files are plain-text and easily editable, in an ini-ish format.</p>
+<ul>
+<li><a href="https://github.com/beefsack/GDScript-sublime">GDScript syntax highlighting for Sublime Text</a> </li>
+<li><a href="https://github.com/quabug/vim-gdscript">GDScript syntax highlighting for Vim</a></li>
+</ul>
+<h2 id="repositorystructure">Repository structure</h2>
+<p>As with web development, you'll want to put all your code in a git or mercurial repo. You likely will want to setup Large File Store in git so it won't churn quite so much on huge binary assets.</p>
+<p>I've seen a few different repo structures for game code, but this is the one I use:</p>
+<pre><code>game/  
+    - engine.ini
+    - scripts/
+        - Hero.gd
+    - scenes/
+        - Hero.tscn
+    - images/
+        - hero_sprite_sheet.png
+    - etc
+msrc/  
+    - Media source file
+    - xcfs, psds, etc
+notes/  
+    - Design documents, TODOs
+</code></pre>
+<hr>
+<div class="footnotes"><ol><li class="footnote" id="fn:1"><p>While Godot 2's web and 3D support are passable, Godot 3, with a release just around the corner, will <a href="https://godotengine.org/article/godots-new-renderer-progress-report-3">offer spectacular improvements to 3D</a>, and <a href="https://godotengine.org/article/mozilla-awards-godot-engine-part-moss-mission-partners-program">partner with Mozilla to deliver first class web export support</a>, surpassing all other options. <a href="#fnref:1" title="return to article">↩</a></p></li></ol></div>
+</section>
+</article>
+
+
+</slot>
+        <div class="Page">
+            
+                <x-archivesidebar style="margin-top: 100px" qid:="33" title="Web Developer to Game Developer: Understanding game dev as a web dev using Godot" modulo-original-html="">
+
+<nav>
+    <ul>
+        <p>
+            #33 -
+            <a class="active" href="#">Web Developer to Game Developer: Understanding game dev as a web dev using Godot</a> <br>
+            <span>This article is from a previous blog, actively published
+            between 2016-2019.</span>
+        </p>
+
+
+        <h2>Popular</h2>
+
+        
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                <li>#38 -
+                    <a class="" href="/archive/article/38.html">react-jsc3d: Porting a legacy 3D rendering JavaScript library to a reusable React.js component on NPM</a>
+                </li>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                <li>#33 -
+                    <a class="active" href="/archive/article/33.html">Web Developer to Game Developer: Understanding game dev as a web dev using Godot</a>
+                </li>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                <li>#11 -
+                    <a class="" href="/archive/article/11.html">Getting started with music production on Linux: Three ways to get set up with pro-audio free software</a>
+                </li>
+            
+        
+            
+        
+            
+        
+            
+                <li>#5 -
+                    <a class="" href="/archive/article/5.html">Game development on Linux: Using Linux at every step of the process</a>
+                </li>
+            
+        
+            
+        
+
+        <h2>All archived articles</h2>
+        
+            <li>#45 -
+                <a class="" href="/archive/article/45.html">Upgrading Mattermost using docker-compose</a>
+            </li>
+        
+            <li>#43 -
+                <a class="" href="/archive/article/43.html">Ubuntu 18.04 on Acer Aspire 1 - A114-31-C4HH and A114-31-C5GM</a>
+            </li>
+        
+            <li>#42 -
+                <a class="" href="/archive/article/42.html">Installing Ubuntu 17.10 Linux on Acer Aspire 1</a>
+            </li>
+        
+            <li>#41 -
+                <a class="" href="/archive/article/41.html">How to quickly install Mattermost on Digital Ocean</a>
+            </li>
+        
+            <li>#39 -
+                <a class="" href="/archive/article/39.html">Ardour 5.7 Review - Free software DAW</a>
+            </li>
+        
+            <li>#38 -
+                <a class="" href="/archive/article/38.html">react-jsc3d: Porting a legacy 3D rendering JavaScript library to a reusable React.js component on NPM</a>
+            </li>
+        
+            <li>#37 -
+                <a class="" href="/archive/article/37.html">Introducing: Whiteboard</a>
+            </li>
+        
+            <li>#36 -
+                <a class="" href="/archive/article/36.html">Snippet: Implement an ability cooldown (in the Godot game engine)</a>
+            </li>
+        
+            <li>#35 -
+                <a class="" href="/archive/article/35.html">JavaScript syntax cheat-sheet for total newbies</a>
+            </li>
+        
+            <li>#34 -
+                <a class="" href="/archive/article/34.html">Snippet: Draining all pending coroutines with Python 3's async features</a>
+            </li>
+        
+            <li>#33 -
+                <a class="active" href="/archive/article/33.html">Web Developer to Game Developer: Understanding game dev as a web dev using Godot</a>
+            </li>
+        
+            <li>#30 -
+                <a class="" href="/archive/article/30.html">The Right Way™ to do global npm install without sudo</a>
+            </li>
+        
+            <li>#29 -
+                <a class="" href="/archive/article/29.html">Bash profile trick: Open last used directory when starting a new terminal emulator</a>
+            </li>
+        
+            <li>#28 -
+                <a class="" href="/archive/article/28.html">Porting a legacy browser graphics JS script (JSC3D) to Node.js with node-canvas and VM</a>
+            </li>
+        
+            <li>#27 -
+                <a class="" href="/archive/article/27.html">Releasing Sawdust: Mini-post-mortem</a>
+            </li>
+        
+            <li>#26 -
+                <a class="" href="/archive/article/26.html">Sawdust</a>
+            </li>
+        
+            <li>#25 -
+                <a class="" href="/archive/article/25.html">The Blocklings</a>
+            </li>
+        
+            <li>#24 -
+                <a class="" href="/archive/article/24.html">Ludum Dare 38</a>
+            </li>
+        
+            <li>#22 -
+                <a class="" href="/archive/article/22.html">My pre-post-mortem of rescuing my scope creeped-out puzzle game</a>
+            </li>
+        
+            <li>#21 -
+                <a class="" href="/archive/article/21.html">Godot Gestures: Pinch, twist, and drag gesture detection for mobile games</a>
+            </li>
+        
+            <li>#20 -
+                <a class="" href="/archive/article/20.html">Wow, I've made quite a few free Godot packages by now</a>
+            </li>
+        
+            <li>#17 -
+                <a class="" href="/archive/article/17.html">Godot Pannable Camera: A re-usable camera helper for Godot</a>
+            </li>
+        
+            <li>#16 -
+                <a class="" href="/archive/article/16.html">Simple puzzle game graphics with Inkscape bevels</a>
+            </li>
+        
+            <li>#15 -
+                <a class="" href="/archive/article/15.html">Snippet: Godot Resource Queue</a>
+            </li>
+        
+            <li>#14 -
+                <a class="" href="/archive/article/14.html">Game dev with Godot: I wrote a Godot package to crossfade between playlists and make adaptive music</a>
+            </li>
+        
+            <li>#13 -
+                <a class="" href="/archive/article/13.html">Snippet: NIUM's 3D effect, in Godot</a>
+            </li>
+        
+            <li>#12 -
+                <a class="" href="/archive/article/12.html">Linux pro-audio: Trouble-shooting JACK on Ubuntu 16.04 (KXStudio repos)</a>
+            </li>
+        
+            <li>#11 -
+                <a class="" href="/archive/article/11.html">Getting started with music production on Linux: Three ways to get set up with pro-audio free software</a>
+            </li>
+        
+            <li>#7 -
+                <a class="" href="/archive/article/7.html">Solo Game Dev Kanban Magic: I used to struggle with self-management, but my most recent technique seems to be working really well</a>
+            </li>
+        
+            <li>#6 -
+                <a class="" href="/archive/article/6.html">Game dev with Godot: Unit testing your scripts</a>
+            </li>
+        
+            <li>#5 -
+                <a class="" href="/archive/article/5.html">Game development on Linux: Using Linux at every step of the process</a>
+            </li>
+        
+            <li>#-1 -
+                <a class="" href="/archive/article/-1.html">My Godot packages</a>
+            </li>
+        
+
+    </ul>
+
+    
+        <div class="visibility-controls">
+            <div class="visible-toggle-overlay"></div>
+            <label>
+                <input [state.bind]="" name="showall" type="checkbox" value="false">
+                Read more from the archive...
+            </label>
+        </div>
+    
+</nav>
+
+
+    <div class="comment-controls">
+        <button @click:="script.showComments">
+            Read Comment Section (Disqus)
+        </button>
+    </div>
+
+
+<div class="rainbow-square" style="margin-top: 80px; padding: 10px">
+    <div id="disqus_thread"></div>
+</div>
+</x-archivesidebar>
+            
+        </div>
+    </main>
+    <footer>
+        © 2022 Michael Bethencourt - All original
+        content here is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND</a>,
+        unless otherwise noted
+    </footer>
+
+<script src="/_modulo/modulo-bundle-xbjidih.js"></script></body></html>

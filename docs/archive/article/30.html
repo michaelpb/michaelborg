@@ -1,0 +1,326 @@
+<!DOCTYPE HTML><html><head>
+    <title>The Right Way™ to do global npm install without sudo</title><meta charset="utf8"><link rel="stylesheet" href="/_modulo/modulo-bundle-1bc03jf.css"></head><body>
+    
+    
+    
+    
+    
+
+
+    <main class="Page-wrapper">
+        <div class="Page Page-relative">
+            
+            
+                <h1>michaelb.org #30</h1>
+                <hr>
+            
+            <img src="/static/img/misc_images/logo_2.png">
+            
+                <h2 class="Page-articleTitle"><span>The Right Way™ to do global npm install without sudo</span></h2>
+
+                <nav class="Page-bcNav">
+                    <ul>
+                        <li><a href="/">HOME</a></li>
+                        
+                        
+                        <li><a href="#">THE RIGHT WAY™ TO DO GLOBAL NPM INSTALL WITHOUT SUDO</a></li>
+                    </ul>
+                </nav>
+
+            
+        </div>
+        <slot class="Page
+            
+                Page-article
+            
+        ">
+
+<article class="content post tag-node tag-javascript tag-tutorial tag-web-dev tag-bash">
+<h1 class="title">The Right Way™ to do global npm install without sudo</h1>
+<section class="post-content">
+<p>I'm writing this post since there were a lot of guides online on how to set up NPM so you can do <code>npm install -g</code> (that is, a global NPM install) on macOS or Linux without superuser privileges, but all those guides recommended a rather strange directory structure, such as a very strange looking <code>~/.npm</code> directory loose in your home folder. This is a bad idea for a several reasons.</p>
+<p>In this article I intend to show the very simple steps to set it to a much better location of <code>~/.local</code>. This follows conventions and plays nice with many different applications, on both Linux-based systems, and macOS. <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
+<p>When <code>npm</code> tries to install to globally, it tries to install it's packages to the sensible location of <code>/usr/local/</code>. When you aren't a super user, this gives the warning <code>checkPermissions Missing write access to /usr/local/lib</code> and error <code>Error: EACCES: permission denied, access '/usr/local/lib'</code> and fails. Other package installers (such as Python's <code>pip</code>) already ship, at least on Ubuntu, with a concept of a user-specific local directory of <code>~/.local/</code> to replace the global <code>/usr/local/</code> to avoid such warnings.</p>
+<p>Thus, let's just reuse this existing convention.</p>
+<h4 id="step1configurenpm">Step 1: Configure NPM</h4>
+<pre><code>npm config set prefix ~/.local  
+</code></pre>
+<p>Now NPM will install your global executables to <code>~/.local/bin</code>, and the libraries to <code>~/.local/lib/node_modules/</code></p>
+<h4 id="step2addtlocalbintoyourpath">Step 2: Add <code>~/.local/bin</code> to your path</h4>
+<p>If you haven't already, open up the conf file of your favorite shell (such as <code>~/.bashrc</code> for Bash), and add in:</p>
+<pre><code>PATH=~/.local/bin/:$PATH  
+</code></pre>
+<p>That's it. You're done.</p>
+<p>Now, for why we are doing it this way instead of the incredibly common suggestions online of <code>~/.npm</code>. The most obvious is convention: other applications use <code>~/.local</code> also. However, <code>~/.npm</code> is particularly a terrible choice. Whatever you do, <strong>DON'T USE ~/.npm/</strong> as your user installation directory. Why is <code>~/.npm</code> such a bad choice? <code>~/.npm</code> is the default npm cache directory! Thus, if you clear the cache, you'd wipe your modules too. You can check to see what your cache directory is with <code>npm config ls -l | grep cache</code>.</p>
+<p>Now can anyone tell me why this isn't the default, and why there's so much misinformation about this online?</p>
+<div class="footnotes"><ol><li class="footnote" id="fn:1"><p>Relevant reading: <a href="https://www.python.org/dev/peps/pep-0370/">PEP 370</a>: it's about Python, but useful nonetheless <a href="#fnref:1" title="return to article">↩</a></p></li></ol></div>
+</section>
+</article>
+
+
+</slot>
+        <div class="Page">
+            
+                <x-archivesidebar style="margin-top: 100px" qid:="30" title="The Right Way™ to do global npm install without sudo" modulo-original-html="">
+
+<nav>
+    <ul>
+        <p>
+            #30 -
+            <a class="active" href="#">The Right Way™ to do global npm install without sudo</a> <br>
+            <span>This article is from a previous blog, actively published
+            between 2016-2019.</span>
+        </p>
+
+
+        <h2>Popular</h2>
+
+        
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                <li>#38 -
+                    <a class="" href="/archive/article/38.html">react-jsc3d: Porting a legacy 3D rendering JavaScript library to a reusable React.js component on NPM</a>
+                </li>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                <li>#33 -
+                    <a class="" href="/archive/article/33.html">Web Developer to Game Developer: Understanding game dev as a web dev using Godot</a>
+                </li>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                <li>#11 -
+                    <a class="" href="/archive/article/11.html">Getting started with music production on Linux: Three ways to get set up with pro-audio free software</a>
+                </li>
+            
+        
+            
+        
+            
+        
+            
+                <li>#5 -
+                    <a class="" href="/archive/article/5.html">Game development on Linux: Using Linux at every step of the process</a>
+                </li>
+            
+        
+            
+        
+
+        <h2>All archived articles</h2>
+        
+            <li>#45 -
+                <a class="" href="/archive/article/45.html">Upgrading Mattermost using docker-compose</a>
+            </li>
+        
+            <li>#43 -
+                <a class="" href="/archive/article/43.html">Ubuntu 18.04 on Acer Aspire 1 - A114-31-C4HH and A114-31-C5GM</a>
+            </li>
+        
+            <li>#42 -
+                <a class="" href="/archive/article/42.html">Installing Ubuntu 17.10 Linux on Acer Aspire 1</a>
+            </li>
+        
+            <li>#41 -
+                <a class="" href="/archive/article/41.html">How to quickly install Mattermost on Digital Ocean</a>
+            </li>
+        
+            <li>#39 -
+                <a class="" href="/archive/article/39.html">Ardour 5.7 Review - Free software DAW</a>
+            </li>
+        
+            <li>#38 -
+                <a class="" href="/archive/article/38.html">react-jsc3d: Porting a legacy 3D rendering JavaScript library to a reusable React.js component on NPM</a>
+            </li>
+        
+            <li>#37 -
+                <a class="" href="/archive/article/37.html">Introducing: Whiteboard</a>
+            </li>
+        
+            <li>#36 -
+                <a class="" href="/archive/article/36.html">Snippet: Implement an ability cooldown (in the Godot game engine)</a>
+            </li>
+        
+            <li>#35 -
+                <a class="" href="/archive/article/35.html">JavaScript syntax cheat-sheet for total newbies</a>
+            </li>
+        
+            <li>#34 -
+                <a class="" href="/archive/article/34.html">Snippet: Draining all pending coroutines with Python 3's async features</a>
+            </li>
+        
+            <li>#33 -
+                <a class="" href="/archive/article/33.html">Web Developer to Game Developer: Understanding game dev as a web dev using Godot</a>
+            </li>
+        
+            <li>#30 -
+                <a class="active" href="/archive/article/30.html">The Right Way™ to do global npm install without sudo</a>
+            </li>
+        
+            <li>#29 -
+                <a class="" href="/archive/article/29.html">Bash profile trick: Open last used directory when starting a new terminal emulator</a>
+            </li>
+        
+            <li>#28 -
+                <a class="" href="/archive/article/28.html">Porting a legacy browser graphics JS script (JSC3D) to Node.js with node-canvas and VM</a>
+            </li>
+        
+            <li>#27 -
+                <a class="" href="/archive/article/27.html">Releasing Sawdust: Mini-post-mortem</a>
+            </li>
+        
+            <li>#26 -
+                <a class="" href="/archive/article/26.html">Sawdust</a>
+            </li>
+        
+            <li>#25 -
+                <a class="" href="/archive/article/25.html">The Blocklings</a>
+            </li>
+        
+            <li>#24 -
+                <a class="" href="/archive/article/24.html">Ludum Dare 38</a>
+            </li>
+        
+            <li>#22 -
+                <a class="" href="/archive/article/22.html">My pre-post-mortem of rescuing my scope creeped-out puzzle game</a>
+            </li>
+        
+            <li>#21 -
+                <a class="" href="/archive/article/21.html">Godot Gestures: Pinch, twist, and drag gesture detection for mobile games</a>
+            </li>
+        
+            <li>#20 -
+                <a class="" href="/archive/article/20.html">Wow, I've made quite a few free Godot packages by now</a>
+            </li>
+        
+            <li>#17 -
+                <a class="" href="/archive/article/17.html">Godot Pannable Camera: A re-usable camera helper for Godot</a>
+            </li>
+        
+            <li>#16 -
+                <a class="" href="/archive/article/16.html">Simple puzzle game graphics with Inkscape bevels</a>
+            </li>
+        
+            <li>#15 -
+                <a class="" href="/archive/article/15.html">Snippet: Godot Resource Queue</a>
+            </li>
+        
+            <li>#14 -
+                <a class="" href="/archive/article/14.html">Game dev with Godot: I wrote a Godot package to crossfade between playlists and make adaptive music</a>
+            </li>
+        
+            <li>#13 -
+                <a class="" href="/archive/article/13.html">Snippet: NIUM's 3D effect, in Godot</a>
+            </li>
+        
+            <li>#12 -
+                <a class="" href="/archive/article/12.html">Linux pro-audio: Trouble-shooting JACK on Ubuntu 16.04 (KXStudio repos)</a>
+            </li>
+        
+            <li>#11 -
+                <a class="" href="/archive/article/11.html">Getting started with music production on Linux: Three ways to get set up with pro-audio free software</a>
+            </li>
+        
+            <li>#7 -
+                <a class="" href="/archive/article/7.html">Solo Game Dev Kanban Magic: I used to struggle with self-management, but my most recent technique seems to be working really well</a>
+            </li>
+        
+            <li>#6 -
+                <a class="" href="/archive/article/6.html">Game dev with Godot: Unit testing your scripts</a>
+            </li>
+        
+            <li>#5 -
+                <a class="" href="/archive/article/5.html">Game development on Linux: Using Linux at every step of the process</a>
+            </li>
+        
+            <li>#-1 -
+                <a class="" href="/archive/article/-1.html">My Godot packages</a>
+            </li>
+        
+
+    </ul>
+
+    
+        <div class="visibility-controls">
+            <div class="visible-toggle-overlay"></div>
+            <label>
+                <input [state.bind]="" name="showall" type="checkbox" value="false">
+                Read more from the archive...
+            </label>
+        </div>
+    
+</nav>
+
+
+    <div class="comment-controls">
+        <button @click:="script.showComments">
+            Read Comment Section (Disqus)
+        </button>
+    </div>
+
+
+<div class="rainbow-square" style="margin-top: 80px; padding: 10px">
+    <div id="disqus_thread"></div>
+</div>
+</x-archivesidebar>
+            
+        </div>
+    </main>
+    <footer>
+        © 2022 Michael Bethencourt - All original
+        content here is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND</a>,
+        unless otherwise noted
+    </footer>
+
+<script src="/_modulo/modulo-bundle-xbjidih.js"></script></body></html>
