@@ -20,7 +20,20 @@
 .Page-article h5,
 .Page-article h6 {
     font-weight: bold;
+    /*margin-left: -10px;*/
     /*clear: both;*/
+}
+
+.Page-article p {
+    line-height: 1.4;
+    font-size: 18px;
+    line-height: 24px;
+    margin-top: 5px;
+    /*margin-left: 5px;*/
+}
+
+.Page-article h1.title {
+    display: none;
 }
 
 .Page-article p + p:not(blockquote p, li p) {
@@ -30,11 +43,21 @@
 
 .Page-article pre {
     display: block;
-    border: 1px solid var(--accent3);
+    border: 1px dotted var(--accent3);
+    border-left-width: 5px;
     border-radius: 5px;
     padding: 8px;
     margin: 8px;
     font-size: 15px;
+    clear: both;
+}
+
+.Page-article hr {
+    border: none;
+    border-top: 5px dotted var(--accent3);
+    margin: 20px;
+    margin-left: 80px;
+    margin-right: 80px;
 }
 
 .Page-article blockquote {

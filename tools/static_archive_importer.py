@@ -82,6 +82,37 @@ PRE = '''
     <script>Modulo.defineAll()</script>
 '''
 
+def redirect_html(new_url):
+    return f'''<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Redirecting to {new_url}</title>
+<meta http-equiv="refresh" content="0; URL={new_url}">
+<link rel="canonical" href="{new_url}">
+'''
+
+PATCHES = {
+# general:
+    '<a href="index.html#': '<a href="#',
+# specific:
+    '<a href="../sawdust/index.html">puzzle game Sawdust</a>': 'puzzle game Sawdust',
+    '<a href="http://michaelb.org/webdev2gamedev">Already into web development? Check out this article on making the conceptual jump.</a>':
+        '''
+            <a href="/archive/article/33.html">Already into web development?
+            Check out this article on making the conceptual jump.</a>
+        ''',
+    '<a href="../getting-started-with-pro-audio-on-linux/index.html"> my other article: getting started with music production on Linux</a>': '''
+        <a href="/archive/article/11.html"> my other
+        article: getting started with music production on Linux</a>
+    '''
+    '<a href="../getting-started-with-linux-game-development/index.html">more and more FOSS game dev tools are popping up</a>': 'more and more FOSS game dev tools are popping up',
+}
+
+def process_text(text):
+    for patch, replacement in PATCHES.items():
+        text = text.replace(patch, replacement)
+    return text
+
+
 for article in articles:
     newpath = (
         '/home/michaelb/projects/michaelborg/src/archive/article/' +
@@ -93,12 +124,24 @@ for article in articles:
         'title': article["title"],
         'length': len(article['text'].split()),
     })
+
+    text = process_text(article['text'])
+
     f = open(newpath, 'w+')
     html = (
         PRE + '<x-Page ' + 'archivedid="' + str(article["id"]) + '"' +
-        'pagetitle="' + article["title"] + '"' + '>\n\n' + article["text"] +
+        'pagetitle="' + article["title"] + '"' + '>\n\n' + text +
         f'\n\n</x-Page>'
     )
+    f.write(html)
+
+    # Adds in shortcut redirects
+    redirect_newpath = (
+        '/home/michaelb/projects/michaelborg/docs/' +
+        str(article['slug'])
+    )
+    f = open(redirect_newpath, 'w+')
+    new_url = newpath[40:] + '#' + article['slug'] # adds title for convenience
     f.write(html)
 
 

@@ -1,11 +1,19 @@
 
 <!-- Define my core Page component -->
 <Component name="Page" mode="vanish-into-document">
+
     <Props
         pagetitle
         archivedid
     ></Props>
     <Template src="./core/Page.html"></Template>
+    <Script>
+        function initializedCallback() {
+            return {
+                currentYear: (new Date()).getFullYear(),
+            }
+        }
+    </Script>
 </Component>
 
 
@@ -36,5 +44,56 @@
     </Script>
 
     <Style src="./core/ArchiveSidebar.css"></Style>
+</Component>
+
+
+
+<Component name="ArchiveList" mode="vanish">
+    <Props
+        qid
+    ></Props>
+    <Template>
+        {% for info in staticdata|reversed %}
+            <li>#{{ info.id }} -
+                <a class="{% if info.id == props.qid %}active{% endif %}"
+                    href="/archive/article/{{ info.id }}.html">{{ info.title|safe }}</a>
+            </li>
+        {% endfor %}
+    </Template>
+    <!-- NOTE: For some reason, absolute ones broke here! -->
+    <StaticData src="../archive/article/dir_listing.json"></StaticData>
+</Component>
+
+
+<Component name="SoundcloudButton">
+    <Template>
+        {% if state.isvisible %}
+            <iframe width="100%" height="100" scrolling="no" frameborder="no"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367015547&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"></iframe>
+        {% else %}
+            <a class="Btn" @click:=script.show>
+                <img
+                    src="/static/img/music_related/soundcloud_the_mission_begins.png"
+                    alt="Michael B's Soundcloud page, with The Mission Begins, Planetfall and Lifesigns"
+                    title="Michael B's Soundcloud page, with The Mission Begins, Planetfall and Lifesigns"
+                />
+            </a>
+        {% endif %}
+    </Template>
+    <State
+        isvisible:=false
+    ></State>
+    <Script>
+        function show(target, e) {
+            state.isvisible = true;
+        }
+    </Script>
+    <!-- NOTE: For some reason, absolute ones broke here! -->
+    <StaticData src="../archive/article/dir_listing.json"></StaticData>
+    <Style>
+        a {
+            cursor: pointer;
+        }
+    </Style>
 </Component>
 

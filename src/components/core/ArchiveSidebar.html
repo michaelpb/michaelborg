@@ -6,7 +6,7 @@
             #{{ props.qid }} -
             <a class="active" href="#">{{ props.title }}</a> <br />
             <span>This article is from a previous blog, actively published
-            between 2016-2019:</span>
+            between 2016-2019.</span>
         </p>
 
 
@@ -14,10 +14,10 @@
 
         {# TODO refactor the loop into a snippet #}
         {% for info in staticdata|reversed %}
-            {% if info.id == 5 %}
+            {% if info.id|add:"," in "5,11,33,38," %}
                 <li>#{{ info.id }} -
                     <a class="{% if info.id == props.qid %}active{% endif %}"
-                        href="/archive/article/{{ info.id }}.html">{{ info.title }}</a>
+                        href="/archive/article/{{ info.id }}.html">{{ info.title|safe }}</a>
                 </li>
             {% endif %}
         {% endfor %}
@@ -26,7 +26,7 @@
         {% for info in staticdata|reversed %}
             <li>#{{ info.id }} -
                 <a class="{% if info.id == props.qid %}active{% endif %}"
-                    href="/archive/article/{{ info.id }}.html">{{ info.title }}</a>
+                    href="/archive/article/{{ info.id }}.html">{{ info.title|safe }}</a>
             </li>
         {% endfor %}
 

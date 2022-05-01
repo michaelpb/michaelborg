@@ -1,0 +1,19 @@
+
+    <script src="https://modulojs.org/js/Modulo.js"></script>
+    <Modulo>
+        <Library namespace="x" src="/components/core.html"></Library>
+    </Modulo>
+    <script>Modulo.defineAll()</script>
+<x-Page archivedid="24"pagetitle="Ludum Dare 38">
+
+<article class="content post tag-game-dev tag-ludumdare">
+<h1 class="title">Ludum Dare 38</h1>
+<section class="post-content">
+<p>I'm all ready to start <a href="https://ldjam.com/">Ludum Dare 38</a>!</p>
+<p>In case you don't know, it's a game dev competition / game jam to make an entire game in 48 hours. It'll be my first go at it, so I'm super pumped.</p>
+<p><img src="../content/images/2017/04/IMG_20170421_155326993.jpg" alt="All ready to work!" /></p>
+</section>
+</article>
+</div>
+
+</x-Page>

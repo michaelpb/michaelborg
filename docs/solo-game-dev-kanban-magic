@@ -1,0 +1,75 @@
+
+    <script src="https://modulojs.org/js/Modulo.js"></script>
+    <Modulo>
+        <Library namespace="x" src="/components/core.html"></Library>
+    </Modulo>
+    <script>Modulo.defineAll()</script>
+<x-Page archivedid="7"pagetitle="Solo Game Dev Kanban Magic: I used to struggle with self-management, but my most recent technique seems to be working really well">
+
+<article class="content post tag-game-dev tag-self-management">
+<h1 class="title">Solo Game Dev Kanban Magic: I used to struggle with self-management, but my most recent technique seems to be working really well</h1>
+<section class="post-content">
+<p><strong>Over the last month I've been experimenting with an "agile" time-management method for my solo-game dev work. The verdict? Works like a charm!</strong></p>
+<p>Recently, I switched from a full-time web dev position to being a full-time solo game dev. Now, this isn't my first time doing solo projects full-time, and I know that my biggest enemy to productivity is often myself, so I wanted to be absolutely sure that I use my time to 100% capacity.</p>
+<p>In my "day jobs", I've noticed I could churn out features and code at a pretty steady rate. This had to do with, 1. the fact that other people relied on me kept me motivated, 2. certain tasks were taken care of by others, so all I needed to do was focus on implementing technical specs, and 3. I worked with a "professional detachment" from the project.</p>
+<p>I roll my eyes at agile-whatever as much as the next guy, but, still, I needed <em>something</em> of that bureaucracy to keep me going. I've tried a variety of online task trackers that worked for other people, but for whatever reason, none of those clicked. After a month of using my kanban technique, I think it's safe to say this one did click.</p>
+<hr />
+<h2 id="michaelbssologamedevkanbanmagic">michaelb's solo game dev kanban magic</h2>
+<blockquote>
+<p><img src="../content/images/2016/09/sprint_kanban_board.jpg" alt="My Kanban board" title="" /></p>
+<p>My Kanban board is posted on the wall in front of my desk. I use index cards cut in half as "tickets". The columns are Icebox, Backlog, Sprint, In Progress, and Done. The In Progress area isn't visible in this photo, but that's because I move In Progress tickets down to a separate spot so they can be in front of me as I work on them. The color coding lets me split based on project and/or ticket type.</p>
+</blockquote>
+<p>The method I came up with, click-baity titles aside, is just a slew of garden-variety agile concepts adapted for my needs as a solo game dev. The rules:</p>
+<ol>
+<li>2-3 day sprints </li>
+<li>Track all time spent with small tickets </li>
+<li>Kanban board </li>
+<li>Dead trees for all the things!</li>
+</ol>
+<p>This worked for me. Maybe with some personalization, there could be something helpful in here for you!</p>
+<h3 id="howtodoit">How to do it</h3>
+<ol>
+<li><p><strong>Split up your time into 2-3 day sprints.</strong> Short sprints = more agile, agile is god, and since 1 person is the smallest team, should also have very short sprints, or something. At the beginning of each sprint, you will move tickets (portions of work) from "backlog" to "sprint" on your kanban board.</p></li>
+<li><p><strong>Never do anything without first writing a ticket.</strong> </p>
+<ul><li>I assign points to my ticket based on a rough estimate of the amount of time I'll spend on it, in increments of 2, 4, or 8 hours. My estimates got better with practice.</li>
+<li>Each ticket must be "deliverable" -- that is, it should integrate into your final product and not break anything else or leave stuff in a state of disrepair.</li>
+<li>Track <em>everything</em> you do as tickets: You'll be making design tickets, art tickets, programming tickets, marketing tickets, even blogging tickets (guess what I have sitting in front of me as I write this blog post?)</li>
+<li>The "deliverable" varies based on the ticket type. For code, it's a git commit (you <em>are</em> using version control... right?). For designing a feature, it's a specification document saying what it <em>should</em> do, to be read by whoever will implement it (e.g. you).</li></ul></li>
+<li><p><strong>Track your sprints on a Kanban board.</strong> The board I use has the following categories: </p>
+<ul><li>Icebox: These are tickets that are "nice to have". They are not essential to the minimum feature-set of your game. In general, when you have a "cool idea", it should go here first as you work on more pressing stuff.</li>
+<li>Backlog: These are tickets you know you will need to complete eventually. The tickets here should be the route to a milestone of some kind, such as your first alpha or your next beta, or the released game.</li>
+<li>Sprint: You have committed to these tickets for the current sprint. Only move to here as many tickets as you can do in one sprint: You should feel bad if you over-commit, or under-commit.</li>
+<li>In Progress: You are working on this right now / today. If you get stuck, move it back to either Sprint or Backlog, and reflect on how you could better manage yourself so this happens less.</li>
+<li>Done: Once the ticket has been delivered, move it here.</li></ul></li>
+<li><p><strong>Be a Luddite, use dead trees.</strong> You don't have coworkers or bosses, you just have yourself, so you need something sitting in front of you reminding you of what you have committed to. For me, this was perhaps the most important ingredient. I keep it in front of my desk so I can't ignore it like I could a website. I've tried probably a dozen web-based tools, and I can't get myself to be consistent with any of them if I'm the only person using it. You need to feel bad if you break the rules.</p></li>
+</ol>
+<h3 id="pitfallsofsolodevelopment">Pitfalls of solo development</h3>
+<p><strong>Solo work is hard mode.</strong></p>
+<p>I said earlier that this method is working for me since it addresses some of the pitfalls of solo work. I've teased apart some of the pitfalls I think I've fallen into the past, and how to avoid them.</p>
+<h4 id="evilplotbunnyofdeathanddoom">Evil plot bunny of death and doom</h4>
+<blockquote>
+<p><img src="http://i.imgur.com/acLFVk5.jpg" alt="The Killer Rabbit" title="" /></p>
+</blockquote>
+<p>Generally speaking, my previous work, was, well, "work". It was something I wanted to get over with. Now I am doing something I actually <em>like</em> doing. At my previous "day jobs" I was much more likely to put in minimal effort to meet the technical specifications of the task at hand. While putting passion into your game is vital, the bigger risk for me (and I suspect for most) is <em>too much passion</em>: having fun, but ending up wasting precious time while not getting tangibly closer to releasing.</p>
+<p>Writers call these <a href="https://en.wiktionary.org/wiki/plot_bunny">plot bunnies</a> -- pesky ideas that you feel compelled to write, but ultimately multiply out of control. This is very applicable to game writing: You don't need to spend hours drawing a really cool sprite for an enemy that's likely to be cut anyway, but the temptation is strong.</p>
+<p><strong>Lesson learned:</strong> Stay focused on daily deliverables. "Cool stuff" (plot bunnies) gets put in the icebox. If I commit to 8-12 points a day, I need to get 8-12 points done that day.</p>
+<h4 id="tothineownselfbeajerk">To thine ownself be a jerk</h4>
+<p>During the development stage, you don't have anyone to be mean to you. Remember: Your potential players won't be nice to you. They'll (rightly) expect a full game and for you to deliver within the time you have.</p>
+<p>When working with others in my "day job", I had people that depended on me to do my job. There was this subtle on-going social pressure to do what I had to do. When working by myself, the social pressure is distant or abstract: Even if you live hand-to-mouth as a game dev, this isn't influenced by day-to-day development. Instead there's a "delay" of even years before you get that social pressure to deliver. The flip-side can be equally problematic: You get no "job well done" or pat on the back for every day's little accomplishments.</p>
+<p><strong>Lesson learned:</strong> Use paper ("dead trees") for everything. I keep the kanban board right in front of my desk, judging me. I take my job seriously. If I don't complete enough I need to <em>feel guilty</em> like I let somebody down (myself, future players). If I get my stuff done, I need to feel good, satisfied and rewarded: I did my job today, time to kick back and recharge my mental batteries.</p>
+<h4 id="thevalvemethodlotsofhats">The Valve method: Lots of hats</h4>
+<p>Valve Software is known for unusual management hierarchy. They are also known for making games with lots of hats. For solo game devs, the second thing is the more important.</p>
+<blockquote>
+<p><img src="http://1u88jj3r4db2x4txp44yqfj1.wpengine.netdna-cdn.com/wp-content/uploads/2014/01/hats-930x407.jpg" alt="All the hats" title="" /></p>
+</blockquote>
+<p>In a traditional software shop as a developer, I can rely on product managers to create technical specifications, testers to ensure what I wrote matched those specifications, design to hand me pretty mock-ups, and marketing to produce text and content. All these relationships have some degree of cooperation and also "friendly antagonism" between them. Most importantly, each team can focus on doing their job, and assume the other will get their part done. Design didn't have to think about <em>how</em> I made things pretty, they just needed to define what "pretty" was. Product managers didn't need to know the internals of the new feature, just what was generally easy and hard, and from that, triage ranked priorities for what to do next.</p>
+<p>I'm a solo dev now, so I gotta be everything. I gotta wear <em>all of the hats</em>. But in order to be as productive as I was, I need to self-police about only wearing one hat at a time. While I'm thinking about what's pretty, I can't worry about how I'll implement it. While I'm thinking about specifications of my game-play or game-engine, I can't worry about how I'll test it. I just need to do each job as well as I can and figure out how to make the ends-meet in the end, otherwise I'll be overwhelmed.</p>
+<p><strong>Lesson learned:</strong> Each ticket I create is of a certain "role". Many are development, but others might be art, or web-site work. If I'm not sure <em>what</em> I want to do next, I create both a "design" ticket and an "implement" ticket. For the first, I sit down in front of a piece of paper away from the computer and brainstorm a specification. I give myself a good chunk of time for this, at least 1-3 hours. I resist the urge to think about implementation: this is a contract with myself, I'll worry about implementation after. I have separate time allotted for both.</p>
+<h2 id="reapingthebenefits">Reaping the benefits</h2>
+<p>I've tried it for about a month, and consistently delivered ~40 points a week, which was my goal. I feel quantitatively more able to create <em>deliverable</em> products than I have with personal projects in the past. Will it continue to work? I think so, I hope so, and I'll keep you guys informed!</p>
+<p><strong>Have you tried this or something similar? How did it go? What project management techniques work for you?</strong> Let me know in the comment section!</p>
+</section>
+</article>
+</div>
+
+</x-Page>

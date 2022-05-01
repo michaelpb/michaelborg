@@ -52,7 +52,8 @@ body {
         -1px -1px #ffffff;
 }
 
-.Page > img:first-of-type {
+.Page > img:first-of-type,
+.Page .coolfx {
     /*transform: skew(-15deg, -15deg);*/
     margin-left: var(--leftoffset);
     z-index: 3;
@@ -116,14 +117,18 @@ body {
     */
 }
 
+.Page > h2,
 .Page > h2.Page-articleTitle {
-    width: 100%;
     text-transform: none;
     font-weight: bold;
-    text-shadow: -700px -24px var(--accent1) ,900px -24px var(--accent1) ;
+    margin-top: 100px;
+    text-shadow: -200px -40px var(--accent1) ,900px -24px var(--accent1) ;
+}
+.Page > h2.Page-articleTitle {
+    width: 100%;
 }
 
-.Page > h2.Page-articleTitle > span {
+.Page > h2 > span {
     background: white;
 }
 
@@ -172,6 +177,67 @@ body {
     height: auto;
 }
 
+.Page .glitchydots {
+    background-image:
+        radial-gradient(
+            transparent 20%,
+            #fff 20%,
+            #fff 60%,
+            transparent 60%);
+    background-size: 100px 10px;
+    background-position: 0px 0px;
+    transition: 
+        background-position 0.1s,
+        background-size 0.3s;
+}
+
+.Page .glitchydots:hover {
+    background-size: 2px 2px;
+    background-position: -50px -50px;
+}
+
+/*
+.Page .glitchypattern {
+	background-image:
+        repeating-linear-gradient(
+            13deg,
+            var(--accent2) 4px,
+            var(--accent2) calc(8px),
+            var(--accent1) calc(8px), 
+            var(--accent1) calc(12px),
+            var(--accent3) calc(12px),
+            var(--accent3) calc(16px)
+        ), none;
+	background-size: 10px 100%, 10px 100%;
+}
+*/
+
+
+.Page .glitchypattern {
+	background-image:
+        repeating-linear-gradient(
+            15deg,
+            transparent 4px,
+            transparent calc(8px),
+            var(--accent3) calc(8px), 
+            var(--accent3) calc(12px),
+            transparent calc(12px),
+            transparent calc(16px)
+        ), none;
+	background-size: 10px 100%, 10px 100%;
+}
+
+
+.Page hr.glitchypattern {
+    height: 13px;
+    margin: 15px;
+    border: none;
+}
+
+.Page-relative {
+    position: relative;
+}
+
 .Page > section {
     display: flex;
     flex-direction: row;
@@ -183,6 +249,123 @@ body {
     padding: 20px;
 }
 
+.Page-trNav {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    border: 1px solid var(--accent3);
+    border-radius: 8px;
+    padding: 8px;
+    z-index: 50;
+    padding-left: 0;
+}
+
+.Page-bcNav {
+}
+.Page-bcNav > ul > li::before {
+    content: "\25B7";
+    color: var(--accent2);
+}
+
+.Page-bcNav > ul ,
+.Page-trNav > ul {
+    display: flex;
+}
+.Page-trNav > ul > li,
+.Page-bcNav > ul > li {
+    font-size: 20px;
+    margin-right: 40px;
+    padding-left: -10px;
+}
+
+.Page-linkList {
+    position: relative;
+    z-index: 1;
+}
+.Page-linkList li {
+    font-size: 20px;
+    text-align: justify;
+    margin-right: 40px;
+    margin-left: -10px;
+    min-width: 400px;
+}
+
+.Page-linkList li a {
+    font-weight: bold;
+}
+
+.Page-linkList .Page-messyImage {
+    position: absolute;
+    z-index: 0;
+    height: 150px;
+    padding: 5px;
+    border: 1px solid var(--accent3);
+}
+.Page-linkList .Page-messyImage:nth-of-type(1) {
+    top: -100px;
+    right: -200px;
+    padding-right: 50px;
+    border-radius: 100px 0 0 0;
+}
+.Page-linkList .Page-messyImage:nth-of-type(2) {
+    top: 0px;
+    right: -240px;
+    padding-top: 50px;
+    height: 190px;
+    border-radius: 0 50px 0 0;
+}
+.Page-linkList .Page-messyImage:nth-of-type(3) {
+    top: 150px;
+    right: -190px;
+    padding-left: 50px;
+    border-radius: 0 0 100px 0;
+}
+.Page-linkList .Page-messyImage:nth-of-type(4) {
+    top: 250px;
+    right: -130px;
+    height: 190px;
+    padding-bottom: 50px;
+    border-radius: 0 0 0 200px;
+}
+
+.Page .Btn {
+    border: 1px solid var(--accent2);
+    padding: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--accent2);
+    display: inline-block;
+    border-radius: 4px;
+    margin: 2px;
+
+    background-image:
+        radial-gradient(
+            var(--accent2) 20%,
+            #fff 20%,
+            #fff 60%,
+            var(--accent2) 60%);
+    transition: 
+        background-position 0.1s,
+        background-size 0.3s,
+        color 0.5s;
+    background-size: 2px 2px;
+    background-position: -50px -50px;
+}
+
+.Page .Btn:hover {
+    color: black;
+    background-size: 4px 4px;
+    background-position: 0px 0px;
+}
+
+.Page .glitchydots:hover {
+}
+
+footer {
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
 
 @media (max-width: 920px) {
     :root {

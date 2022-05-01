@@ -7,13 +7,40 @@
 </head>
 <body>
     <main class="Page-wrapper">
-        <div class="Page">
+        <div class="Page Page-relative">
+            {% comment %}
+            {% if props.pagetitle %}
+                <nav class="Page-trNav">
+                    <ul>
+                        <li><a href="/">HOME</a></li>
+                        <!--<li><a href="/hiring.html">EMPLOYMENT</a></li>-->
+                        <li><a href="/projects/">PROJECTS</a></li>
+                        <li><a href="/articles/">ARTICLES</a></li>
+                    </ul>
+                </nav>
+            {% endif %}
+            {% endcomment %}
             {% if props.archivedid %}
                 <h1>michaelb.org #{{ props.archivedid }}</h1>
                 <hr />
-                <img src="/static/img/misc_images/logo_2.png" />
-                <a href="">Articles</a>
-                <h2 class="Page-articleTitle"><span>{{ props.pagetitle }}</span></h2>
+            {% endif %}
+            <img src="/static/img/misc_images/logo_2.png" />
+            {% if props.pagetitle %}
+                <h2 class="Page-articleTitle"><span>{{ props.pagetitle|safe }}</span></h2>
+
+                <nav class="Page-bcNav">
+                    <ul>
+                        <li><a href="/">HOME</a></li>
+                        {% if props.bc1 %}
+                            <li><a href="/{{ props.bc1 }}.html">{{ props.bc1|upper }}</a></li>
+                        {% endif %}
+                        {% if props.bc2 %}
+                            <li><a href="/{{ props.bc2 }}.html">{{ props.bc2|upper }}</a></li>
+                        {% endif %}
+                        <li><a href="#">{{ props.pagetitle|upper }}</a></li>
+                    </ul>
+                </nav>
+
             {% endif %}
         </div>
         <slot class="Page
@@ -31,4 +58,10 @@
             {% endif %}
         </div>
     </main>
+    <footer>
+        &copy; {{ script.currentYear }} Michael Bethencourt - All original
+        content here is licensed under <a
+        href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND</a>,
+        unless otherwise noted
+    </footer>
 </body>
