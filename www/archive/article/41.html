@@ -1,7 +1,7 @@
 <!DOCTYPE HTML><html><head><script src="https://modulojs.org/js/Modulo.js"></script>
     <modulo>
         <library namespace="x" src="/components/core.html"></library>
-    </modulo><title>Wow, I've made quite a few free Godot packages by now</title><meta charset="utf8"><link rel="stylesheet" href="/components/core/Page.css"><link rel="stylesheet" href="/components/core/Page-reset.css"><link rel="stylesheet" href="/components/core/Page-article.css"><link rel="stylesheet" href="/_modulo/modulo-build-xkbsqrr.css"></head><body>
+    </modulo><title>How to quickly install Mattermost on Digital Ocean</title><meta charset="utf8"><link rel="stylesheet" href="/components/core/Page.css"><link rel="stylesheet" href="/components/core/Page-reset.css"><link rel="stylesheet" href="/components/core/Page-article.css"><link rel="stylesheet" href="/_modulo/modulo-build-xkbsqrr.css"></head><body>
     
     
     
@@ -13,19 +13,19 @@
         <div class="Page Page-relative">
             
             
-                <h1>michaelb.org #20</h1>
+                <h1>michaelb.org #41</h1>
                 <hr>
             
             <img src="/static/img/misc_images/logo_2.png">
             
-                <h2 class="Page-articleTitle"><span>Wow, I've made quite a few free Godot packages by now</span></h2>
+                <h2 class="Page-articleTitle"><span>How to quickly install Mattermost on Digital Ocean</span></h2>
 
                 <nav class="Page-bcNav">
                     <ul>
                         <li><a href="/">HOME</a></li>
                         
                         
-                        <li><a href="#">WOW, I'VE MADE QUITE A FEW FREE GODOT PACKAGES BY NOW</a></li>
+                        <li><a href="#">HOW TO QUICKLY INSTALL MATTERMOST ON DIGITAL OCEAN</a></li>
                     </ul>
                 </nav>
 
@@ -37,16 +37,51 @@
             
         ">
 
-<article class="content post tag-godot tag-game-dev">
-<h1 class="title">Wow, I've made quite a few free Godot packages by now</h1>
+<article class="content post tag-web-dev tag-tutorial tag-docker">
+<h1 class="title">How to quickly install Mattermost on Digital Ocean</h1>
 <section class="post-content">
-<p>I've noticed I've written a total of 9 open source packages for the <a href="https://godotengine.org/">Godot engine</a>! I'm pretty pleased with this number, nothing makes me happier than giving back to the world of free software. I created a page that I'll keep updated with links to all of the repos:</p>
+<p><a href="https://about.mattermost.com/">Mattermost is a popular free software Slack alternative</a>. Slack can get really expensive really quickly for organizations of any sufficient size, so you either bare with the extremely limited free plan (which holds your data "hostage"), or you switch over to a free alternative like Mattermost. With this, instead of forking over cash for Slack, you can run your own for as cheaply as $5 a month.</p>
+<p>Digital Ocean is my preferred hosting service. It's similar to Amazon's AWS, but has a much cleaner and simpler interface, and easy to understand pricing scheme ($5 a month). If you haven't signed up yet, you can via <a href="https://m.do.co/c/46be31e3f9b5">my affiliate link which will give us both $10 of credit</a>.</p>
+<p>Installation of Mattermost is pretty easy on Digital Ocean, as I found out. I in turn used <a href="https://docs.mattermost.com/install/prod-docker.html#production-docker-setup-on-ubuntu">these</a> <a href="https://docs.mattermost.com/install/smtp-email-setup.html">two</a> guides using their Docker Compose setup. Let's get started!</p>
+<h3 id="1createnewdockerdropletondigitalocean">1. Create new Docker droplet on Digital Ocean</h3>
+<p>Create a new droplet using the Docker one-click app. Be sure to add your public key.</p>
+<p><img src="../content/images/2017/12/Selection_006.png" alt=""></p>
+<h3 id="2installmattermostandbringupserver">2. Install Mattermost and bring up server</h3>
 <ul>
-<li><a href="../godot-packages/index.html">http://michaelb.org/godot-packages/</a></li>
+<li>First download the Mattermost's Dockerfiles. In this example, I've pinned the version to 5.6. SSH into your new droplet and run the following commands: </li>
 </ul>
-<p>This includes both ones I've mentioned on my blog, and a few that are still too WIP to be much use to any one else. For the time being they only exist as git repos, eventually I may see how to integrate them into Godot's asset store. I'm also pleased to note that game development can be done in a quite modular fashion following similar practices to other software dev.</p>
-<p>Here's a GIF of the most recent thing I've been working on... once finished I'll post a full post describing it's usage:</p>
-<p><img src="../content/images/2017/03/godot_responsive_2.gif" alt="godot-responsive"></p>
+<pre><code>git clone https://github.com/mattermost/mattermost-docker.git  
+cd mattermost-docker  
+git checkout 5.6  
+</code></pre>
+<ul>
+<li><p><strong>Optional:</strong> At this point, you may wish to switch to "Team Edition" - the truly free software version - as opposed to "Enterprise Edition", which has a few features installed (but disabled) unless you purchase a support contract from the corporation that develops Mattermost. To change to "team edition", open up the <code>docker-compose.yml</code> (consider running the command <code>nano docker-compose.yml</code>), and uncomment the line that says <code>args:</code> and <code>- edition: team</code>. There should be a comment above these lines saying something similar to "uncomment the following lines to enable team edition". To my knowledge, there is no downside to keeping it set to <em>Enterprise Edition</em>, even if you do not ever purchase a contract.</p></li>
+<li><p>Then build the images. This will take a while:</p></li>
+</ul>
+<pre><code>docker-compose build  
+</code></pre>
+<ul>
+<li>Finally, start the server in daemon mode</li>
+</ul>
+<pre><code>docker-compose up -d  
+</code></pre>
+<ul>
+<li>If you decided to use an older version (e.g. 4.x) you are done. Otherwise, you may have to run the following command to create relevant volume directories, and change permissions:</li>
+</ul>
+<pre><code>mkdir -pv ./volumes/app/mattermost/{data,logs,config}  
+chown -R 2000:2000 ./volumes/app/mattermost/  
+</code></pre>
+<h3 id="3configuringsitesettings">3. Configuring site settings</h3>
+<p>Now visit the IP address. You should see a nice Mattermost interface. Create a team, add your domain name, configure what you want.</p>
+<p><img src="../content/images/2017/12/Selection_008.png" style="width: 200px; float: left;"></p>
+<p><img src="../content/images/2017/12/Selection_009.png" alt=""></p>
+<h3 id="email">Email</h3>
+<p>You'll also want to setup email. <a href="https://docs.mattermost.com/install/smtp-email-setup.html">That's a bit more complicated</a>, but generally you'll need to register for a 3rd party email service and then put in credentials here.</p>
+<p>Until then, you can just use "invitation links" to invite teammates to your channel. Email is not absolutely necessary for use, although it is very handy for notifications.</p>
+<h3 id="ssl">SSL</h3>
+<p>You can also set up <code>https</code> support here.</p>
+<hr>
+<p>2018 Edit: <em>Thanks to Kevin for pointing this out some issues with the original version.</em> Source docs: <a href="https://docs.mattermost.com/install/prod-docker.html">https://docs.mattermost.com/install/prod-docker.html</a></p>
 </section>
 </article>
 
@@ -54,13 +89,13 @@
 </slot>
         <div class="Page">
             
-                <x-archivesidebar style="margin-top: 100px" qid:="20" title="Wow, I've made quite a few free Godot packages by now" modulo-original-html="">
+                <x-archivesidebar style="margin-top: 100px" qid:="41" title="How to quickly install Mattermost on Digital Ocean" modulo-original-html="">
 
 <nav>
     <ul>
         <p>
-            #20 -
-            <a class="active" href="#">Wow, I've made quite a few free Godot packages by now</a> <br>
+            #41 -
+            <a class="active" href="#">How to quickly install Mattermost on Digital Ocean</a> <br>
             <span>This article is from a previous blog, actively published
             between 2016-2019.</span>
         </p>
@@ -166,7 +201,7 @@
             </li>
         
             <li>#41 -
-                <a class="" href="/archive/article/41.html">How to quickly install Mattermost on Digital Ocean</a>
+                <a class="active" href="/archive/article/41.html">How to quickly install Mattermost on Digital Ocean</a>
             </li>
         
             <li>#39 -
@@ -234,7 +269,7 @@
             </li>
         
             <li>#20 -
-                <a class="active" href="/archive/article/20.html">Wow, I've made quite a few free Godot packages by now</a>
+                <a class="" href="/archive/article/20.html">Wow, I've made quite a few free Godot packages by now</a>
             </li>
         
             <li>#17 -

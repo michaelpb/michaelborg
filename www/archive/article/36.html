@@ -1,0 +1,507 @@
+<!DOCTYPE HTML><html><head><script src="https://modulojs.org/js/Modulo.js"></script>
+    <modulo>
+        <library namespace="x" src="/components/core.html"></library>
+    </modulo><title>Snippet: Implement an ability cooldown (in the Godot game engine)</title><meta charset="utf8"><link rel="stylesheet" href="/components/core/Page.css"><link rel="stylesheet" href="/components/core/Page-reset.css"><link rel="stylesheet" href="/components/core/Page-article.css"><link rel="stylesheet" href="/_modulo/modulo-build-xkbsqrr.css"></head><body>
+    
+    
+    
+    
+    
+
+
+    <main class="Page-wrapper">
+        <div class="Page Page-relative">
+            
+            
+                <h1>michaelb.org #36</h1>
+                <hr>
+            
+            <img src="/static/img/misc_images/logo_2.png">
+            
+                <h2 class="Page-articleTitle"><span>Snippet: Implement an ability cooldown (in the Godot game engine)</span></h2>
+
+                <nav class="Page-bcNav">
+                    <ul>
+                        <li><a href="/">HOME</a></li>
+                        
+                        
+                        <li><a href="#">SNIPPET: IMPLEMENT AN ABILITY COOLDOWN (IN THE GODOT GAME ENGINE)</a></li>
+                    </ul>
+                </nav>
+
+            
+        </div>
+        <slot class="Page
+            
+                Page-article
+            
+        ">
+
+<article class="content post tag-game-dev tag-snippet tag-godot">
+<h1 class="title">Snippet: Implement an ability cooldown (in the Godot game engine)</h1>
+<section class="post-content">
+<p>Perhaps you are working on an action game or action RPG where different abilities need different cooldowns, but here's a tiny snippet that can be a re-usable Cooldown utility to check for when abilities can be re-used. Also useful for "rate-limiting" in general, e.g. adding a maximum rate of fire.</p>
+<p>The top part would go into a <code>Cooldown.gd</code> file, that you then include in another file to use as a class (the bottom part shows example usage).</p>
+<script src="https://gist.github.com/michaelpb/b150f26e2efb30fb557741645c6c1436.js"></script><link rel="stylesheet" href="https://github.githubassets.com/assets/gist-embed-5687a589e344.css"><div id="gist73571641" class="gist">
+    <div class="gist-file" translate="no">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-cooldown-gd" class="file my-2">
+    
+    <div itemprop="text" class="Box-body p-0 blob-wrapper data type-gdscript  ">
+
+        
+<div class="js-check-bidi js-blob-code-container blob-code-content">
+
+  <template class="js-file-alert-template">
+  <div data-view-component="true" class="flash flash-warn flash-full d-flex flex-items-center">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path>
+</svg>
+  
+    <span>
+      This file contains bidirectional Unicode text that may be interpreted or compiled differently than what appears below. To review, open the file in an editor that reveals hidden Unicode characters.
+      <a href="https://github.co/hiddenchars" target="_blank">Learn more about bidirectional Unicode characters</a>
+    </span>
+
+
+  <div data-view-component="true" class="flash-action">      <a href="{{ revealButtonHref }}" data-view-component="true" class="btn-sm btn">  Show hidden characters
+  
+</a>
+</div>
+</div></template>
+<template class="js-line-alert-template">
+  <span aria-label="This line has hidden Unicode characters" data-view-component="true" class="line-alert tooltipped tooltipped-e">
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path>
+</svg>
+</span></template>
+
+  <table class="highlight tab-size js-file-line-container js-code-nav-container js-tagsearch-file" data-tab-size="8" data-paste-markdown-skip="" data-tagsearch-lang="GDScript" data-tagsearch-path="Cooldown.gd">
+        <tbody><tr>
+          <td id="file-cooldown-gd-L1" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="1"></td>
+          <td id="file-cooldown-gd-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> in a Cooldown.gd:</span></td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L2" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="2"></td>
+          <td id="file-cooldown-gd-LC2" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L3" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="3"></td>
+          <td id="file-cooldown-gd-LC3" class="blob-code blob-code-inner js-file-line"><span class="pl-k">var</span> time <span class="pl-k">=</span> <span class="pl-c1">0.0</span></td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L4" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="4"></td>
+          <td id="file-cooldown-gd-LC4" class="blob-code blob-code-inner js-file-line"><span class="pl-k">var</span> max_time <span class="pl-k">=</span> <span class="pl-c1">0.0</span></td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L5" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="5"></td>
+          <td id="file-cooldown-gd-LC5" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L6" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="6"></td>
+          <td id="file-cooldown-gd-LC6" class="blob-code blob-code-inner js-file-line"><span class="pl-k">func</span> <span class="pl-c1">_init</span>(max_time):</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L7" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="7"></td>
+          <td id="file-cooldown-gd-LC7" class="blob-code blob-code-inner js-file-line">    <span class="pl-c1">self</span>.<span class="pl-smi">max_time</span> <span class="pl-k">=</span> max_time</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L8" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="8"></td>
+          <td id="file-cooldown-gd-LC8" class="blob-code blob-code-inner js-file-line">    <span class="pl-c1">self</span>.<span class="pl-smi">time</span> <span class="pl-k">=</span> <span class="pl-c1">0</span></td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L9" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="9"></td>
+          <td id="file-cooldown-gd-LC9" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L10" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="10"></td>
+          <td id="file-cooldown-gd-LC10" class="blob-code blob-code-inner js-file-line"><span class="pl-k">func</span> <span class="pl-c1">tick</span>(delta):</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L11" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="11"></td>
+          <td id="file-cooldown-gd-LC11" class="blob-code blob-code-inner js-file-line">    time <span class="pl-k">=</span> <span class="pl-c1">max</span>(time <span class="pl-k">-</span> delta, <span class="pl-c1">0</span>)</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L12" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="12"></td>
+          <td id="file-cooldown-gd-LC12" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L13" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="13"></td>
+          <td id="file-cooldown-gd-LC13" class="blob-code blob-code-inner js-file-line"><span class="pl-k">func</span> <span class="pl-c1">is_ready</span>():</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L14" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="14"></td>
+          <td id="file-cooldown-gd-LC14" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> time <span class="pl-k">&gt;</span> <span class="pl-c1">0</span>:</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L15" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="15"></td>
+          <td id="file-cooldown-gd-LC15" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">return</span> <span class="pl-c1">false</span></td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L16" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="16"></td>
+          <td id="file-cooldown-gd-LC16" class="blob-code blob-code-inner js-file-line">    time <span class="pl-k">=</span> max_time</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L17" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="17"></td>
+          <td id="file-cooldown-gd-LC17" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> <span class="pl-c1">true</span></td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L18" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="18"></td>
+          <td id="file-cooldown-gd-LC18" class="blob-code blob-code-inner js-file-line">    </td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L19" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="19"></td>
+          <td id="file-cooldown-gd-LC19" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> -------------------</span></td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L20" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="20"></td>
+          <td id="file-cooldown-gd-LC20" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Example usage</span></td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L21" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="21"></td>
+          <td id="file-cooldown-gd-LC21" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> -------------------</span></td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L22" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="22"></td>
+          <td id="file-cooldown-gd-LC22" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L23" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="23"></td>
+          <td id="file-cooldown-gd-LC23" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> In some other file, e.g. Player.gd</span></td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L24" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="24"></td>
+          <td id="file-cooldown-gd-LC24" class="blob-code blob-code-inner js-file-line"><span class="pl-k">const</span> <span class="pl-en">Cooldown</span> <span class="pl-k">=</span> <span class="pl-k">preload</span>(<span class="pl-s">'res://lib/Cooldown.gd'</span>)</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L25" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="25"></td>
+          <td id="file-cooldown-gd-LC25" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L26" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="26"></td>
+          <td id="file-cooldown-gd-LC26" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Can shoot every second, heal every 10 seconds</span></td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L27" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="27"></td>
+          <td id="file-cooldown-gd-LC27" class="blob-code blob-code-inner js-file-line"><span class="pl-k">onready</span> <span class="pl-k">var</span> shoot_cooldown <span class="pl-k">=</span> <span class="pl-en">Cooldown</span>.<span class="pl-k">new</span>(<span class="pl-c1">1</span>)</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L28" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="28"></td>
+          <td id="file-cooldown-gd-LC28" class="blob-code blob-code-inner js-file-line"><span class="pl-k">onready</span> <span class="pl-k">var</span> heal_cooldown <span class="pl-k">=</span> <span class="pl-en">Cooldown</span>.<span class="pl-k">new</span>(<span class="pl-c1">10</span>)</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L29" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="29"></td>
+          <td id="file-cooldown-gd-LC29" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L30" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="30"></td>
+          <td id="file-cooldown-gd-LC30" class="blob-code blob-code-inner js-file-line"><span class="pl-k">func</span> <span class="pl-c1">_process</span>(delta):</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L31" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="31"></td>
+          <td id="file-cooldown-gd-LC31" class="blob-code blob-code-inner js-file-line">    shoot_cooldown.<span class="pl-c1">tick</span>(delta)</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L32" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="32"></td>
+          <td id="file-cooldown-gd-LC32" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> <span class="pl-en">Input</span>.<span class="pl-c1">is_action_pressed</span>(<span class="pl-s">"shoot"</span>) <span class="pl-k">and</span> shoot_cooldown.<span class="pl-c1">is_ready</span>():</td>
+        </tr>
+        <tr>
+          <td id="file-cooldown-gd-L33" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="33"></td>
+          <td id="file-cooldown-gd-LC33" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">pass</span> <span class="pl-c"><span class="pl-c">#</span> Shooting code goes here!</span></td>
+        </tr>
+  </tbody></table>
+</div>
+
+
+    </div>
+
+  </div>
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/michaelpb/b150f26e2efb30fb557741645c6c1436/raw/c5f1aabfa367227d238109213db9c3ef9eec33e3/Cooldown.gd" style="float:right">view raw</a>
+        <a href="https://gist.github.com/michaelpb/b150f26e2efb30fb557741645c6c1436#file-cooldown-gd">
+          Cooldown.gd
+        </a>
+        hosted with ❤ by <a href="https://github.com">GitHub</a>
+      </div>
+    </div>
+</div>
+
+<p>Released into Public Domain.</p>
+</section>
+</article></slot>
+        <div class="Page">
+            
+                <x-archivesidebar style="margin-top: 100px" qid:="36" title="Snippet: Implement an ability cooldown (in the Godot game engine)" modulo-original-html="">
+
+<nav>
+    <ul>
+        <p>
+            #36 -
+            <a class="active" href="#">Snippet: Implement an ability cooldown (in the Godot game engine)</a> <br>
+            <span>This article is from a previous blog, actively published
+            between 2016-2019.</span>
+        </p>
+
+
+        <h2>Popular</h2>
+
+        
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                <li>#38 -
+                    <a class="" href="/archive/article/38.html">react-jsc3d: Porting a legacy 3D rendering JavaScript library to a reusable React.js component on NPM</a>
+                </li>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                <li>#33 -
+                    <a class="" href="/archive/article/33.html">Web Developer to Game Developer: Understanding game dev as a web dev using Godot</a>
+                </li>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                <li>#11 -
+                    <a class="" href="/archive/article/11.html">Getting started with music production on Linux: Three ways to get set up with pro-audio free software</a>
+                </li>
+            
+        
+            
+        
+            
+        
+            
+                <li>#5 -
+                    <a class="" href="/archive/article/5.html">Game development on Linux: Using Linux at every step of the process</a>
+                </li>
+            
+        
+            
+        
+
+        <h2>All archived articles</h2>
+        
+            <li>#45 -
+                <a class="" href="/archive/article/45.html">Upgrading Mattermost using docker-compose</a>
+            </li>
+        
+            <li>#43 -
+                <a class="" href="/archive/article/43.html">Ubuntu 18.04 on Acer Aspire 1 - A114-31-C4HH and A114-31-C5GM</a>
+            </li>
+        
+            <li>#42 -
+                <a class="" href="/archive/article/42.html">Installing Ubuntu 17.10 Linux on Acer Aspire 1</a>
+            </li>
+        
+            <li>#41 -
+                <a class="" href="/archive/article/41.html">How to quickly install Mattermost on Digital Ocean</a>
+            </li>
+        
+            <li>#39 -
+                <a class="" href="/archive/article/39.html">Ardour 5.7 Review - Free software DAW</a>
+            </li>
+        
+            <li>#38 -
+                <a class="" href="/archive/article/38.html">react-jsc3d: Porting a legacy 3D rendering JavaScript library to a reusable React.js component on NPM</a>
+            </li>
+        
+            <li>#37 -
+                <a class="" href="/archive/article/37.html">Introducing: Whiteboard</a>
+            </li>
+        
+            <li>#36 -
+                <a class="active" href="/archive/article/36.html">Snippet: Implement an ability cooldown (in the Godot game engine)</a>
+            </li>
+        
+            <li>#35 -
+                <a class="" href="/archive/article/35.html">JavaScript syntax cheat-sheet for total newbies</a>
+            </li>
+        
+            <li>#34 -
+                <a class="" href="/archive/article/34.html">Snippet: Draining all pending coroutines with Python 3's async features</a>
+            </li>
+        
+            <li>#33 -
+                <a class="" href="/archive/article/33.html">Web Developer to Game Developer: Understanding game dev as a web dev using Godot</a>
+            </li>
+        
+            <li>#30 -
+                <a class="" href="/archive/article/30.html">The Right Way™ to do global npm install without sudo</a>
+            </li>
+        
+            <li>#29 -
+                <a class="" href="/archive/article/29.html">Bash profile trick: Open last used directory when starting a new terminal emulator</a>
+            </li>
+        
+            <li>#28 -
+                <a class="" href="/archive/article/28.html">Porting a legacy browser graphics JS script (JSC3D) to Node.js with node-canvas and VM</a>
+            </li>
+        
+            <li>#27 -
+                <a class="" href="/archive/article/27.html">Releasing Sawdust: Mini-post-mortem</a>
+            </li>
+        
+            <li>#26 -
+                <a class="" href="/archive/article/26.html">Sawdust</a>
+            </li>
+        
+            <li>#25 -
+                <a class="" href="/archive/article/25.html">The Blocklings</a>
+            </li>
+        
+            <li>#24 -
+                <a class="" href="/archive/article/24.html">Ludum Dare 38</a>
+            </li>
+        
+            <li>#22 -
+                <a class="" href="/archive/article/22.html">My pre-post-mortem of rescuing my scope creeped-out puzzle game</a>
+            </li>
+        
+            <li>#21 -
+                <a class="" href="/archive/article/21.html">Godot Gestures: Pinch, twist, and drag gesture detection for mobile games</a>
+            </li>
+        
+            <li>#20 -
+                <a class="" href="/archive/article/20.html">Wow, I've made quite a few free Godot packages by now</a>
+            </li>
+        
+            <li>#17 -
+                <a class="" href="/archive/article/17.html">Godot Pannable Camera: A re-usable camera helper for Godot</a>
+            </li>
+        
+            <li>#16 -
+                <a class="" href="/archive/article/16.html">Simple puzzle game graphics with Inkscape bevels</a>
+            </li>
+        
+            <li>#15 -
+                <a class="" href="/archive/article/15.html">Snippet: Godot Resource Queue</a>
+            </li>
+        
+            <li>#14 -
+                <a class="" href="/archive/article/14.html">Game dev with Godot: I wrote a Godot package to crossfade between playlists and make adaptive music</a>
+            </li>
+        
+            <li>#13 -
+                <a class="" href="/archive/article/13.html">Snippet: NIUM's 3D effect, in Godot</a>
+            </li>
+        
+            <li>#12 -
+                <a class="" href="/archive/article/12.html">Linux pro-audio: Trouble-shooting JACK on Ubuntu 16.04 (KXStudio repos)</a>
+            </li>
+        
+            <li>#11 -
+                <a class="" href="/archive/article/11.html">Getting started with music production on Linux: Three ways to get set up with pro-audio free software</a>
+            </li>
+        
+            <li>#7 -
+                <a class="" href="/archive/article/7.html">Solo Game Dev Kanban Magic: I used to struggle with self-management, but my most recent technique seems to be working really well</a>
+            </li>
+        
+            <li>#6 -
+                <a class="" href="/archive/article/6.html">Game dev with Godot: Unit testing your scripts</a>
+            </li>
+        
+            <li>#5 -
+                <a class="" href="/archive/article/5.html">Game development on Linux: Using Linux at every step of the process</a>
+            </li>
+        
+            <li>#-1 -
+                <a class="" href="/archive/article/-1.html">My Godot packages</a>
+            </li>
+        
+
+    </ul>
+
+    
+        <div class="visibility-controls">
+            <div class="visible-toggle-overlay"></div>
+            <label>
+                <input [state.bind]="" name="showall" type="checkbox">
+                Read more from the archive...
+            </label>
+        </div>
+    
+</nav>
+
+
+    <div class="comment-controls">
+        <button @click:="script.showComments">
+            Read Comment Section (Disqus)
+        </button>
+    </div>
+
+
+<div class="rainbow-square" style="margin-top: 80px; padding: 10px">
+    <div id="disqus_thread"></div>
+</div>
+</x-archivesidebar>
+            
+        </div>
+    </main>
+    <footer>
+        © 2022 Michael Bethencourt - All original
+        content here is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND</a>,
+        unless otherwise noted
+    </footer>
+
+<script src="/_modulo/modulo-build-p023ft.js"></script></body></html>

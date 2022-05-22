@@ -1,7 +1,7 @@
 <!DOCTYPE HTML><html><head><script src="https://modulojs.org/js/Modulo.js"></script>
     <modulo>
         <library namespace="x" src="/components/core.html"></library>
-    </modulo><title>Wow, I've made quite a few free Godot packages by now</title><meta charset="utf8"><link rel="stylesheet" href="/components/core/Page.css"><link rel="stylesheet" href="/components/core/Page-reset.css"><link rel="stylesheet" href="/components/core/Page-article.css"><link rel="stylesheet" href="/_modulo/modulo-build-xkbsqrr.css"></head><body>
+    </modulo><title>Installing Ubuntu 17.10 Linux on Acer Aspire 1</title><meta charset="utf8"><link rel="stylesheet" href="/components/core/Page.css"><link rel="stylesheet" href="/components/core/Page-reset.css"><link rel="stylesheet" href="/components/core/Page-article.css"><link rel="stylesheet" href="/_modulo/modulo-build-xkbsqrr.css"></head><body>
     
     
     
@@ -13,19 +13,19 @@
         <div class="Page Page-relative">
             
             
-                <h1>michaelb.org #20</h1>
+                <h1>michaelb.org #42</h1>
                 <hr>
             
             <img src="/static/img/misc_images/logo_2.png">
             
-                <h2 class="Page-articleTitle"><span>Wow, I've made quite a few free Godot packages by now</span></h2>
+                <h2 class="Page-articleTitle"><span>Installing Ubuntu 17.10 Linux on Acer Aspire 1</span></h2>
 
                 <nav class="Page-bcNav">
                     <ul>
                         <li><a href="/">HOME</a></li>
                         
                         
-                        <li><a href="#">WOW, I'VE MADE QUITE A FEW FREE GODOT PACKAGES BY NOW</a></li>
+                        <li><a href="#">INSTALLING UBUNTU 17.10 LINUX ON ACER ASPIRE 1</a></li>
                     </ul>
                 </nav>
 
@@ -37,16 +37,47 @@
             
         ">
 
-<article class="content post tag-godot tag-game-dev">
-<h1 class="title">Wow, I've made quite a few free Godot packages by now</h1>
+<article class="content post tag-web-dev tag-tutorial">
+<h1 class="title">Installing Ubuntu 17.10 Linux on Acer Aspire 1</h1>
 <section class="post-content">
-<p>I've noticed I've written a total of 9 open source packages for the <a href="https://godotengine.org/">Godot engine</a>! I'm pretty pleased with this number, nothing makes me happier than giving back to the world of free software. I created a page that I'll keep updated with links to all of the repos:</p>
+<h1 id="updatedversionofthisarticlehttpmichaelborgubuntu1804onaceraspire1a11431c4hhanda11431c5gm"><a href="http://michaelb.org/ubuntu-18-04-on-acer-aspire-1-a114-31-c4hh-and-a114-31-c5gm/">Updated version of this article</a></h1>
+<hr>
+<p>The Acer Aspire 1 (A114-31-C4HH) is a great and super affordable machine for running a Linux-based operating system. At only $209 new, its cheaper than many Chromebooks, and is the only computer at this pricepoint to have a <strong>full 1920x1080 HD display</strong>. It's very easy to install Ubuntu Linux, and while it's memory is limited, it is completely usable even with Ubuntu's heavier-weight GNOME-based DE.</p>
+<h2 id="specs">Specs</h2>
 <ul>
-<li><a href="../godot-packages/index.html">http://michaelb.org/godot-packages/</a></li>
+<li><p><strong>Display:</strong> 14 in, 1920x1080</p></li>
+<li><p><strong>Storage:</strong> 32 GB eMMC SSD</p></li>
+<li><p><strong>Memory:</strong> 4 GB RAM</p></li>
+<li><p><strong>CPU:</strong> Celeron N3450, four cores at 1.1 - 2.2 GHz </p></li>
+<li><p><strong>Battery:</strong> 2-cell Li-Ion Battery -- it claims "Up to 9 Hours Battery Life", but on Linux doing a variety of tasks (web browsing, image editing) I could only get in the vicinity of 5 hours.</p></li>
 </ul>
-<p>This includes both ones I've mentioned on my blog, and a few that are still too WIP to be much use to any one else. For the time being they only exist as git repos, eventually I may see how to integrate them into Godot's asset store. I'm also pleased to note that game development can be done in a quite modular fashion following similar practices to other software dev.</p>
-<p>Here's a GIF of the most recent thing I've been working on... once finished I'll post a full post describing it's usage:</p>
-<p><img src="../content/images/2017/03/godot_responsive_2.gif" alt="godot-responsive"></p>
+<p>By far, the biggest selling point to me was the display. <em>I can find no other laptop at this pricepoint with a full HD display.</em></p>
+<p>I was originally somewhat nervous about buying it for Linux since there was scant information about compatibility. Fortunately for me, <em>everything 100% works out of the box</em>. All the possible pain points (suspend, wireless, touchpad issues, etc) all seem to completely work without any extra configuration. After a full install of Ubuntu 17.10, <em>I did nothing else</em>, everything was perfectly configured already.</p>
+<p><img src="../content/images/2018/03/ubuntu.jpg" alt="Linux running on my Acer Aspire 1"></p>
+<h2 id="installationpreppingthebios">Installation (Prepping the BIOS)</h2>
+<p>The steps I followed to wipe Windows and succesfully install Ubuntu Linux is 1) prep the BIOS by disabling UEFI / Secure Boot, then 2) follow a normal graphical installation. It was quite simple, only slightly more complicated than other hardware.</p>
+<p><strong>Exact steps as follows:</strong></p>
+<ol>
+<li><p>Hard shut off (Hold power for 5+ seconds)</p></li>
+<li><p>Boot holding <code>&lt;F2&gt;</code> to BIOS</p></li>
+<li><p><code>&lt;Right&gt; &lt;Right&gt; &lt;Right&gt;</code> to "Security" tab</p></li>
+<li><p>Hit <code>&lt;Enter&gt;</code> to set supervisor password</p></li>
+<li><p>I used the (insecure) password of "admin". So I typed in <code>"admin"</code> <code>&lt;Enter&gt;</code> <code>"admin"</code> <code>&lt;Enter&gt;</code></p></li>
+<li><p><code>&lt;Right&gt;</code> to Boot tab</p></li>
+<li><p><code>&lt;Enter&gt; &lt;Down&gt; &lt;Enter&gt;</code> to disable Secure Boot</p></li>
+<li><p><code>&lt;Left&gt; &lt;Left&gt; &lt;Left&gt;</code> to Main tab</p></li>
+<li><p><code>&lt;Down&gt; &lt;Down&gt; &lt;Down&gt;</code> to F12 Boot Menu</p></li>
+<li><p><code>&lt;Enter&gt; &lt;Down&gt; &lt;Enter&gt;</code> to enable F12 Boot Menu</p></li>
+<li><p><code>&lt;F10&gt; &lt;Enter&gt;</code> to Save and Exit</p></li>
+<li><p>IMMEDIATELY hold down <code>&lt;F12&gt;</code> to boot to into Boot Device Selector</p></li>
+<li><p>Select USB (<code>&lt;Down&gt; &lt;Enter&gt;</code>)</p></li>
+</ol>
+<p>At this point, it should allow normal Ubuntu installation. Choose whatever menu items allow you to install Ubuntu, then follow the on-screen graphical installer. You'll want to wipe Windows when the option comes up (make sure you have no data you want to keep!), since the 32GB is barely enough for one OS, let alone two.</p>
+<h2 id="reviewofubuntulinuxonaceraspire1">Review of Ubuntu Linux on Acer Aspire 1</h2>
+<p>Right now, it's my top recommended Linux machine. At such a low price point, it's more than capable of web development, web usage, and the like. I've tested full screen 1080p YouTube, and normal browsing on some graphically intense sites, and so far everything has been flawless out of the box. Even using a heavy-weight DE like stock GNOME, the CPU is more than enough for fast and frustration-free average usage.</p>
+<p>The 1 caveat: <em>only 4 GB is limiting</em>. When using stock GNOME, more than a half-dozen Chromium tabs or applications running, you will start "swapping" which causes slow downs -- though on the eMMC the slow downs are nothing like what they used to be on hard-disks (I was actually pleasantly surprised at how cleanly it swapped). Just idling with GNOME, I noticed over 1 GB of that precious RAM being used. If you want a little more elbow room, I'd recommend using a less flashy DE like XFCE or LXDE.</p>
+<p>However, for most usage, the gorgeous crisp display, sleek form factor, various awesome features (one of the few laptops of the style that have an eithernet port!), great Linux compatibility, and extremely low price point make the 2017 Acer Aspire 1 <em>the best low-priced Linux laptop hardware currently on the market</em>. I've been using as my primary machine for the past 5 days, and so far I recommend it without reservation as the best laptop at the price point.</p>
+<p><em>NOTE: Don't confuse this with the Acer One, which is a completely different netbook-style model from several years ago. The A114-31-C4HH is the one I'm referring to.</em></p>
 </section>
 </article>
 
@@ -54,13 +85,13 @@
 </slot>
         <div class="Page">
             
-                <x-archivesidebar style="margin-top: 100px" qid:="20" title="Wow, I've made quite a few free Godot packages by now" modulo-original-html="">
+                <x-archivesidebar style="margin-top: 100px" qid:="42" title="Installing Ubuntu 17.10 Linux on Acer Aspire 1" modulo-original-html="">
 
 <nav>
     <ul>
         <p>
-            #20 -
-            <a class="active" href="#">Wow, I've made quite a few free Godot packages by now</a> <br>
+            #42 -
+            <a class="active" href="#">Installing Ubuntu 17.10 Linux on Acer Aspire 1</a> <br>
             <span>This article is from a previous blog, actively published
             between 2016-2019.</span>
         </p>
@@ -162,7 +193,7 @@
             </li>
         
             <li>#42 -
-                <a class="" href="/archive/article/42.html">Installing Ubuntu 17.10 Linux on Acer Aspire 1</a>
+                <a class="active" href="/archive/article/42.html">Installing Ubuntu 17.10 Linux on Acer Aspire 1</a>
             </li>
         
             <li>#41 -
@@ -234,7 +265,7 @@
             </li>
         
             <li>#20 -
-                <a class="active" href="/archive/article/20.html">Wow, I've made quite a few free Godot packages by now</a>
+                <a class="" href="/archive/article/20.html">Wow, I've made quite a few free Godot packages by now</a>
             </li>
         
             <li>#17 -
