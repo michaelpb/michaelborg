@@ -2,6 +2,6 @@
   "name": "michaelborg_website",
   "homepage": "https://michaelb.org/",
   "scripts": {
-    "cli": "node /home/michaelb/projects/modulo/mcli/modulocli.js"
+    "cli": "node /home/michaelb/projects/modulo/modulocli/modulocli.js"
   }
 }
