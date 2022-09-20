@@ -6,7 +6,7 @@
         pagetitle
         archivedid
     ></Props>
-    <Template src="./core/Page.html"></Template>
+    <Template -src="/libraries/core/Page.html"></Template>
     <Script>
         function initializedCallback() {
             return {
@@ -22,9 +22,9 @@
         qid
         title
     ></Props>
-    <Template src="./core/ArchiveSidebar.html"></Template>
+    <Template -src="/libraries/core/ArchiveSidebar.html"></Template>
     <!-- NOTE: For some reason, absolute ones broke here! -->
-    <StaticData src="../archive/article/dir_listing.json"></StaticData>
+    <StaticData -src="/archive/article/dir_listing.json"></StaticData>
     <State
         showall:=false
         showcomments:=false
@@ -43,7 +43,7 @@
         }
     </Script>
 
-    <Style src="./core/ArchiveSidebar.css"></Style>
+    <Style -src="/libraries/core/ArchiveSidebar.css"></Style>
 </Component>
 
 
@@ -60,8 +60,7 @@
             </li>
         {% endfor %}
     </Template>
-    <!-- NOTE: For some reason, absolute ones broke here! -->
-    <StaticData src="../archive/article/dir_listing.json"></StaticData>
+    <StaticData -src="/archive/article/dir_listing.json"></StaticData>
 </Component>
 
 
@@ -89,7 +88,7 @@
         }
     </Script>
     <!-- NOTE: For some reason, absolute ones broke here! -->
-    <StaticData src="../archive/article/dir_listing.json"></StaticData>
+    <StaticData -src="/archive/article/dir_listing.json"></StaticData>
     <Style>
         a {
             cursor: pointer;
