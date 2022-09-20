@@ -76,7 +76,7 @@ article_index_json = []
 ## Now, lets rebuild it in the other directory
 PRE = '''
 <script Modulo
-    src="http://modulojs.org/js/Modulo.js"
+    src="/js/Modulo.js"
     -src="/libraries/core.html"
 ></script>
 '''
