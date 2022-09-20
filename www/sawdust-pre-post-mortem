@@ -1,6 +1,6 @@
 
 <script Modulo
-    src="http://modulojs.org/js/Modulo.js"
+    src="/js/Modulo.js"
     -src="/libraries/core.html"
 ></script>
 <x-Page archivedid="22"pagetitle="My pre-post-mortem of rescuing my scope creeped-out puzzle game">

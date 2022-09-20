@@ -1,6 +1,6 @@
 
 <script Modulo
-    src="http://modulojs.org/js/Modulo.js"
+    src="/js/Modulo.js"
     -src="/libraries/core.html"
 ></script>
 <x-Page archivedid="43"pagetitle="Ubuntu 18.04 on Acer Aspire 1 - A114-31-C4HH and A114-31-C5GM">

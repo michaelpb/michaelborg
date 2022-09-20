@@ -1,6 +1,6 @@
 
 <script Modulo
-    src="http://modulojs.org/js/Modulo.js"
+    src="/js/Modulo.js"
     -src="/libraries/core.html"
 ></script>
 <x-Page archivedid="38"pagetitle="react-jsc3d: Porting a legacy 3D rendering JavaScript library to a reusable React.js component on NPM">

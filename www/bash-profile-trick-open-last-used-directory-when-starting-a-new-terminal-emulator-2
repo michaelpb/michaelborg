@@ -1,6 +1,6 @@
 
 <script Modulo
-    src="http://modulojs.org/js/Modulo.js"
+    src="/js/Modulo.js"
     -src="/libraries/core.html"
 ></script>
 <x-Page archivedid="29"pagetitle="Bash profile trick: Open last used directory when starting a new terminal emulator">

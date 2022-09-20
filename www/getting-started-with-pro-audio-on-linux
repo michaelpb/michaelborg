@@ -1,6 +1,6 @@
 
 <script Modulo
-    src="http://modulojs.org/js/Modulo.js"
+    src="/js/Modulo.js"
     -src="/libraries/core.html"
 ></script>
 <x-Page archivedid="11"pagetitle="Getting started with music production on Linux: Three ways to get set up with pro-audio free software">
