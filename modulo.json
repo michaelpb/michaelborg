@@ -2,6 +2,6 @@
     "testLog": true,
     "testLogPath": "modulo.testlog.json",
     "isCopyOnly": "^(components|libraries|demos)$",
-    "output": "docs",
+    "output": "www",
     "input": "src"
 }

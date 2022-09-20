@@ -1,12 +1,11 @@
-<!DOCTYPE HTML><html><head><script src="https://modulojs.org/js/Modulo.js"></script>
-    <modulo>
-        <library namespace="x" src="/components/core.html"></library>
-    </modulo><title>Snippet: Draining all pending coroutines with Python 3's async features</title><meta charset="utf8"><link rel="stylesheet" href="/components/core/Page.css"><link rel="stylesheet" href="/components/core/Page-reset.css"><link rel="stylesheet" href="/components/core/Page-article.css"><link rel="stylesheet" href="/_modulo/modulo-build-xkbsqrr.css"></head><body>
+<!DOCTYPE HTML><html><head>
+<title>Snippet: Draining all pending coroutines with Python 3's async features</title><meta charset="utf8"><link rel="stylesheet" href="/_modulo/modulo-bundle-x1l8j08r.css"></head><body>
     
     
     
     
     
+
 
 
     <main class="Page-wrapper">
@@ -41,166 +40,13 @@
 <h1 class="title">Snippet: Draining all pending coroutines with Python 3's async features</h1>
 <section class="post-content">
 <p>When writing tasks for asynchronous functions in Python 3 I realized I needed a way to run through all tasks that were queued up with <code>asyncio.ensure_future</code> and similar functions. I wrote an async function to do this. The result is a little hacky, as it needs to catch certain errors that are thrown in Python 3.5.x and Python 3.6.x when you attempt to await a task that is currently the current task.</p>
-<script src="https://gist.github.com/michaelpb/6438e127fdf882da756f80efe2d8d27e.js"></script><link rel="stylesheet" href="https://github.githubassets.com/assets/gist-embed-5687a589e344.css"><div id="gist70011193" class="gist">
-    <div class="gist-file" translate="no">
-      <div class="gist-data">
-        <div class="js-gist-file-update-container js-task-list-container file-box">
-  <div id="file-python3_await_all_pending_tasks-py" class="file my-2">
-    
-    <div itemprop="text" class="Box-body p-0 blob-wrapper data type-python  ">
-
-        
-<div class="js-check-bidi js-blob-code-container blob-code-content">
-
-  <template class="js-file-alert-template">
-  <div data-view-component="true" class="flash flash-warn flash-full d-flex flex-items-center">
-  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
-    <path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path>
-</svg>
-  
-    <span>
-      This file contains bidirectional Unicode text that may be interpreted or compiled differently than what appears below. To review, open the file in an editor that reveals hidden Unicode characters.
-      <a href="https://github.co/hiddenchars" target="_blank">Learn more about bidirectional Unicode characters</a>
-    </span>
-
-
-  <div data-view-component="true" class="flash-action">      <a href="{{ revealButtonHref }}" data-view-component="true" class="btn-sm btn">  Show hidden characters
-  
-</a>
-</div>
-</div></template>
-<template class="js-line-alert-template">
-  <span aria-label="This line has hidden Unicode characters" data-view-component="true" class="line-alert tooltipped tooltipped-e">
-    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
-    <path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path>
-</svg>
-</span></template>
-
-  <table class="highlight tab-size js-file-line-container js-code-nav-container js-tagsearch-file" data-tab-size="8" data-paste-markdown-skip="" data-tagsearch-lang="Python" data-tagsearch-path="python3_await_all_pending_tasks.py">
-        <tbody><tr>
-          <td id="file-python3_await_all_pending_tasks-py-L1" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="1"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-s1">asyncio</span></td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L2" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="2"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC2" class="blob-code blob-code-inner js-file-line">
-</td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L3" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="3"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC3" class="blob-code blob-code-inner js-file-line"><span class="pl-k">async</span> <span class="pl-k">def</span> <span class="pl-en">await_all</span>():</td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L4" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="4"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC4" class="blob-code blob-code-inner js-file-line">    <span class="pl-s">'''</span></td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L5" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="5"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC5" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    Simple utility function that drains all pending tasks</span></td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L6" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="6"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC6" class="blob-code blob-code-inner js-file-line"><span class="pl-s">    '''</span></td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L7" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="7"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC7" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">tasks</span> <span class="pl-c1">=</span> <span class="pl-s1">asyncio</span>.<span class="pl-v">Task</span>.<span class="pl-en">all_tasks</span>()</td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L8" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="8"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC8" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> <span class="pl-s1">task</span> <span class="pl-c1">in</span> <span class="pl-s1">tasks</span>:</td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L9" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="9"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC9" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">try</span>:</td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L10" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="10"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC10" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">await</span> <span class="pl-s1">task</span></td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L11" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="11"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC11" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">except</span> <span class="pl-v">RuntimeError</span> <span class="pl-k">as</span> <span class="pl-s1">e</span>:</td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L12" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="12"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC12" class="blob-code blob-code-inner js-file-line">            <span class="pl-c"># Python 3.5.x: Error if attempting to await parent task</span></td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L13" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="13"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC13" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> <span class="pl-s">'Task cannot await on itself'</span> <span class="pl-c1">not</span> <span class="pl-c1">in</span> <span class="pl-en">str</span>(<span class="pl-s1">e</span>):</td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L14" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="14"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC14" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">raise</span> <span class="pl-s1">e</span></td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L15" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="15"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC15" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">except</span> <span class="pl-v">AssertionError</span> <span class="pl-k">as</span> <span class="pl-s1">e</span>:</td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L16" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="16"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC16" class="blob-code blob-code-inner js-file-line">            <span class="pl-c"># Python 3.6.x: Error if attempting to await parent task</span></td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L17" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="17"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC17" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> <span class="pl-s">'yield from wasn<span class="pl-cce">\'</span>t used with future'</span> <span class="pl-c1">not</span> <span class="pl-c1">in</span> <span class="pl-en">str</span>(<span class="pl-s1">e</span>):</td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L18" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="18"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC18" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">raise</span> <span class="pl-s1">e</span></td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L19" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="19"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC19" class="blob-code blob-code-inner js-file-line">                </td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L20" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="20"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC20" class="blob-code blob-code-inner js-file-line"><span class="pl-k">async</span> <span class="pl-k">def</span> <span class="pl-en">example_usage</span>():</td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L21" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="21"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC21" class="blob-code blob-code-inner js-file-line">    <span class="pl-s1">asyncio</span>.<span class="pl-en">ensure_future</span>(<span class="pl-en">some_coro</span>())</td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L22" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="22"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC22" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">await</span> <span class="pl-en">await_all</span>()</td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L23" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="23"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC23" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"># At this point, some_coro() has been awaited</span></td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L24" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="24"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC24" class="blob-code blob-code-inner js-file-line">    </td>
-        </tr>
-        <tr>
-          <td id="file-python3_await_all_pending_tasks-py-L25" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="25"></td>
-          <td id="file-python3_await_all_pending_tasks-py-LC25" class="blob-code blob-code-inner js-file-line">                </td>
-        </tr>
-  </tbody></table>
-</div>
-
-
-    </div>
-
-  </div>
-</div>
-
-      </div>
-      <div class="gist-meta">
-        <a href="https://gist.github.com/michaelpb/6438e127fdf882da756f80efe2d8d27e/raw/e259c27bf5e95e125395e88b25c441dd1d493b8f/python3_await_all_pending_tasks.py" style="float:right">view raw</a>
-        <a href="https://gist.github.com/michaelpb/6438e127fdf882da756f80efe2d8d27e#file-python3_await_all_pending_tasks-py">
-          python3_await_all_pending_tasks.py
-        </a>
-        hosted with ❤ by <a href="https://github.com">GitHub</a>
-      </div>
-    </div>
-</div>
-
+<!--<script src="https://gist.github.com/michaelpb/6438e127fdf882da756f80efe2d8d27e.js"></script>-->
 <p>Released into public domain fwiw.</p>
 </section>
-</article></slot>
+</article>
+
+
+</slot>
         <div class="Page">
             
                 <x-archivesidebar style="margin-top: 100px" qid:="34" title="Snippet: Draining all pending coroutines with Python 3's async features" modulo-original-html="">
@@ -460,9 +306,9 @@
         </div>
     </main>
     <footer>
-        © 2022 Michael Bethencourt - All original
+        © undefined Michael Bethencourt - All original
         content here is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND</a>,
         unless otherwise noted
     </footer>
 
-<script src="/_modulo/modulo-build-p023ft.js"></script></body></html>
+<script src="/_modulo/modulo-bundle-lmnnuo.js"></script></body></html>

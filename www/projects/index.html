@@ -1,0 +1,151 @@
+<!DOCTYPE HTML><html><head>
+
+
+<title>Projects</title><meta charset="utf8"><link rel="stylesheet" href="/_modulo/modulo-bundle-x1l8j08r.css"></head><body>
+    
+    
+    
+    
+    
+
+
+
+    <main class="Page-wrapper">
+        <div class="Page Page-relative">
+            
+            
+            <img src="/static/img/misc_images/logo_2.png">
+            
+                <h2 class="Page-articleTitle"><span>Projects</span></h2>
+
+                <nav class="Page-bcNav">
+                    <ul>
+                        <li><a href="/">HOME</a></li>
+                        
+                        
+                        <li><a href="#">PROJECTS</a></li>
+                    </ul>
+                </nav>
+
+            
+        </div>
+        <slot class="Page
+            
+        ">
+<br>
+
+<!--<x-GitHubRepoList></x-GitHubRepoList>-->
+
+<a name="frameworks"></a>
+<h2><span>Frameworks</span></h2>
+
+<section>
+
+    <aside>
+        <a href="https://modulojs.org">
+            <img style="
+                    float: left;
+                    margin: 20px;
+                    margin-left: -120px;
+                    margin-top: -25px;
+                    margin-bottom: -20px;
+                    border: 2px solid black;
+                    border-left: none;
+                    width: 200px;
+                " src="/static/img/app_gifs/modulo-demo.gif">
+        </a>
+        <h3>Modulo</h3>
+        <p>Modulo.js is a dependency-free, self-packing Web Component framework
+        in a single 2000 line file. It's novel modular design and HTML-first
+        “low-code” approach lets even JavaScript-shy designers
+        build components.  I've been working on Modulo off-and-on for years,
+        but it's just now getting to the point to show off.
+        <a href="https://modulojs.org/">
+            Try it out »
+        </a>
+        </p>
+        <!--<hr class="glitchypattern" />-->
+    </aside>
+</section>
+
+<section>
+    <aside>
+        <a href="https://omnic.michaelb.org/">
+            <img style="width: 300px; float:left" src="https://omnic.michaelb.org/images/admin_conversion_view.jpg">
+        </a>
+        <h3>OmniConverter</h3>
+        <h4>Note: While functioning for a variety of applications, the
+        documentation is incomplete, and is in development hiatus.</h4>
+        <p>OmniConverter is a stateless HTTP-based microservice (and
+        mini-framework) for building conversion graphs for stateless (except
+        for cache), won-the-fly media file format conversion.  Define
+        converters to form a conversion graph, that can be tested with the
+        included commandline tool. This causes types to get converted into each
+        other in a series of steps.</p>
+        <a href="https://omnic.michaelb.org/">
+            Check it out: omnic.michaelb.org
+        </a>
+        <!--<hr class="glitchypattern" />-->
+    </aside>
+
+    <aside>
+        <a href="https://bitbucket.org/michaelb/scrolleditor/src/master/">
+            <img src="https://bitbucket.org/michaelb/scrolleditor/raw/HEAD/screenshot.png">
+        </a>
+        <h3>Scroll Editor</h3>
+        <h4>Note: Mostly undocumented, and is in development hiatus.</h4>
+        <p>Scroll Editor was a Markdown based document processing toolkit &amp;
+        GUI editor. The goal was creating a structure around editing a
+        collection of markdown files in a <code>.git</code>-based
+        revision-controlled system. They then could be compiled and outputted
+        to different exported formats, the initial target being HTML, but
+        fine-grained PDF and other exports were intended as well.</p>
+        <p>Scroll Editor was supposed to take "power user" tools of revision
+        control, and precise markdown-based editing, and wrap them up in a
+        "Scrivener"-style product aimed at serious writers.</p>
+    </aside>
+</section>
+
+
+<a name="music"></a>
+<h2><span>Music</span></h2>
+<p>I also compose music for game projects. If you'd like to hear some of my
+music, click below to load the Souncloud player:</p>
+<x-soundcloudbutton modulo-original-html="">
+        
+            <a class="Btn" @click:="script.show">
+                <img src="/static/img/music_related/soundcloud_the_mission_begins.png" alt="Michael B's Soundcloud page, with The Mission Begins, Planetfall and Lifesigns" title="Michael B's Soundcloud page, with The Mission Begins, Planetfall and Lifesigns">
+            </a>
+        
+    </x-soundcloudbutton>
+
+
+
+<a name="games"></a>
+<h2><span>Games</span></h2>
+
+<p>From time to time I work on gaming projects. While none of my games are
+available on any App Stores any more, a couple of my puzzle games are available
+below, on Itch.io. I start far more projects than I finish, however: The
+background GIF comes from an abandoned 3D voxel farming game.</p>
+
+<div style="background-image: url('https://img.itch.zone/aW1hZ2UvMTc2NzU3LzgyNTIyMC5naWY=/180x143%23/Jp3MNB.gif')">
+    <br>
+    <div style="width: 80px; display: inline-block"></div>
+    <iframe frameborder="0" src="https://itch.io/embed/145949?border_width=0&amp;bg_color=222222&amp;fg_color=eeeeee&amp;link_color=ffaf24&amp;border_color=363636" width="206" height="165"></iframe>
+    <iframe frameborder="0" src="https://itch.io/embed/137394?border_width=0&amp;bg_color=222222&amp;fg_color=eeeeee&amp;link_color=ffaf24&amp;border_color=363636" width="206" height="165"></iframe>
+    <br>
+</div>
+
+</slot>
+        <div class="Page">
+            
+        </div>
+    </main>
+    <footer>
+        © undefined Michael Bethencourt - All original
+        content here is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND</a>,
+        unless otherwise noted
+    </footer>
+
+<script src="/_modulo/modulo-bundle-lmnnuo.js"></script></body></html>

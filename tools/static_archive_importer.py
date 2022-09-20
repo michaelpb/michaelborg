@@ -1,3 +1,14 @@
+print('disabled');
+print('''
+this is disabled because there are two hardcoded changes to pages, specifically
+"script src=" for github was tripping it up
+
+Also 7.html (deleted img pointing to broken)
+''')
+
+import sys
+sys.exit(1)
+
 import glob
 import json
 
