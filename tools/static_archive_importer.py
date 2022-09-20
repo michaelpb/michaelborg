@@ -75,11 +75,10 @@ article_index_json = []
 
 ## Now, lets rebuild it in the other directory
 PRE = '''
-    <script src="https://modulojs.org/js/Modulo.js"></script>
-    <Modulo>
-        <Library namespace="x" src="/components/core.html"></Library>
-    </Modulo>
-    <script>Modulo.defineAll()</script>
+<script Modulo
+    src="http://modulojs.org/js/Modulo.js"
+    -src="/libraries/core.html"
+></script>
 '''
 
 def redirect_html(new_url):
@@ -103,7 +102,7 @@ PATCHES = {
     '<a href="../getting-started-with-pro-audio-on-linux/index.html"> my other article: getting started with music production on Linux</a>': '''
         <a href="/archive/article/11.html"> my other
         article: getting started with music production on Linux</a>
-    '''
+    ''',
     '<a href="../getting-started-with-linux-game-development/index.html">more and more FOSS game dev tools are popping up</a>': 'more and more FOSS game dev tools are popping up',
 }
 
@@ -137,7 +136,7 @@ for article in articles:
 
     # Adds in shortcut redirects
     redirect_newpath = (
-        '/home/michaelb/projects/michaelborg/docs/' +
+        '/home/michaelb/projects/michaelborg/www/' +
         str(article['slug'])
     )
     f = open(redirect_newpath, 'w+')
