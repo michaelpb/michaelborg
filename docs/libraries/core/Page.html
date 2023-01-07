@@ -1,5 +1,5 @@
 <head>
-    <title>{{ props.pagetitle }}</title>
+    <title>{{ props.tabtitle|default:props.pagetitle }}</title>
     <meta charset="utf8" />
     <link rel="stylesheet" href="/libraries/core/Page.css">
     <link rel="stylesheet" href="/libraries/core/Page-reset.css">

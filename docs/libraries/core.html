@@ -4,15 +4,30 @@
 
     <Props
         pagetitle
+        tabtitle
         archivedid
+        redirect
         bc1
         bc1path
         bc2
         bc2path
     ></Props>
     <Template -src="/libraries/core/Page.html"></Template>
+    <StaticData -src="/libraries/core/Page-blogArchiveMeta.json"></StaticData>
     <Script>
         function initializedCallback() {
+            // "auto404" will attempt to auto-redirect based on archived article json
+            if (props.redirect && props.redirect === 'auto404') {
+                const url = window.location.pathname;
+                for (const page of staticdata) {
+                    if (url.includes(props.slug)) {
+                        const newPath = '/archive/articles/' + page.id + '.html';
+                        window.location.replace(newPath);
+                        break;
+                    }
+                }
+            }
+
             return {
                 year: (new Date()).getFullYear(),
             }
