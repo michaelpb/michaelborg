@@ -21,7 +21,7 @@
                 const url = '' + window.location.pathname;
                 for (const page of staticdata) {
                     if (url.includes(page.slug)) {
-                        const newPath = '/archive/articles/' + page.id + '.html';
+                        const newPath = '/archive/article/' + page.id + '.html';
                         window.location.replace(newPath);
                         break;
                     }

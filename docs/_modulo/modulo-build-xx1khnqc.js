@@ -156,7 +156,7 @@ window.moduloBuild.modules["x1d31lu7"] = function Page (modulo) {
         return x_Page;
     
 };
-window.moduloBuild.modules["x19pqofe"] = function Page_script (modulo) {
+window.moduloBuild.modules["x11p57kn"] = function Page_script (modulo) {
 var script = { exports: {} }; var component, modulo, library, props, style, template, staticdata, configuration, script, state, element, cparts;function __set(name, value) { if (name === 'component') component = value; if (name === 'modulo') modulo = value; if (name === 'library') library = value; if (name === 'props') props = value; if (name === 'style') style = value; if (name === 'template') template = value; if (name === 'staticdata') staticdata = value; if (name === 'configuration') configuration = value; if (name === 'script') script = value; if (name === 'state') state = value; if (name === 'element') element = value; if (name === 'cparts') cparts = value; }
 
         function initializedCallback() {
@@ -165,7 +165,7 @@ var script = { exports: {} }; var component, modulo, library, props, style, temp
                 const url = '' + window.location.pathname;
                 for (const page of staticdata) {
                     if (url.includes(page.slug)) {
-                        const newPath = '/archive/articles/' + page.id + '.html';
+                        const newPath = '/archive/article/' + page.id + '.html';
                         window.location.replace(newPath);
                         break;
                     }
@@ -292,7 +292,7 @@ window.moduloBuild.nameToHash = {
  "ArchiveSidebar": "x1720vgo",
  "ArchiveList": "xxhomt20",
  "SoundcloudButton": "xxj8ua5u",
- "Page_script": "x19pqofe",
+ "Page_script": "x11p57kn",
  "ArchiveSidebar_script": "xxe104oe",
  "SoundcloudButton_script": "x1eprp1b",
  "Page_template": "x15jsip9",
