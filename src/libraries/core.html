@@ -18,9 +18,9 @@
         function initializedCallback() {
             // "auto404" will attempt to auto-redirect based on archived article json
             if (props.redirect && props.redirect === 'auto404') {
-                const url = window.location.pathname;
+                const url = '' + window.location.pathname;
                 for (const page of staticdata) {
-                    if (url.includes(props.slug)) {
+                    if (url.includes(page.slug)) {
                         const newPath = '/archive/articles/' + page.id + '.html';
                         window.location.replace(newPath);
                         break;
