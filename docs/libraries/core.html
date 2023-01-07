@@ -5,12 +5,16 @@
     <Props
         pagetitle
         archivedid
+        bc1
+        bc1path
+        bc2
+        bc2path
     ></Props>
     <Template -src="/libraries/core/Page.html"></Template>
     <Script>
         function initializedCallback() {
             return {
-                currentYear: (new Date()).getFullYear(),
+                year: (new Date()).getFullYear(),
             }
         }
     </Script>

@@ -33,10 +33,10 @@
                     <ul>
                         <li><a href="/">HOME</a></li>
                         {% if props.bc1 %}
-                            <li><a href="/{{ props.bc1 }}.html">{{ props.bc1|upper }}</a></li>
+                            <li><a href="/{{ props.bc1path }}">{{ props.bc1|upper }}</a></li>
                         {% endif %}
                         {% if props.bc2 %}
-                            <li><a href="/{{ props.bc2 }}.html">{{ props.bc2|upper }}</a></li>
+                            <li><a href="/{{ props.bc2path }}">{{ props.bc2|upper }}</a></li>
                         {% endif %}
                         <li><a href="#">{{ props.pagetitle|upper }}</a></li>
                     </ul>
@@ -60,7 +60,7 @@
         </div>
     </main>
     <footer>
-        &copy; {{ script.currentYear }} Michael Bethencourt - All original
+        &copy; {{ script.exports.year }} Michael Bethencourt - All original
         content here is licensed under <a
         href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND</a>,
         unless otherwise noted
