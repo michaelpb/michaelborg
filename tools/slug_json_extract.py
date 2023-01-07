@@ -11,4 +11,4 @@ for item in data:
         "slug": item['slug'],
     })
 
-json.dump(open('./tools/blog_archive_meta.json'), meta, indent=2)
+json.dump(meta, open('./tools/blog_archive_meta.json', 'w+'), indent=2)
