@@ -1,6 +1,30 @@
 
-<!-- add in fathom -->
-<Configuration -src="/js/fathom.js"></Configuration>
+
+<script Configuration>
+     function setupFathom(code) {
+        // Check common things we skip
+        const host = window.location.host;
+        if (host.startsWith('localhost') ||
+                host.includes('.local') ||
+                host.startsWith('127') ||
+                host.startsWith('192') ||
+                host.startsWith('dev--'))  {
+            return;
+        }
+        (function(f, a, t, h, o, m){
+            a[h]=a[h]||function(){
+                (a[h].q=a[h].q||[]).push(arguments)
+            };
+            o=f.createElement('script'),
+            m=f.getElementsByTagName('script')[0];
+            o.async=1; o.src=t; o.id='fathom-script';
+            m.parentNode.insertBefore(o,m)
+        })(document, window, '//an.michaelb.org/tracker.js', 'fathom');
+        fathom('set', 'siteId', code);
+        fathom('trackPageview');
+    }
+    setupFathom('RYNTR');
+</script>
 
 
 <!-- Define my core Page component -->
