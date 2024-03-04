@@ -2,6 +2,8 @@
   "name": "michaelborg_website",
   "homepage": "https://michaelb.org/",
   "scripts": {
-    "cli": "node /home/michaelb/projects/modulo/modulocli/modulocli.js"
+    "cli": "node /home/michaelb/projects/modulo/modulocli/modulocli.js",
+    "start": "npm run cli --  srcserve -a 0.0.0.0",
+    "build": "npm run cli -- ssg -f"
   }
 }
