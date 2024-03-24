@@ -1,5 +1,5 @@
 /*
-:root {
+x-ArchiveSidebar :root {
     --page-width: 800px;
     --bg1: #ffffff;
     --bg2: #e5e5f7;
@@ -10,29 +10,29 @@
 }
 */
 
-a {
+x-ArchiveSidebar a {
     background: white;
     color: black;
 }
 
-a.active {
+x-ArchiveSidebar a.active {
     background: var(--accent1);
 }
-li {
+x-ArchiveSidebar li {
     font-size: 1.3rem;
     line-height: 2.0rem;
 }
 
-nav {
+x-ArchiveSidebar nav {
     border: 1px solid black;
     padding-top: 20px;
 }
 
-ul {
+x-ArchiveSidebar ul {
     margin-left: -30px;
 }
 
-ul > h2 {
+x-ArchiveSidebar ul > h2 {
     font-size: 25px;
     margin-top: 50px;
     /*
@@ -42,25 +42,25 @@ ul > h2 {
     width: 125px;
     */
 }
-ul > h2 {
+x-ArchiveSidebar ul > h2 {
     text-align: right;
     background: black;
     color: white;
     height: 28px;
 }
 
-ul > p > span  {
+x-ArchiveSidebar ul > p > span  {
     font-size: 16px;
     background: white;
     font-style: italic;
 }
 
 
-.visible-toggle {
+x-ArchiveSidebar .visible-toggle {
     display: none;
 }
 
-.visible-toggle-overlay {
+x-ArchiveSidebar .visible-toggle-overlay {
     opacity: 0.5;
     position: relative;
     top: -20px;
@@ -74,69 +74,75 @@ ul > p > span  {
     );
 }
 
-ul {
+x-ArchiveSidebar ul {
     height: 400px;
     overflow: hidden;
 }
 
-ul.active {
+x-ArchiveSidebar ul.active {
     height: auto;
 }
 
-.visibility-controls > label,
-.comment-controls > button {
+x-ArchiveSidebar .visibility-controls > label,
+x-ArchiveSidebar .comment-controls > button {
     margin-left: 20px;
     font-size: 20px;
     border: 3px var(--accent3) solid;
     padding: 20px;
 }
 
-.comment-controls > button {
+x-ArchiveSidebar .comment-controls > button {
     float: right;
     margin-top: -20px;
     background: transparent;
     margin-right: 20px;
 }
 
-.visibility-controls > label:hover,
-.comment-controls > button:hover {
+x-ArchiveSidebar .visibility-controls > label:hover,
+x-ArchiveSidebar .comment-controls > button:hover {
     background: var(--accent3);
     cursor: pointer;
 }
 
-.visibility-controls > label > input {
+x-ArchiveSidebar .visibility-controls > label > input {
     display: none;
 }
 
 @media (min-width: 1330px) {
-    nav {
+x-ArchiveSidebar nav {
         position: absolute;
         left: calc(2vw);
         top: 100px;
         z-index: 10;
         width: calc(100px + 10vw);
     }
-    ul {
+x-ArchiveSidebar ul {
         height: auto;
     }
 
-    .visibility-controls {
+x-ArchiveSidebar .visibility-controls {
         display: none;
     }
-    .visible-toggle-overlay {
+x-ArchiveSidebar .visible-toggle-overlay {
         display: none;
     }
 }
 
 
 @media (max-width: 1400px) {
-    nav {
+x-ArchiveSidebar nav {
         padding-top: 400px;
     }
 }
 
 @media (max-width: 920px) {
-    nav {
+x-ArchiveSidebar nav {
         padding-top: 20px;
     }
 }
+
+
+x-SoundcloudButton a {
+            cursor: pointer;
+        }
+    

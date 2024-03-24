@@ -129,4 +129,14 @@ ul.active {
 }
 
 
+@media (max-width: 1400px) {
+    nav {
+        padding-top: 400px;
+    }
+}
 
+@media (max-width: 920px) {
+    nav {
+        padding-top: 20px;
+    }
+}

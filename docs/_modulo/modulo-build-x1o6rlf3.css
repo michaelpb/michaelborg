@@ -1,3 +1,151 @@
+/*
+x-ArchiveSidebar :root {
+    --page-width: 800px;
+    --bg1: #ffffff;
+    --bg2: #e5e5f7;
+    --accent1: #f2cd54;
+    --accent2: #91d370;
+    --accent3: #bca0ff;
+    --leftoffset: -80px;
+}
+*/
+
+x-ArchiveSidebar a {
+    background: white;
+    color: black;
+}
+
+x-ArchiveSidebar a.active {
+    background: var(--accent1);
+}
+x-ArchiveSidebar li {
+    font-size: 1.3rem;
+    line-height: 2.0rem;
+}
+
+x-ArchiveSidebar nav {
+    border: 1px solid black;
+    padding-top: 20px;
+}
+
+x-ArchiveSidebar ul {
+    margin-left: -30px;
+}
+
+x-ArchiveSidebar ul > h2 {
+    font-size: 25px;
+    margin-top: 50px;
+    /*
+    float: left;
+    shape-outside: circle();
+    height: auto;
+    width: 125px;
+    */
+}
+x-ArchiveSidebar ul > h2 {
+    text-align: right;
+    background: black;
+    color: white;
+    height: 28px;
+}
+
+x-ArchiveSidebar ul > p > span  {
+    font-size: 16px;
+    background: white;
+    font-style: italic;
+}
+
+
+x-ArchiveSidebar .visible-toggle {
+    display: none;
+}
+
+x-ArchiveSidebar .visible-toggle-overlay {
+    opacity: 0.5;
+    position: relative;
+    top: -20px;
+    height: 20px;
+    background: repeating-linear-gradient(
+        -55deg,
+        transparent,
+        transparent 10px,
+        var(--accent1) 10px,
+        var(--accent1) 20px
+    );
+}
+
+x-ArchiveSidebar ul {
+    height: 400px;
+    overflow: hidden;
+}
+
+x-ArchiveSidebar ul.active {
+    height: auto;
+}
+
+x-ArchiveSidebar .visibility-controls > label,
+x-ArchiveSidebar .comment-controls > button {
+    margin-left: 20px;
+    font-size: 20px;
+    border: 3px var(--accent3) solid;
+    padding: 20px;
+}
+
+x-ArchiveSidebar .comment-controls > button {
+    float: right;
+    margin-top: -20px;
+    background: transparent;
+    margin-right: 20px;
+}
+
+x-ArchiveSidebar .visibility-controls > label:hover,
+x-ArchiveSidebar .comment-controls > button:hover {
+    background: var(--accent3);
+    cursor: pointer;
+}
+
+x-ArchiveSidebar .visibility-controls > label > input {
+    display: none;
+}
+
+@media (min-width: 1330px) {
+x-ArchiveSidebar nav {
+        position: absolute;
+        left: calc(2vw);
+        top: 100px;
+        z-index: 10;
+        width: calc(100px + 10vw);
+    }
+x-ArchiveSidebar ul {
+        height: auto;
+    }
+
+x-ArchiveSidebar .visibility-controls {
+        display: none;
+    }
+x-ArchiveSidebar .visible-toggle-overlay {
+        display: none;
+    }
+}
+
+
+@media (max-width: 1400px) {
+x-ArchiveSidebar nav {
+        padding-top: 400px;
+    }
+}
+
+@media (max-width: 920px) {
+x-ArchiveSidebar nav {
+        padding-top: 20px;
+    }
+}
+
+
+x-SoundcloudButton a {
+            cursor: pointer;
+        }
+    
 /* Base website styles */
 :root {
     --page-width: 800px;
@@ -391,3 +539,125 @@ footer {
     }
 }
 
+
+/*
+  Originally based on Josh's Custom CSS Reset tutorial:
+    https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+body {
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+input, button, textarea, select {
+  font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* HEADER TYPOGRAPHY */
+.Page-article h1 { margin-top: 30px; }
+.Page-article h2 { margin-top: 20px; }
+.Page-article h3 { margin-top: 17px; }
+.Page-article h4 { margin-top: 15px; }
+.Page-article h5 { margin-top: 10px; }
+.Page-article h6 { margin-top: 5px; }
+
+.Page-article h1 { font-size: 35px; }
+.Page-article h2 { font-size: 25px; }
+.Page-article h3 { font-size: 22px; }
+.Page-article h4 { font-size: 20px; }
+.Page-article h5 { font-size: 15px; }
+.Page-article h6 { font-size: 10px; }
+
+.Page-article h1,
+.Page-article h2,
+.Page-article h3,
+.Page-article h4,
+.Page-article h5,
+.Page-article h6 {
+    font-weight: bold;
+    /*margin-left: -10px;*/
+    /*clear: both;*/
+}
+
+.Page-article p {
+    line-height: 1.4;
+    font-size: 18px;
+    line-height: 24px;
+    margin-top: 5px;
+    /*margin-left: 5px;*/
+}
+
+.Page-article h1.title {
+    display: none;
+}
+
+.Page-article p + p:not(blockquote p, li p) {
+    /* Typesetting like a book */
+    text-indent: 30px;
+}
+
+.Page-article pre {
+    display: block;
+    border: 1px dotted var(--accent3);
+    border-left-width: 5px;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 8px;
+    font-size: 15px;
+    clear: both;
+}
+
+.Page-article hr {
+    border: none;
+    border-top: 5px dotted var(--accent3);
+    margin: 20px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.Page-article blockquote {
+    float: right;
+    display: block;
+    border: 1px solid var(--accent3);
+    border-radius: 5px;
+    padding: 8px;
+    margin: 8px;
+    width: 40%;
+}
+
+.Page-article blockquote > :first-child {
+    margin-top: 0;
+}
+
+@media (max-width: 920px) {
+    .Page-article blockquote {
+        float: clear;
+        clear: both;
+        margin: auto;
+        width: 80%;
+    }
+}
+
+/*
+.Page-article p:not(blockquote p, li p):first-of-type:first-letter {
+    color: var(--accent3);
+    font-size: 45px;
+    font-family: monospace;
+    font-style: italic;
+}
+*/
