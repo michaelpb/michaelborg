@@ -1,0 +1,678 @@
+---
+title: Interviews
+milestone: Milestone 4 - Interviews
+...
+
+
+# Application process
+
+Let's dive into the most anticipated aspects of the entire process:
+Interviewing. In this section we'll (1) examine a typical application process (2)
+look at the different types of pre-interview challenges you might face (3) talk
+about general tips for screening interviews (4) go through general tips for the
+on-site interviews (5) dive into common interview questions and how to answer
+them, and finally (6) talk about problem solving for on-site "whiteboarding"
+interviews.
+
+While it's intimidating for your entire job hunt process to seemingly hang in
+the balance in a few crucial key hours of inspection, with these tips from
+veteran interviewers (and interviewees) you can go into the interview process
+with confidence!
+
+> **Tip:** Cheat-sheets are super useful for online or phone-based interviews.
+> If you don't already have them printed up, check out Kickstart Coding's
+> collection of official cheat-sheets here:
+> [github.com/kickstartcoding/cheatsheets](http://github.com/kickstartcoding/cheatsheets)
+
+## Big picture
+
+For hiring for entry-level positions, many tech companies have the following
+process:
+
+1. **Application** --- You submit your \resume & application
+
+2. **Challenge(s)** --- For entry-level positions, it's common to first
+encounter either an *automated algorithm quiz* (a Hacker Rank-style coding
+challenge, with automated grading), or a *take-home challenge* (a
+"mini-project" to do in a given framework, and submit for human review via a
+GitHub link or emailed zip file).
+
+3. **Screen(s)** --- Phone screen interviews can take the form of *tech
+screens* (done by an engineer), or behavioral or *recruiter screens* (typically done by recruiter or HR).
+
+4. **Video Interviews / On-site(s)** --- Finally, the big day! Full video interviews
+and/or on-sites can range from an hour to an entire day of interviews. They can be
+behavioral, technical, or a mixture of both. Often, there can be two rounds, as the pool of candidates is
+further reduced.
+
+5. **Offer**
+
+## Big picture tips
+
+* **Go-to language:** Pick a programming language as your go-to. We recommend
+  Python, but if you are mostly applying to front-end developer positions,
+  JavaScript might be a good choice too. Ultimately choose the one that you are
+  most comfortable with. (Rationale for Python: It is widely known, has a terse
+  syntax that is easy to write by hand, along with powerful built-in language
+  constructs such *sets* that come in handy in a lot of interview-style questions.)
+
+* **Research the interviewer:** Always look at the title and/or LinkedIn of the
+  person interviewing you. Are they an engineer? Be ready for potentially tough
+  technical questions. Anything else? Probably going to be behavioral or
+  screening questions.
+
+* **Don't give up!** Give everything your best, and even if you don't succeed
+  submit it anyway. Be ready to fail many times before you succeed.^[I've
+  coached so many students who think they absolutely bomb a set of interviews
+  or challenges, only to find out soon after that they actually knocked the
+  socks off the interviewer. The reverse can be true sometimes also. As an
+  interviewee, it can be very hard to know how well you are doing.]
+
+
+
+## Pre-interview check-list
+
+- **Interview type known** -- will it involve coding?
+
+- **Company & product researched** --- know the company, and have some ideas on
+their product.
+
+- **Interviewer researched** --- you know their name & position.
+
+- **Questions prepared** --- you have a question or two for the interviewer.
+
+*For coding interviews:*
+
+- **Brain "warmed up"** --- do challenges right up to the time you have to
+  leave for the interview. You want to start "in the zone".
+
+*For behavioral interviews:*
+
+* **Mock-interview work-sheet "warmed up"** --- warm up by going through the
+  mock-interview worksheet.
+
+* **Technical story prepared** --- have a technical story picked out and ready
+  to be told.
+
+# Screening challenges
+
+It's likely the first thing you will face is some sort of online test or
+challenge. While they can be required for a variety of positions, it's most
+common to encounter these for entry-level to mid-level positions, such as those
+open to bootcamp graduates.^[Because higher-level hires tend to cost more, the
+evaluation process is usually more hands-on and less automated.]
+
+## Automated tests
+
+*Automated online coding tests* are how 100s of applicants can be weeded-out so
+that only dozens remain.  They'll often send a link to a third-party site or a
+custom site, such as Hacker Rank. Often, on that site is a button that will
+"reveal" the challenge and give you a time-limit for giving an answer or
+solving it in a programming language of your choice.
+
+### Tips
+
+> See 6.1 for more general resources & tips on preparing for coding challenges.
+
+- Get your cheatsheets handy, have Google tabs open, be as prepared as
+  possible. This is a race against the clock to assemble the best possible
+  solutions to each challenge.
+
+- As with in-person interviews, the only way to "lose" fully is by giving up
+  or not trying. Partial credit is good too, so attempt everything.
+
+- Start "in the zone": Warm up your brain before you click the "Start" button
+  by doing similar online challenges.
+
+
+## Take-home challenges
+
+Another option for weeding out candidates for entry-level and intermediate
+level positions --- sometimes used in the place of or in conjunction to the
+automated quizzes --- is a take-home coding challenge. This is often done in a
+specified framework (such as React.js or Django). They often say "take as much
+time as you want", but clearly you shouldn't for a few reasons: (1) you are
+competing against other applicants, and (2) your time is valuable, and you need
+time for applying for other positions, too.
+
+These challenges can be very frustrating due to how time consuming they are,
+and are especially asymmetric in time consumption. The company can give out
+dozens of these, spending possibly a total of 100s of hours of applicants time,
+only to spend an hour looking over them and out of that choose one or a few
+applicants to move forward. That being said, don't skip it: Responsible
+companies won't give this challenge to a candidate they aren't serious about.
+
+### Tips
+
+* Set a time-limit. "Clock in" and "clock out" as though you were contracting.
+  Your time-limit should be based on your free-time and a judgment of both how
+  serious you think the company is taking your candidacy, and how much you like
+  this position.^[When you are done, you can even feel free to report back to
+  them how much time you spent on it.]
+    - Don't do it all at once --- if, for example, you decide that it's worth
+      it to spend 8 hours on one of these, space it out over a few days.
+
+* Code quality is paramount: Write good, clean, commented code.
+    - Attempt to write "self-documenting code"
+    - Sprinkle in comments. There is *definitely* such a thing as too many
+      comments: Comments should be added only where the code itself is
+      difficult or impossible to decipher.^[That said, for a take-home
+      challenge, if you aren't sure what's the right amount, it's probably
+      better to err (slightly) on the side of too many comments.]
+    - Possibly document all public function signatures --- this depends on
+      whatever is standard for the language or framework you are using
+
+* Code neatness is extremely important too: Use a "linter" to ensure your code
+  follows the indentation, whitespace, and naming conventions of the language
+  you are using.
+
+* Ask questions! If the requirements aren't clear, clarify them before you
+  start.
+
+
+
+# Interviewing screens
+
+
+## What is an interviewing screen
+
+Interviewing screens are a part of every single technical interviewing process.
+This stage helps companies filter through their "top of funnel" or applicant
+pool to ensure the company's hiring team is efficiently allocating bandwidth to
+the most promising applicants. Companies go about this process differently
+using coding screens, video conversations, generic problem solving questions or
+pair programming as a means of teasing out skills. But before companies come to
+this phase of technical screening, it's helpful to know how a company decided
+to invite a given candidate for a technical screen --- cue the initial (or
+recruiter) screen.^[See Atlassian's approach: [atlassian.com/blog/statuspage/coding-challenges`](https://www.atlassian.com/blog/statuspage/coding-challenges)]
+
+Initial interviewing screens are also known as recruiter screens because
+recruiters tend to be the next step following an outreach attempt, referral or
+application. At this phase, recruiters are doing a "get to know you" phone call
+to get a sense of your story, communication abilities, culture fit and perhaps
+key accomplishments that help provide the recruiter with the confidence needed
+to pass you onto the next stage in the hiring process. Successful candidates
+will have a succinct career journey that’s consistent with the given resume
+along with a few concrete stories related to project or career success. The
+better your story can align with the role in question or the recruiter's
+experience, the higher likelihood the recruiter will feel confident about
+passing on your application.
+
+Once you pass the initial screen, a technical screen tends to follow. This
+phase is geared at filtering out your basic coding skills. Depending on the
+company or role needs, technical screens can be pretty rigorous or simply a
+technical bar to see if you really can code. Either way, this phase is one that
+might be the basis for subsequent conversation in the interview process so try
+your best to prepare and don't be afraid to ask your recruiter what to expect
+in a technical challenge.
+
+## Strategies for success in an interviewing screen
+
+Interviewing is a solo sport but it doesn't mean there aren't resources and
+avenues for support that don't exist. We hope to point you to a few of them
+that you might find helpful:
+
+- [*Glassdoor (glassdoor.com)*](http://glassdoor.com) - though not a technical
+  hub, reviews on this site can help provide insight into what to expect when
+  interviewing with a given company.
+
+- [*Whiteboard.io (whiteboard.io)*](https://www.whiteboard.io/) - a technical
+  interview prep program providing feedback, support and community.
+
+- [*Stack exchange*](https://workplace.stackexchange.com/) - an online
+  community where you can provide experiences, thoughts and interviewing
+  questions on a forum.
+
+
+- *The company's career site* - more and more companies are sharing how they
+  differentiate themselves in an interview process and what to expect.
+  Definitely worth a look for each company!
+
+
+Given these insights, be sure to take time to explore and see what may work
+best for your success.
+
+
+# Interviewing on-sites
+
+## What's an onsite interview
+
+Onsite interviews are the holy grail of the interview process. If you've gotten
+to this point, pat yourself on the back. Here, it's safe to say most companies
+are committed to making things work out since the investment involved in an
+onsite interview is usually pretty significant. Typically onsites entail a full
+panel of interviewers including a hiring manager, peers, and your potential
+manager.
+
+This aim here is to see how you interact with a variety of colleagues and also
+gather data points from several angles; though approaches vary, be prepared to
+demonstrate technical skills, problem solving skills, communication skills and
+interpersonal skills. Interviews always include both technical and
+non-technical components and each interviewer will likely ask you about your
+career journey and also provide time for you to ask them a few questions about
+the team, role or company.
+
+## Tips and resources for success
+
+Most interviews bear similarity but few interviews are like that first, full
+day onsite interviews. It's a time where breaks are short and you’re constantly
+wondering how you’re being perceived. Despite these challenges, it's an
+exciting experience and opportunity to gain the most accurate snapshot into who
+you'll be working with and what you'll be working on in this new role. The
+following are tips to keep in mind when preparing for and going through an
+onsite interview:
+
+- *Get the 411 from your recruiter* - As soon as you know an onsite interview
+  is on the horizon, ask your recruiter to provide a snapshot of the day,
+  including the structure of interviews and who you'll be meeting with.  These
+  crucial insights can help you prepare for a whiteboard interview as opposed
+  to pair-programming or give you the chance to LinkedIn research your
+  interviewer.
+
+- *Know your technical strengths* - In most cases it's better to know what
+  you’re good at and focus on that as opposed to trying to cram new information
+  the night before an on-site. If you can solve a problem in one manner or have
+  more syntax familiarity in a given language, lean in to that strength.
+
+- *Have your story down* - Know yourself. When giving your story, it's likely
+  your interviewer has your \resume right in front of them. Make sure what
+  you're sharing is consistent with what you wrote. Moreover, it's fair game to
+  share the same stories with different interviewers, just consider emphasizing
+  different points to give a well rounded vision of who you are.
+
+- *Make sure you're comfortable* - a big key here is not being afraid to ask
+  for (or bring) what you might need. Whether that's a water bottle, small
+  granola bar, or asking for a bathroom break between interviews. Make sure
+  you can be the best, most comfortable you. It will work in your favor.
+
+- *Pseudo code is your friend* - When stepping up to a whiteboard or solving a
+  problem, take your time and breath. Ask your interviewer if it's okay to
+  pseudo code your problems or assumptions in a certain corner of the board or
+  before writing your actual answer. Almost in every situation it is okay and
+  might save you from making a regrettable logical leap when actually solving
+  the problem.
+
+- *Problem solve out-loud* - Finally, remember that no one can read minds.
+  That means, whatever your interviewer can comment about your problem solving
+  skills is completely dependent on your writing or communicating the thought
+  process behind your solution. Interviewers want to know how you think; make
+  sure to give them a clear picture of that.
+
+# Interview questions & tips
+
+To prepare for an interview, it's often good to have a "mock-interview" with
+yourself. While it may seem strange, preparing for certain questions can
+improve your confidence when you actually get asked them.
+
+## Mock interview worksheet
+
+1. For each question, answer on a separate sheet of paper --- or type up
+answers, or answer verbally into a recording, so you can review your answer.
+Imagine you are replying to each of several interviewers while interviewing
+with an engineer at your favorite social network. Remember to answer
+differently based on the person interviewing you!
+
+2. When you are done, look at the "tips" at the end. "Grade" yourself based on
+these tips.
+
+3. With these tips in mind, try re-answering all the questions, or revising
+your existing answer.
+
+4. Practice saying out-loud your "second-draft" answers. It's important not to
+memorize anything and sound rehearsed: Memorized answers that sound "too good"
+could look bad in an interview. Instead, practice conversationally chatting
+about it. Think about how you might "go into" these answers from other
+questions that may not be covered here.
+
+
+### Worksheet
+
+**Describe a technical challenge and how you overcame it.**
+
+\blankline
+
+\blankline
+
+\blankline
+
+
+**Can you tell me a bit about what you were doing at [your previous
+position]?**
+
+\blankline
+
+\blankline
+
+\blankline
+
+**Why did you choose *[technology / framework]* for the project *[previous
+project or position]*?**
+
+\blankline
+
+\blankline
+
+\blankline
+
+
+**Do you use our product? If so, what do you like about it? Dislike about it?**
+
+\blankline
+
+\blankline
+
+\blankline
+
+
+**At our company, we are always facing challenges scaling to accomidate new
+users. What approaches or considerations might you think about along these
+lines?**
+
+\blankline
+
+\blankline
+
+\blankline
+
+
+**If you could only pick one, what new feature would you add to our website?**
+
+\blankline
+
+\blankline
+
+\blankline
+
+
+**For that feature you mentioned, how would you test it to make sure it
+worked?**
+
+\blankline
+
+\blankline
+
+\blankline
+
+
+### Repeat mock interviews
+
+**If you have time, try for as many other combinations as you can:**^[E.g.
+Backend Engineer at Music sharing site. Product manager at real-estate site.
+etc]
+
+* Interviewers: *Backend Engineer*, *Designer*, *HR manager*, *Product manager*
+
+* Companies: *Popular social media network*, *Real-estate listings website*,
+  *Enterprise HR software company*, *Music sharing site*
+
+## Tips
+
+These are the "answers" or tips for these common interview questions.
+
+* **Describe a technical challenge and how you overcame it.** --- This question
+  is listed first because it's very often asked. Building a good *technical
+  challenge narrative* is crucial to answering this question. See the
+  "Technical challenge narrative" guide further on for in-depth tips on this
+  one.
+
+* **Can you tell me a bit about what you were doing at [your previous
+  position]?** --- This can be answered in a similar way to the previews
+  question, except you should be much "bigger picture." Instead of attempting
+  to impress by describing a single story, you are giving the birds-eye view of
+  all the things you've worked on, but ready to dive in about any particular
+  detail. Sometimes this question is the lead-up to the previous question.
+  Most of the advice contained in the "technical challenge narrative" below
+  applies to this too.
+
+* **Why did you choose *[technology / framework]* for the project *[previous
+  project or position]*?** --- This is to ensure you picked languages and
+  frameworks based on what solves the task, not based on what is "cool", or
+  simply based on the fact that it's all you know (which could be true, also).
+  Good answers will explain the strengths of the framework or language you
+  chose in conjunction to the project you worked on, possibly a teamwork
+  element or the decision making process you used with your team, and possibly
+  mention others considered and why you ultimately discarded them.
+
+
+* **Do you use our product? If so, what do you like about it? Dislike about
+  it?** --- For consumer facing products, it helps to actually try out the
+  product before the interview. It's okay to say you aren't super familiar, but
+  even just messing around with it for just an hour shows that you care about
+  the company and is an important part of pre-interview research.
+
+
+* **At our company, we are always facing challenges scaling to accomidate new
+  users. What approaches or considerations might you think about along these
+  lines?** --- Consider who is asking this question: Backend Engineers, DevOps,
+  or full stack folks are probably interested in hearing you talk about scaling
+  from a server perspective. Frontend Engineers, Designers, and Product
+  Managers might want you to address graphical / UX limitations (e.g. having to
+  add a search feature because the amount of content is much bigger). Business
+  or sales might want to hear some basic business scaling issues: Who would you
+  have to hire to allow such an expansion?
+
+
+* **If you could only pick one, what new feature would you add to our
+  website?** --- Similar to the "have you used our product" question, this one
+  gets asked a lot. Always go into an interview prepared to answer this
+  question. For engineers interviewers, feel free to dive into speculation of
+  how you might develop it, or what limitations might be in play. For sales,
+  marketing, or more business-oriented interviewers ("suits"), motivate it with
+  how that might improve the product from their perspective (e.g. increase
+  "conversion rate" or decrease drop-off).
+
+* **For that feature you mentioned, how would you test it to make sure it
+  worked?** -- Even for non-QA positions, they'll want you to have some basic
+  testing sensibilities. Think about normal usage, edge cases or corner cases,
+  about unusual usage of large or small number of users using it, and so on. If
+  the person asking is an engineer, feel free to talk about automated testing
+  frameworks, unit tests, end-to-end tests, and so on. *You will always "win
+  points" by saying that you're a big fan of automated testing.*
+
+
+## Technical challenge narrative 
+
+
+* **The question:** Can you describe a time you faced a technical challenge and
+  how you overcame it?
+
+* **The goal:** You want to prove that you'd be a valuable addition to the
+  team. The interviewer will be evaluating your answer, picturing you as a
+  member of their team, thinking if based on your answer you'd be good at
+  contributing and solving the sort of problems they are facing or will be
+  facing.
+
+* A good story will involve the following elements:
+    1. A tough or intriguing problem
+    2. Teamwork and communication
+    3. Your process of coming up with a solution (in conjunction with the team)
+    4. Final success, and positive results
+
+* A *great* story will involve one or more of the following:
+    - Causing the interviewer to be engaged, and curious to learn more
+      (earnestly asking questions)
+    - Solving a problem in a similar domain of the company (e.g. if it's a
+      retail company, perhaps do a about credit card payment
+    - Generally being "outside" the knowledge of the interviewer --- e.g. if
+      you describe struggling for a time with a problem that the interviewer
+      solves daily, that's less impressive, but if you describe struggling with a
+      problem that the interviewer has never even faced, that is a lot more
+      interesting.
+    - Solving a problem the interviewer's team is currently strugggling with.
+      This is hitting the jackpot, since it's essentially saying: "Hey, hire me
+      and I'll solve that issue you are facing right now."
+
+
+### Technical challenge tips
+
+* **Think of unique challenges.** No one wants to hear about how you messed up
+  that Git merge, since it happens to everyone. Think of times you wrestled
+  down buggy or poorly documented APIs. Think of problems that strayed way
+  outside the collective knowledge of tutorials or Stack Overflow.
+
+* **Prepare a couple stories.** Emphasize different technologies or types of
+  challenges, and pick one based on which company you are chatting with.
+
+* **Take note of who is asking.** Engineers want to hear how you applied your
+  smarts to fix the problem. "Suits" want to hear about business results (e.g.
+  increased clicks or conversions, increased value, didn't waste time). Both
+  want to hear solid communication.
+
+* **Go deep as you can.** Don't give a surface level explanation. Part of the
+  purpose of this question is to ensure you aren't faking the fact you know the
+  stuff on your resume. Be specific instead of being vague.
+
+* **It's okay to give a "Hollywood" version.** Much like Hollywood biographies
+  "clean up" the story to make an easier narrative, It's okay to smooth over
+  your story, or maybe weave together a couple of challenges you faced that in
+  fact were distinct, to make the story easier to tell and demonstrate your
+  candidacy.  Of course never lie about your story or anything --- both for
+  ethical reasons, and because the interviewer will probably notice --- but
+  they aren't asking for every boring detail.
+
+## More questions
+
+You may also want to repeat this style of practice, with the "standard littany"
+of behavioral interview questions:
+
+- **Why do you want to work here?** --- Good reasons might include passion
+  about the industry, company culture, excitement about the tech stack used,
+  curiosity about the problems they are facing.
+
+- **Out of all the other candidates, why should we hire you?** --- Speak to the
+  particular combination of skills and life experience that makes you, you!
+
+- **What are your biggest strengths?** --- Pick one (or two max) strengths to
+  emphasize.^[E.g. Creative solutions to tough problems, perseverence, hard
+  worker, leadership skills, agile communicator etc]
+
+- **What are your biggest weaknesses?** --- Resist the temptation of answering
+  "working too hard". Instead pick a real weakness, one that isn't a complete
+  show-stopper, but shows honesty and ability for self-critique. Also, share
+  what you are doing to improve in this respect.^[E.g. "I sometimes don't
+  clarify requirements well enough before starting work. I'm really trying to
+  get better at this, however."]
+
+- **Where do you see yourself in 5 years? 10 years?** --- A good way to answer
+  this is simply think of a more advanced version of the position you are
+  applying to. That might involve managerial duties, or it might involve a more
+  specialized position based on what you are interested in (e.g. AI, Data
+  Science, Lead Product Designer, etc.)
+
+- **Tell me about a time you disagreed with a decision. What did you do?** ---
+  The goal of this question is to see if you can "gracefully" admit you are
+  wrong, or go along with a majority opinion. Tell a story from your work or
+  project experience about a time where you maybe were on the wrong track but
+  took criticism well.
+
+- **What questions do you have for me?** --- *Always* come prepared with a few
+  questions. If you are caught off guard, then just ask a few usual ones: "How
+  long have you worked here? What was the biggest surprise you had about
+  working here?" etc.
+
+
+
+# "Whiteboarding" interviews
+
+Ah, the dreaded whiteboarding interview! Chances are, if you are applying to
+any sort of coding or engineering role, one or more of your on-sites will be a
+"whiteboarding" interview. This can be done in a meeting room with a
+whiteboard, or, more frequently with a piece of paper, or at a computer with an
+editor, often with syntax highlighting turned off.
+
+## Preparation
+
+The best way to prepare for a whiteboarding interview is daily practice. These
+sorts of challenges are different than "normal" programming, but instead are
+contrived, puzzle-like questions that are intended to test logical thinking.
+
+- Online coding platforms where you can take a variety of technical assessments
+  for fun and see how you stack up against other users:
+    * **Fire Code** - <https://www.firecode.io/>
+    * **Hacker Rank** - <https://www.hackerrank.com/>
+    * **Coder Byte** - <https://coderbyte.com/>
+    * **Code Wars** - <https://www.codewars.com/>
+    * **Code Signal** - <https://codesignal.com/>
+
+* A pricey, but recommend, online course on Interview Questions:
+    **Interview Cake** <https://interviewcake.com>
+
+- A very popular, "industry standard" textbook on technical interviews:
+  **Cracking the Coding Interview** -
+  <http://www.crackingthecodinginterview.com/>
+
+
+## Polya's 4 Step Process
+
+The rest of this Milestone will be devoted to the classic math and computer
+science problem solving framework known as *Polya's 4-Step Process*.  While
+some of the advice might seem obvious, it's still a very useful framework for
+approaching tough coding challenges.
+
+### The Four Steps
+
+#### Step 1: Understand the problem
+
+* What are you asked to find or show?
+
+* Can you restate the problem in your own words?
+
+* Can you think of a picture or a diagram that might help you understand the
+  problem?
+
+* Is there enough information to enable you to find a solution?
+
+* Do you understand all the words used in stating the problem?
+
+* Do you need to ask a question to get more information?
+
+
+#### Step 2: Devise a plan
+
+Translate into clear terms, variables, data
+
+* Guess and check
+
+* Make an orderly list
+
+* Eliminate possibilities
+
+* Use symmetry
+
+* Consider special cases
+
+* Use direct reasoning
+
+* Solve an equation
+
+* Look for a pattern
+
+* Draw a picture
+
+* Solve a simpler problem
+
+* Use a model
+
+* Work backward
+
+* Use a formula
+
+* Be creative
+
+Applying these rules to devise a plan takes your own skill and judgment.
+
+
+#### Step 3: Carry out the plan
+
+"Persist with the plan that you have chosen. If it continues not to work,
+discard it and choose another. Don't be misled; this is how mathematics is
+done, even by professionals."
+
+#### Step 4: Verify, review, and reflect
+
+"Much can be gained by taking the time to reflect and look back at what you
+have done, what worked and what didn't. Doing this will enable you to predict
+what strategy to use to solve future problems, if these relate to the original
+problem."
+
+
