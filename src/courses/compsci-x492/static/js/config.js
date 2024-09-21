@@ -6,6 +6,10 @@ modulo.config.mdParserSettings = {
 };
 
 
+
+
+// customizations below:
+
 modulo.register('util', function parseMarkdown (source) {
     const { scriptTagPrefix, htmlMarkdownFirstLine } = modulo.config.mdParserSettings;
     source = source.replace(scriptTagPrefix, '---\n'); // Try removing partial prefix first
@@ -21,6 +25,20 @@ modulo.register('util', function parseMarkdown (source) {
     data.body = html; // attach as "body" attribute
     return data;
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 modulo.register('util', function loadContent (element) {
     const { scriptTagPrefix } = modulo.config.mdParserSettings;    

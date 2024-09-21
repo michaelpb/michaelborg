@@ -11,6 +11,10 @@ with Style (CSS) and Script (JS).
     navbreadcrumb
 ></Props>
 
+<State
+    navbarvisible:=false
+></State>
+
 <Template>
 
 <title>{{ page.title|default:props.pagetitle }}</title>
@@ -45,29 +49,12 @@ with Style (CSS) and Script (JS).
 </nav>
 {% endcomment %}
 
-<div class="page-container container {% if props.showarticles %}articles-container{% endif %}">
-    {% if page.list|default:props.showarticles %}
-        <nav class="article-nav">
-            <h1>Career Guidebook</h1>
-            <ul>
-                {% for link in links_articles.list %}
-                    <li style="display: block; width: 100%;" class="{% if link.file == props.navselected %}page-li--selected{% endif %}">
-                        <a href="{{ link.file }}" title="{{ link.title }}" >
-                            <span style="min-width: 250px; display: inline-block; font-size: 1.4rem;">{{ link.title }}</span>
-                            <span style="margin-left: 5px; font-weight: normal;">
-                                {{ link.subtitle }}
-                            </span>
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </nav>
-    {% endif %}
+<div class="{% if not state.wide %}page-container container{% endif %} {% if props.showarticles %}articles-container{% endif %}">
     <main class="page-content">
         {% if page.breadcrumb %}
                 {% for link in links_articles.list %}
                     {% if link.file == page.breadcrumb %}
-                        <a href="{{ link.file }}" title="Back to {{ link.title }}" class="breadcrumb">
+                        <a href="{{ link.file }}.html" title="Back to {{ link.title }}" class="breadcrumb">
                             {{ link.title }} {{ link.subtitle }}
                         </a>
                     {% endif %}
@@ -94,6 +81,25 @@ with Style (CSS) and Script (JS).
             <slot></slot>
         {% endif %}
     </main>
+
+
+    {% if page.list|default:props.showarticles %}
+        <nav class="article-nav">
+            <h1>Career Guidebook</h1>
+            <ul>
+                {% for link in links_articles.list %}
+                    <li style="display: block; width: 100%;" class="{% if link.file == props.navselected %}page-li--selected{% endif %}">
+                        <a href="{{ link.file }}.html" title="{{ link.title }}" >
+                            <span style="min-width: 250px; display: inline-block; font-size: 1.4rem;">{{ link.title }}</span>
+                            <span style="margin-left: 5px; font-weight: normal;">
+                                {{ link.subtitle }}
+                            </span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    {% endif %}
 
 </div>
 
@@ -128,7 +134,7 @@ with Style (CSS) and Script (JS).
     }
 </Script>
 
-<Style -src="../css/caramel.min.css"></Style>
+<Style -src="../css/caramel.min.css">strong { font-weight: 800; }</Style>
 
 <Style>
 

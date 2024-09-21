@@ -89,81 +89,76 @@
 
         {
             "title": "3.3",
-            "subtitle": "Reverse Recruiting",
+            "subtitle": "Outreach Strategy",
             "file": "chapter3-30"
         },
 
         {
             "title": "3.4",
-            "subtitle": "Email Template Examples",
+            "subtitle": "Outreach Toolkit",
             "file": "chapter3-40"
         },
 
         {
             "title": "Chapter 4: The Interview Process",
             "subtitle": "",
-            "file": "chapter4.html"
+            "file": "chapter4"
         },
 
 
         {
             "title": "4.1",
-            "subtitle": "Communication",
-            "file": "chapter3-10"
+            "subtitle": "Overview",
+            "file": "chapter4-10"
         },
 
         {
             "title": "4.2",
-            "subtitle": "Networking",
-            "file": "chapter3-20"
+            "subtitle": "Screening Interviews and Challenges",
+            "file": "chapter4-20"
         },
 
 
         {
             "title": "4.3",
-            "subtitle": "Reverse Recruiting",
-            "file": "chapter3-30"
+            "subtitle": "On-Site and Video Interviews",
+            "file": "chapter4-30"
         },
 
         {
             "title": "4.4",
-            "subtitle": "Email Template Examples",
-            "file": "chapter3-40"
+            "subtitle": "Interview Practice",
+            "file": "chapter4-40"
+        },
+
+        {
+            "title": "4.5",
+            "subtitle": "Coding Interviews",
+            "file": "chapter4-50"
         },
 
         {
             "title": "Chapter 5: Offers and Beyond",
             "subtitle": "",
-            "file": "chapter5.html"
+            "file": "chapter5"
         },
 
         {
             "title": "5.1",
-            "subtitle": "Communication",
-            "file": "chapter3-10"
+            "subtitle": "Offers and Negotiation",
+            "file": "chapter5-10"
         },
 
         {
             "title": "5.2",
-            "subtitle": "Networking",
-            "file": "chapter3-20"
-        },
-
-        {
-            "title": "5.3",
-            "subtitle": "Reverse Recruiting",
-            "file": "chapter3-30"
-        },
-
-        {
-            "title": "5.4",
-            "subtitle": "Email Template Examples",
-            "file": "chapter3-40"
+            "subtitle": "Your New Job",
+            "file": "chapter5-20"
         },
 
 
         {
             "title": "Appendices",
+            "subtitle": "",
             "file": "appendices"
         }
 

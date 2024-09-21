@@ -1,0 +1,9 @@
+- Code: The Hidden Language of Computer Hardware and Software
+- The Last Colonial Massacre
+- Barbarians in the Ancient World
+- The Jakarta Method
+- The Colossal Book of Mathematics
+- Bad Samaritans
+- The Late Victorian Holocaust
+- Black Jacobins
+- The Origins of the Modern World - Robert B. Marks
